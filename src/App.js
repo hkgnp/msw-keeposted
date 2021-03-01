@@ -5,6 +5,7 @@ import PostContent from './components/views/PostContent';
 import Footer from './components/views/Footer';
 import { Container, Row, Col } from 'reactstrap';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import CreatePost from './components/views/CreatePost';
 
 function App() {
   return (
@@ -20,6 +21,13 @@ function App() {
             <Row className="contentContainer">
               <Col>
                 <PostContent />
+              </Col>
+            </Row>
+          </Route>
+          <Route path="/register">
+            <Row className="contentContainer">
+              <Col>
+                <CreatePost />
               </Col>
             </Row>
           </Route>

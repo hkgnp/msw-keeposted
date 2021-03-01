@@ -24,11 +24,7 @@ const ManagePagination = (props) => {
     ));
   };
 
-  return (
-    <Pagination aria-label="Page navigation" style={{ padding: '0 18px' }}>
-      {renderPages()}
-    </Pagination>
-  );
+  return <Pagination aria-label="Page navigation">{renderPages()}</Pagination>;
 };
 
 export default ManagePagination;
