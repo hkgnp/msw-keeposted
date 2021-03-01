@@ -2,7 +2,7 @@ import React from 'react';
 import { Pagination, PaginationItem, PaginationLink } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const managePagination = (props) => {
+const ManagePagination = (props) => {
   // Get variables to calculate number of pages
   const pageSize = props.pageSize;
   const postsCount = props.postsCount;
@@ -10,7 +10,7 @@ const managePagination = (props) => {
   const currentPage = props.currentPage;
 
   // Calculate number of pages
-  const pagesCount = Math.round(postsCount / pageSize);
+  const pagesCount = Math.ceil(postsCount / pageSize);
   let numberofPagesArray = [];
   for (let i = 1; i < pagesCount + 1; i++) {
     numberofPagesArray.push(i);
@@ -18,7 +18,7 @@ const managePagination = (props) => {
 
   const renderPages = () => {
     return numberofPagesArray.map((p) => (
-      <PaginationItem className={p === currentPage ? 'active' : null}>
+      <PaginationItem key={p} className={p === currentPage ? 'active' : null}>
         <PaginationLink onClick={() => managePageChange(p)}>{p}</PaginationLink>
       </PaginationItem>
     ));
@@ -30,4 +30,5 @@ const managePagination = (props) => {
     </Pagination>
   );
 };
-export default managePagination;
+
+export default ManagePagination;

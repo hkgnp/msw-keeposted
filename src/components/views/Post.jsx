@@ -13,7 +13,7 @@ import {
 const Post = (props) => {
   return (
     <React.Fragment>
-      <Card style={{ display: 'block', width: '250px', marginBottom: '20px' }}>
+      <Card className="cardDesign">
         {/* <CardImg top width="100%" src="" alt="Card image cap" /> */}
         <CardBody>
           <CardTitle tag="h5">{props.title}</CardTitle>

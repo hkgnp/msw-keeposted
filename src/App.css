@@ -7,14 +7,22 @@
 .contentContainer {
   height: 100vh;
 }
+
 .postContainer {
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
-  align-content: space-evenly;
+  align-items: space-between;
+  align-content: space-around;
+  justify-content: flex-start;
   padding: 0 18px;
 }
 
 .postNumber {
   padding: 0 18px;
+}
+
+.cardDesign {
+  width: 250px;
+  margin-bottom: 20px;
+  margin-right: 20px;
 }
