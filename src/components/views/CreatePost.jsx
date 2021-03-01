@@ -6,7 +6,7 @@ export default class CreatePost extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <h1>Create Post</h1>
+        <h1>Contribute Resource</h1>
         <Form>
           <FormGroup>
             <Label for="exampleEmail">Title</Label>

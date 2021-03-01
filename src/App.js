@@ -24,7 +24,7 @@ function App() {
               </Col>
             </Row>
           </Route>
-          <Route path="/register">
+          <Route path="/createpost">
             <Row className="contentContainer">
               <Col>
                 <CreatePost />
