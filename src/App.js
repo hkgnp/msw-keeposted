@@ -1,10 +1,10 @@
 import React from 'react';
 import './App.css';
-import NavigationBar from './components/NavigationBar';
-import PostContent from './components/PostContent';
-import Footer from './components/Footer';
+import NavigationBar from './components/views/NavigationBar';
+import PostContent from './components/views/PostContent';
+import Footer from './components/views/Footer';
 import { Container, Row, Col } from 'reactstrap';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 function App() {
   return (
@@ -17,8 +17,8 @@ function App() {
         </Row>
         <Switch>
           <Route path="/posts">
-            <Row>
-              <Col className="postContainer">
+            <Row className="contentContainer">
+              <Col>
                 <PostContent />
               </Col>
             </Row>
