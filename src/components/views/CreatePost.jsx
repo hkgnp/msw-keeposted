@@ -9,7 +9,7 @@ export default class CreatePost extends React.Component {
         <h1>Contribute Resource</h1>
         <Form>
           <FormGroup>
-            <Label for="exampleEmail">Title</Label>
+            <Label for="title">Title</Label>
             <Input
               type="text"
               name="title"
@@ -17,25 +17,25 @@ export default class CreatePost extends React.Component {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="exampleSelect">Category</Label>
+            <Label for="category">Category</Label>
             <Input type="select" name="category">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
+              <option>Donations</option>
+              <option>Jobs</option>
+              <option>Long-term Care</option>
+              <option>Miscellaneous</option>
             </Input>
           </FormGroup>
           <FormGroup>
-            <Label for="exampleText">Description</Label>
+            <Label for="description">Description</Label>
             <Input
               type="textarea"
-              name="text"
+              name="description"
+              rows="6"
               placeholder="Make it as descriptive as possible!"
             />
           </FormGroup>
           <FormGroup>
-            <Label for="exampleEmail">Location</Label>
+            <Label for="location">Location</Label>
             <Input
               type="text"
               name="location"
