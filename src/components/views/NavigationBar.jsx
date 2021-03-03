@@ -37,7 +37,9 @@ const NavigationBar = (props) => {
             <Button color="primary" style={{ marginRight: '10px' }}>
               Log In
             </Button>
-            <Button color="warning">Sign Up</Button>
+            <Button href="/signup" color="warning">
+              Sign Up
+            </Button>
           </NavbarText>
         </Collapse>
       </Navbar>

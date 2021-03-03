@@ -7,6 +7,7 @@ import { Container, Row, Col } from 'reactstrap';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import CreatePost from './components/views/CreatePost';
 import About from './components/views/About';
+import Signup from './components/views/Signup';
 
 function App() {
   return (
@@ -36,6 +37,13 @@ function App() {
             <Row className="contentContainer">
               <Col>
                 <About />
+              </Col>
+            </Row>
+          </Route>
+          <Route path="/signup">
+            <Row className="contentContainer">
+              <Col>
+                <Signup />
               </Col>
             </Row>
           </Route>

@@ -2,7 +2,7 @@ import React from 'react';
 import { Pagination, PaginationItem, PaginationLink } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const ManagePagination = (props) => {
+export const ManagePagination = (props) => {
   // Get variables to calculate number of pages
   const pageSize = props.pageSize;
   const postsCount = props.postsCount;
@@ -27,4 +27,12 @@ const ManagePagination = (props) => {
   return <Pagination aria-label="Page navigation">{renderPages()}</Pagination>;
 };
 
-export default ManagePagination;
+export const Paginate = (posts, pageNumber, pageSize) => {
+  const startIndex = (pageNumber - 1) * pageSize;
+  if (pageNumber === 1) {
+    return posts.slice(startIndex, pageSize);
+  } else {
+    let endIndex = (startIndex / (pageNumber - 1)) * pageNumber;
+    return posts.slice(startIndex, endIndex);
+  }
+};

@@ -1,12 +1,12 @@
 import React from 'react';
 import Post from './Post';
-import ManagePagination from '../general/ManagePagination';
-import Paginate from '../general/Paginate';
+import { ManagePagination, Paginate } from '../general/ManagePagination';
+// import Paginate from '../general/Paginate';
 import axios from 'axios';
 
 export default class PostContent extends React.Component {
   state = {
-    pageSize: 3,
+    pageSize: 4,
     currentPage: 1,
     posts: [],
     loaded: false,
