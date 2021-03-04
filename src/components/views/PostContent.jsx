@@ -34,7 +34,6 @@ export default class PostContent extends React.Component {
     // Sets state of searchbar value
     this.setState({
       [e.target.name]: e.target.value,
-      posts: this.searchFunction(),
     });
   };
 
@@ -60,10 +59,13 @@ export default class PostContent extends React.Component {
 
     if (posts.length === 0) {
       return (
-        <p className="postNumber">
-          There are no resources in the database. Click here to add a new
-          resource!
-        </p>
+        <React.Fragment>
+          <SearchBar
+            searchTerm={searchTerm}
+            handleSearchString={this.handleSearchString}
+          />
+          <p className="postNumber">There are no resources in the database.</p>
+        </React.Fragment>
       );
     } else {
       return (
@@ -72,7 +74,10 @@ export default class PostContent extends React.Component {
             searchTerm={searchTerm}
             handleSearchString={this.handleSearchString}
           />
-          <p className="postNumber">
+          <p
+            className="postNumber"
+            style={{ display: searchTerm.length > 0 ? 'none' : 'block' }}
+          >
             Showing {posts.length} posts in the database
           </p>
           <div className="postContainer">

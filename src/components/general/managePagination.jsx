@@ -2,12 +2,10 @@ import React from 'react';
 import { Pagination, PaginationItem, PaginationLink } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+// Manages the pagination
 export const ManagePagination = (props) => {
-  // Get variables to calculate number of pages
-  const pageSize = props.pageSize;
-  const postsCount = props.postsCount;
-  const managePageChange = props.managePageChange;
-  const currentPage = props.currentPage;
+  // Destructure variables to calculate number of pages
+  const { pageSize, postsCount, managePageChange, currentPage } = props;
 
   // Calculate number of pages
   const pagesCount = Math.ceil(postsCount / pageSize);
@@ -16,6 +14,7 @@ export const ManagePagination = (props) => {
     numberofPagesArray.push(i);
   }
 
+  // Sets number of pages and whether the active page is selected or not
   const renderPages = () => {
     return numberofPagesArray.map((p) => (
       <PaginationItem key={p} className={p === currentPage ? 'active' : null}>
@@ -27,6 +26,7 @@ export const ManagePagination = (props) => {
   return <Pagination aria-label="Page navigation">{renderPages()}</Pagination>;
 };
 
+// Manages which posts to display depending on which page is selected
 export const Paginate = (posts, pageNumber, pageSize) => {
   const startIndex = (pageNumber - 1) * pageSize;
   if (pageNumber === 1) {
