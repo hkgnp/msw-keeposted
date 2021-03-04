@@ -5,8 +5,6 @@ import { Paginate } from '../general/ManagePagination';
 const RenderPosts = (props) => {
   const allPosts = Paginate(props.posts, props.currentPage, props.pageSize);
 
-  props.updateStatefromSearch(props.posts);
-
   return allPosts.map((p) => (
     <Post
       key={p._id}

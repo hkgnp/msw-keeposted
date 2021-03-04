@@ -48,12 +48,6 @@ export default class PostContent extends React.Component {
     return searchResults;
   };
 
-  updateStatefromSearch = (state) => {
-    this.setState({
-      posts: state,
-    });
-  };
-
   render() {
     const { posts, currentPage, pageSize, searchTerm } = this.state;
 
@@ -76,7 +70,7 @@ export default class PostContent extends React.Component {
           />
           <p
             className="postNumber"
-            style={{ display: searchTerm.length > 0 ? 'none' : 'block' }}
+            // style={{ display: searchTerm.length > 0 ? 'none' : 'block' }}
           >
             Showing {posts.length} posts in the database
           </p>
@@ -85,7 +79,6 @@ export default class PostContent extends React.Component {
               posts={this.searchFunction()}
               currentPage={currentPage}
               pageSize={pageSize}
-              updateStatefromSearch={() => this.updateStatefromSearch}
             />
           </div>
           <ManagePagination
