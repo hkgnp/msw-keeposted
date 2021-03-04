@@ -34,6 +34,7 @@ export default class PostContent extends React.Component {
     // Sets state of searchbar value
     this.setState({
       [e.target.name]: e.target.value,
+      posts: this.searchFunction(),
     });
   };
 
@@ -42,9 +43,16 @@ export default class PostContent extends React.Component {
     const { posts, searchTerm } = this.state;
     const searchString = searchTerm.toLowerCase();
 
-    return posts.filter((p) =>
+    let searchResults = posts.filter((p) =>
       p.description.toLowerCase().includes(searchString)
     );
+    return searchResults;
+  };
+
+  updateStatefromSearch = (state) => {
+    this.setState({
+      posts: state,
+    });
   };
 
   render() {
@@ -72,6 +80,7 @@ export default class PostContent extends React.Component {
               posts={this.searchFunction()}
               currentPage={currentPage}
               pageSize={pageSize}
+              updateStatefromSearch={() => this.updateStatefromSearch}
             />
           </div>
           <ManagePagination
