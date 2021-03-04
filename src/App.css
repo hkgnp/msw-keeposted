@@ -26,3 +26,20 @@ body h1 {
   margin-bottom: 20px;
   margin-right: 20px;
 }
+
+.login_signup {
+  width: 50%;
+  height: 100vh;
+  margin: auto;
+}
+
+.signup_instructions {
+  width: 50%;
+  text-align: center;
+}
+
+@media screen and (max-width: 992px) {
+  .signup_instructions {
+    display: none;
+  }
+}

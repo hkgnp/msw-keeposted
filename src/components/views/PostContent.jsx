@@ -1,8 +1,8 @@
 import React from 'react';
-import Post from './Post';
-import { ManagePagination, Paginate } from '../general/ManagePagination';
-// import Paginate from '../general/Paginate';
+import RenderPosts from '../general/RenderPosts';
+import { ManagePagination } from '../general/ManagePagination';
 import axios from 'axios';
+import SearchBar from '../general/SearchBar';
 
 export default class PostContent extends React.Component {
   state = {
@@ -10,8 +10,10 @@ export default class PostContent extends React.Component {
     currentPage: 1,
     posts: [],
     loaded: false,
+    searchTerm: '',
   };
 
+  // Load all data from database
   async componentDidMount() {
     let response = await axios.get('posts.json');
     this.setState({
@@ -20,52 +22,66 @@ export default class PostContent extends React.Component {
     });
   }
 
-  renderPosts = () => {
-    const allPosts = Paginate(
-      this.state.posts,
-      this.state.currentPage,
-      this.state.pageSize
-    );
-
-    return allPosts.map((p) => (
-      <Post
-        key={p._id}
-        title={p.title}
-        category={p.category}
-        description={p.description}
-        location={p.location}
-      />
-    ));
-  };
-
+  // Setting current page to active for page navigation
   managePageChange = (page) => {
     this.setState({
       currentPage: page,
     });
   };
 
+  // Handling search bar data
+  handleSearchString = (e) => {
+    // Sets state of searchbar value
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  // Handle search function
+  searchFunction = () => {
+    const { posts, searchTerm } = this.state;
+    const searchString = searchTerm.toLowerCase();
+
+    return posts.filter((p) =>
+      p.description.toLowerCase().includes(searchString)
+    );
+  };
+
   render() {
-    if (this.state.posts.length === 0)
+    const { posts, currentPage, pageSize, searchTerm } = this.state;
+
+    if (posts.length === 0) {
       return (
         <p className="postNumber">
           There are no resources in the database. Click here to add a new
           resource!
         </p>
       );
-
-    return (
-      <React.Fragment>
-        <p className="postNumber">
-          Showing {this.state.posts.length} posts in the database
-        </p>
-        <div className="postContainer">{this.renderPosts()}</div>
-        <ManagePagination
-          postsCount={this.state.posts.length}
-          pageSize={this.state.pageSize}
-          managePageChange={this.managePageChange}
-          currentPage={this.state.currentPage}
-        />
-      </React.Fragment>
-    );
+    } else {
+      return (
+        <React.Fragment>
+          <SearchBar
+            searchTerm={searchTerm}
+            handleSearchString={this.handleSearchString}
+          />
+          <p className="postNumber">
+            Showing {posts.length} posts in the database
+          </p>
+          <div className="postContainer">
+            <RenderPosts
+              posts={this.searchFunction()}
+              currentPage={currentPage}
+              pageSize={pageSize}
+            />
+          </div>
+          <ManagePagination
+            postsCount={posts.length}
+            pageSize={pageSize}
+            managePageChange={this.managePageChange}
+            currentPage={currentPage}
+          />
+        </React.Fragment>
+      );
+    }
   }
 }
