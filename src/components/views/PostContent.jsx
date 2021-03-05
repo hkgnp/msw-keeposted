@@ -33,7 +33,8 @@ export default class PostContent extends React.Component {
   handleSearchString = (e) => {
     // Sets state of searchbar value
     this.setState({
-      [e.target.name]: e.target.value,
+      searchTerm: e.target.value,
+      posts: this.searchFunction(),
     });
   };
 
@@ -45,6 +46,7 @@ export default class PostContent extends React.Component {
     let searchResults = posts.filter((p) =>
       p.description.toLowerCase().includes(searchString)
     );
+
     return searchResults;
   };
 
