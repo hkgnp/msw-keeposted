@@ -1,6 +1,5 @@
 import React from 'react';
-import RenderPosts from '../general/RenderPosts';
-import { ManagePagination } from '../general/ManagePagination';
+import RenderPosts from './RenderPosts';
 import axios from 'axios';
 import SearchBar from '../general/SearchBar';
 
@@ -14,13 +13,13 @@ export default class PostContent extends React.Component {
   };
 
   // Load all data from database
-  async componentDidMount() {
+  componentDidMount = async () => {
     let response = await axios.get('posts.json');
     this.setState({
       posts: response.data,
       loaded: true,
     });
-  }
+  };
 
   // Setting current page to active for page navigation
   managePageChange = (page) => {
@@ -34,7 +33,6 @@ export default class PostContent extends React.Component {
     // Sets state of searchbar value
     this.setState({
       searchTerm: e.target.value,
-      posts: this.searchFunction(),
     });
   };
 
@@ -46,7 +44,6 @@ export default class PostContent extends React.Component {
     let searchResults = posts.filter((p) =>
       p.description.toLowerCase().includes(searchString)
     );
-
     return searchResults;
   };
 
@@ -70,25 +67,13 @@ export default class PostContent extends React.Component {
             searchTerm={searchTerm}
             handleSearchString={this.handleSearchString}
           />
-          <p
-            className="postNumber"
-            // style={{ display: searchTerm.length > 0 ? 'none' : 'block' }}
-          >
-            Showing {posts.length} posts in the database
-          </p>
-          <div className="postContainer">
+          <div>
             <RenderPosts
               posts={this.searchFunction()}
               currentPage={currentPage}
               pageSize={pageSize}
             />
           </div>
-          <ManagePagination
-            postsCount={posts.length}
-            pageSize={pageSize}
-            managePageChange={this.managePageChange}
-            currentPage={currentPage}
-          />
         </React.Fragment>
       );
     }
