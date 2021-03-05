@@ -6,7 +6,8 @@ import '../../App.css';
 export default class RenderPosts extends React.Component {
   render() {
     // Destructure
-    const { posts, currentPage, pageSize } = this.props;
+    const { posts, currentPage, pageSize, managePageChange } = this.props;
+
     // Paginate number of posts based on active page and page size
     const allPosts = Paginate(posts, currentPage, pageSize);
 
@@ -29,7 +30,7 @@ export default class RenderPosts extends React.Component {
         <ManagePagination
           postsCount={posts.length}
           pageSize={pageSize}
-          managePageChange={this.managePageChange}
+          managePageChange={managePageChange}
           currentPage={currentPage}
         />
       </React.Fragment>

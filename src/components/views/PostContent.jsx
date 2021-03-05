@@ -5,7 +5,7 @@ import SearchBar from '../general/SearchBar';
 
 export default class PostContent extends React.Component {
   state = {
-    pageSize: 4,
+    pageSize: 5,
     currentPage: 1,
     posts: [],
     loaded: false,
@@ -72,6 +72,7 @@ export default class PostContent extends React.Component {
               posts={this.searchFunction()}
               currentPage={currentPage}
               pageSize={pageSize}
+              managePageChange={this.managePageChange}
             />
           </div>
         </React.Fragment>
