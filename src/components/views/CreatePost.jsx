@@ -7,7 +7,11 @@ export default class CreatePost extends React.Component {
     title: '',
     category: '',
     description: '',
-    location: '',
+    location: {
+      address1: '',
+      address2: '',
+      postalcode: '',
+    },
     file: '',
   };
 
@@ -17,7 +21,17 @@ export default class CreatePost extends React.Component {
     });
   };
 
+  handleLocation = (e) => {
+    this.setState({
+      location: {
+        ...this.state.location,
+        [e.target.name]: e.target.value,
+      },
+    });
+  };
+
   render() {
+    const { title, category, description, location } = this.state;
     return (
       <React.Fragment>
         <h1>Contribute Resource</h1>
@@ -29,11 +43,17 @@ export default class CreatePost extends React.Component {
               type="text"
               name="title"
               placeholder="What is this resource about?"
+              value={title}
             />
           </FormGroup>
           <FormGroup>
             <Label for="category">Category</Label>
-            <Input onChange={this.handleForm} type="select" name="category">
+            <Input
+              onChange={this.handleForm}
+              type="select"
+              name="category"
+              value={category}
+            >
               <option>Select a category</option>
               <option value="donations">Donations</option>
               <option value="jobs">Jobs</option>
@@ -49,20 +69,41 @@ export default class CreatePost extends React.Component {
               name="description"
               rows="6"
               placeholder="Make it as descriptive as possible!"
+              value={description}
             />
           </FormGroup>
           <FormGroup>
             <Label for="location">Location</Label>
             <Input
-              onChange={this.handleForm}
+              onChange={this.handleLocation}
               type="text"
-              name="location"
-              placeholder="Key in the postal code"
+              name="address1"
+              placeholder="Address Line 1"
+              value={location.address1}
+            />
+            <Input
+              onChange={this.handleLocation}
+              type="text"
+              name="address2"
+              placeholder="Address Line 2"
+              value={location.address2}
+            />
+            <Input
+              onChange={this.handleLocation}
+              type="text"
+              name="postalcode"
+              placeholder="Postal Code"
+              value={location.postalcode}
             />
           </FormGroup>
           <FormGroup>
             <Label for="file">Upload a picture (optional)</Label>
-            <Input type="file" name="optionalpicture" id="optionalpicture" />
+            <Input
+              type="file"
+              name="file"
+              id="file"
+              onChange={this.handleForm}
+            />
             <FormText color="muted">
               This is some placeholder block-level help text for the above
               input. It's a bit lighter and easily wraps to a new line.
