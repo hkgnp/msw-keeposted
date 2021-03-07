@@ -9,6 +9,7 @@ export default class Signup extends React.Component {
     name: '',
     email: '',
     password: '',
+    errors: '',
   };
 
   handleForm = (e) => {
@@ -17,9 +18,14 @@ export default class Signup extends React.Component {
     });
   };
 
-  render() {
+  handleSubmit = (e) => {
     const { name, email, password } = this.state;
 
+    e.preventDefault();
+    RegisterUser(name, email, password);
+  };
+
+  render() {
     return (
       <Row style={{ display: 'flex' }}>
         <Col className="signup_instructions">
@@ -35,7 +41,7 @@ export default class Signup extends React.Component {
         {/* Sign Up Form */}
         <Col className="login_signup">
           <h1>Register</h1>
-          <Form>
+          <Form onSubmit={this.handleSubmit}>
             <FormGroup>
               <Label for="name">Name</Label>
               <Input
@@ -63,10 +69,7 @@ export default class Signup extends React.Component {
                 placeholder="Enter a complex password"
               />
             </FormGroup>
-            <Button
-              color="primary"
-              onClick={() => RegisterUser({ name, email, password })}
-            >
+            <Button color="primary" type="submit">
               Submit
             </Button>
             <Button color="danger" className="mx-2">
