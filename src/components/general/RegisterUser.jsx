@@ -7,9 +7,9 @@ const RegisterUser = async (props) => {
 
   // Set up schema for Joi
   const schema = {
-    name: Joi.string().required(),
-    email: Joi.string().required(),
-    password: Joi.string().required(),
+    name: Joi.string().required().label('Name'),
+    email: Joi.string().required().label('Username'),
+    password: Joi.string().required().label('Password'),
   };
 
   // Implement Joi validation
@@ -30,10 +30,11 @@ const RegisterUser = async (props) => {
         password: password,
       },
     });
+  } else {
+    const errors = {};
+    validationResult.error.details.map((e) => (errors[e.path[0]] = e.message));
+    return errors;
   }
-  const errors = {};
-  validationResult.error.details.map((e) => (errors[e.path[0]] = e.message));
-  console.log(errors);
 };
 
 export default RegisterUser;

@@ -18,14 +18,27 @@ export default class Signup extends React.Component {
     });
   };
 
-  handleSubmit = (e) => {
-    const { name, email, password } = this.state;
-
+  handleSubmit = async (e) => {
     e.preventDefault();
-    RegisterUser(name, email, password);
+    const { name, email, password } = this.state;
+    const errors = await RegisterUser({ name, email, password });
+    this.setState({
+      errors: errors,
+    });
+  };
+
+  handleReset = () => {
+    this.setState({
+      name: '',
+      email: '',
+      password: '',
+    });
   };
 
   render() {
+    // Destructure for validation function
+    const { name, email, password } = this.state.errors;
+
     return (
       <Row style={{ display: 'flex' }}>
         <Col className="signup_instructions">
@@ -41,7 +54,7 @@ export default class Signup extends React.Component {
         {/* Sign Up Form */}
         <Col className="login_signup">
           <h1>Register</h1>
-          <Form onSubmit={this.handleSubmit}>
+          <Form>
             <FormGroup>
               <Label for="name">Name</Label>
               <Input
@@ -49,7 +62,11 @@ export default class Signup extends React.Component {
                 type="text"
                 name="name"
                 placeholder="Enter your name"
+                value={this.state.name}
               />
+              {name ? (
+                <div className="alert-sm alert-danger p-2">{name}</div>
+              ) : null}
             </FormGroup>
             <FormGroup>
               <Label for="email">Username</Label>
@@ -58,7 +75,11 @@ export default class Signup extends React.Component {
                 type="email"
                 name="email"
                 placeholder="Enter a valid email"
+                value={this.state.email}
               />
+              {email ? (
+                <div className="alert-sm alert-danger p-2">{email}</div>
+              ) : null}
             </FormGroup>
             <FormGroup>
               <Label for="password">Password</Label>
@@ -67,12 +88,24 @@ export default class Signup extends React.Component {
                 type="password"
                 name="password"
                 placeholder="Enter a complex password"
+                value={this.state.password}
               />
+              {password ? (
+                <div className="alert-sm alert-danger p-2">{password}</div>
+              ) : null}
             </FormGroup>
-            <Button color="primary" type="submit">
+            <Button
+              color="primary"
+              className="mt-2"
+              onClick={this.handleSubmit}
+            >
               Submit
             </Button>
-            <Button color="danger" className="mx-2">
+            <Button
+              color="danger"
+              className="mx-2 mt-2"
+              onClick={this.handleReset}
+            >
               Reset
             </Button>
           </Form>
