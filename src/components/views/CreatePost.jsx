@@ -34,10 +34,11 @@ export default class CreatePost extends React.Component {
           <FormGroup>
             <Label for="category">Category</Label>
             <Input onChange={this.handleForm} type="select" name="category">
-              <option>Donations</option>
-              <option>Jobs</option>
-              <option>Long-term Care</option>
-              <option>Miscellaneous</option>
+              <option>Select a category</option>
+              <option value="donations">Donations</option>
+              <option value="jobs">Jobs</option>
+              <option value="long-term care">Long-term Care</option>
+              <option value="misc">Miscellaneous</option>
             </Input>
           </FormGroup>
           <FormGroup>
@@ -60,8 +61,8 @@ export default class CreatePost extends React.Component {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="exampleFile">File</Label>
-            <Input type="file" name="file" />
+            <Label for="file">Upload a picture (optional)</Label>
+            <Input type="file" name="optionalpicture" id="optionalpicture" />
             <FormText color="muted">
               This is some placeholder block-level help text for the above
               input. It's a bit lighter and easily wraps to a new line.

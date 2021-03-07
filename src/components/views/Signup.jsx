@@ -1,21 +1,12 @@
 import React from 'react';
-import {
-  Button,
-  Form,
-  FormGroup,
-  Label,
-  Input,
-  FormText,
-  Row,
-  Col,
-} from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, Row, Col } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../App.css';
 
 export default class Signup extends React.Component {
   state = {
+    name: '',
     username: '',
-    email: '',
     password: '',
   };
 
@@ -43,21 +34,21 @@ export default class Signup extends React.Component {
           <h1>Register</h1>
           <Form>
             <FormGroup>
-              <Label for="username">Username</Label>
+              <Label for="username">Name</Label>
               <Input
                 onChange={this.handleForm}
-                type="username"
-                name="username"
-                placeholder="Enter a username"
+                type="text"
+                name="name"
+                placeholder="Enter your name"
               />
             </FormGroup>
             <FormGroup>
-              <Label for="email">Email</Label>
+              <Label for="email">Username</Label>
               <Input
                 onChange={this.handleForm}
                 type="email"
-                name="email"
-                placeholder="Enter an email"
+                name="username"
+                placeholder="Enter a valid email"
               />
             </FormGroup>
             <FormGroup>
@@ -69,11 +60,10 @@ export default class Signup extends React.Component {
                 placeholder="Enter a complex password"
               />
             </FormGroup>
-            <FormText color="muted">
-              This is some placeholder block-level help text for the above
-              input. It's a bit lighter and easily wraps to a new line.
-            </FormText>
             <Button color="primary">Submit</Button>
+            <Button color="danger" className="mx-2">
+              Reset
+            </Button>
           </Form>
         </Col>
       </Row>
