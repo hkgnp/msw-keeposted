@@ -5,7 +5,7 @@ import SearchBar from '../general/SearchBar';
 
 export default class PostContent extends React.Component {
   state = {
-    pageSize: 5,
+    pageSize: 4,
     currentPage: 1,
     posts: [],
     loaded: false,

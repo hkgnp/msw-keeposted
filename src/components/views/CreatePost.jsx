@@ -3,6 +3,20 @@ import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default class CreatePost extends React.Component {
+  state = {
+    title: '',
+    category: '',
+    description: '',
+    location: '',
+    file: '',
+  };
+
+  handleForm = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
+  };
+
   render() {
     return (
       <React.Fragment>
