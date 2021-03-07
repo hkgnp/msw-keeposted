@@ -25,6 +25,7 @@ export default class CreatePost extends React.Component {
           <FormGroup>
             <Label for="title">Title</Label>
             <Input
+              onChange={this.handleForm}
               type="text"
               name="title"
               placeholder="What is this resource about?"
@@ -32,7 +33,7 @@ export default class CreatePost extends React.Component {
           </FormGroup>
           <FormGroup>
             <Label for="category">Category</Label>
-            <Input type="select" name="category">
+            <Input onChange={this.handleForm} type="select" name="category">
               <option>Donations</option>
               <option>Jobs</option>
               <option>Long-term Care</option>
@@ -42,6 +43,7 @@ export default class CreatePost extends React.Component {
           <FormGroup>
             <Label for="description">Description</Label>
             <Input
+              onChange={this.handleForm}
               type="textarea"
               name="description"
               rows="6"
@@ -51,6 +53,7 @@ export default class CreatePost extends React.Component {
           <FormGroup>
             <Label for="location">Location</Label>
             <Input
+              onChange={this.handleForm}
               type="text"
               name="location"
               placeholder="Key in the postal code"
