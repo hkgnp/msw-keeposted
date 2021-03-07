@@ -2,11 +2,12 @@ import React from 'react';
 import { Button, Form, FormGroup, Label, Input, Row, Col } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../App.css';
+import RegisterUser from '../general/RegisterUser';
 
 export default class Signup extends React.Component {
   state = {
     name: '',
-    username: '',
+    email: '',
     password: '',
   };
 
@@ -17,6 +18,8 @@ export default class Signup extends React.Component {
   };
 
   render() {
+    const { name, email, password } = this.state;
+
     return (
       <Row style={{ display: 'flex' }}>
         <Col className="signup_instructions">
@@ -34,7 +37,7 @@ export default class Signup extends React.Component {
           <h1>Register</h1>
           <Form>
             <FormGroup>
-              <Label for="username">Name</Label>
+              <Label for="name">Name</Label>
               <Input
                 onChange={this.handleForm}
                 type="text"
@@ -47,7 +50,7 @@ export default class Signup extends React.Component {
               <Input
                 onChange={this.handleForm}
                 type="email"
-                name="username"
+                name="email"
                 placeholder="Enter a valid email"
               />
             </FormGroup>
@@ -60,7 +63,12 @@ export default class Signup extends React.Component {
                 placeholder="Enter a complex password"
               />
             </FormGroup>
-            <Button color="primary">Submit</Button>
+            <Button
+              color="primary"
+              onClick={() => RegisterUser({ name, email, password })}
+            >
+              Submit
+            </Button>
             <Button color="danger" className="mx-2">
               Reset
             </Button>
