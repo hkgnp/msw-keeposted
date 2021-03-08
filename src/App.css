@@ -57,9 +57,8 @@ body h1 {
 }
 
 .moredetails {
-  /* display: block; */
   position: absolute;
-  width: 80%;
+  width: 100%;
   top: 50%;
   left: 50%;
   background-color: white;

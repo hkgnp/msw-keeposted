@@ -21,6 +21,7 @@ export default class PostContent extends React.Component {
 
   // Load all data from database
   componentDidMount = async () => {
+    document.title = 'msw keeposted: All Resources';
     let response = await axios.get('posts.json');
     this.setState({
       posts: response.data,

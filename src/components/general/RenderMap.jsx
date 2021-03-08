@@ -14,7 +14,7 @@ const RenderMap = (props) => {
 
   // Render actual map
   return (
-    <React.Fragment>
+    <div>
       <MapContainer
         center={[props.latitude, props.longitude]}
         zoom={17}
@@ -32,7 +32,7 @@ const RenderMap = (props) => {
         </Marker>
         <SetView coords={[props.latitude, props.longitude]} />
       </MapContainer>
-    </React.Fragment>
+    </div>
   );
 };
 export default RenderMap;
