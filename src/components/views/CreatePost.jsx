@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import axios from 'axios';
 
 export default class CreatePost extends React.Component {
   state = {
@@ -32,6 +33,22 @@ export default class CreatePost extends React.Component {
         [e.target.name]: e.target.value,
       },
     });
+  };
+
+  handleSubmit = async () => {
+    const { title, category, description, location } = this.state;
+    const baseUrl = '';
+    const payLoad = {
+      title: title,
+      category: category,
+      description: description,
+      location: {
+        address1: location.address1,
+        address2: location.address2,
+        postalcode: location.postalcode,
+      },
+    };
+    await axios.post(baseUrl, payLoad);
   };
 
   render() {
@@ -113,7 +130,9 @@ export default class CreatePost extends React.Component {
               input. It's a bit lighter and easily wraps to a new line.
             </FormText>
           </FormGroup>
-          <Button color="primary">Submit</Button>
+          <Button color="primary" onChange={this.handleSubmit}>
+            Submit
+          </Button>
         </Form>
       </React.Fragment>
     );
