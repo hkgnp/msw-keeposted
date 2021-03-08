@@ -55,7 +55,6 @@ export default class PostContent extends React.Component {
   };
 
   moreDetails = (e) => {
-    console.log(e.target.parentNode);
     this.setState({
       activeDetails: e.target.parentNode,
       moreDetails: true,
@@ -99,13 +98,6 @@ export default class PostContent extends React.Component {
             handleSearchString={this.handleSearchString}
           />
           <div>
-            <RenderPosts
-              posts={this.searchFunction()}
-              currentPage={currentPage}
-              pageSize={pageSize}
-              managePageChange={this.managePageChange}
-              moreDetails={this.moreDetails}
-            />
             {moreDetails && (
               <div ref={this.moredetails} className="moredetails">
                 <MoreDetails
@@ -114,6 +106,13 @@ export default class PostContent extends React.Component {
                 />
               </div>
             )}
+            <RenderPosts
+              posts={this.searchFunction()}
+              currentPage={currentPage}
+              pageSize={pageSize}
+              managePageChange={this.managePageChange}
+              moreDetails={this.moreDetails}
+            />
           </div>
         </Col>
       );
