@@ -6,7 +6,13 @@ import '../../App.css';
 export default class RenderPosts extends React.Component {
   render() {
     // Destructure
-    const { posts, currentPage, pageSize, managePageChange } = this.props;
+    const {
+      posts,
+      currentPage,
+      pageSize,
+      managePageChange,
+      moreDetails,
+    } = this.props;
 
     // Paginate number of posts based on active page and page size
     const allPosts = Paginate(posts, currentPage, pageSize);
@@ -23,7 +29,10 @@ export default class RenderPosts extends React.Component {
               title={p.title}
               category={p.category}
               description={p.description}
-              location={p.location}
+              address1={p.location.address1}
+              address2={p.location.address2}
+              postalcode={p.location.postalcode}
+              moreDetails={moreDetails}
             />
           ))}
         </div>

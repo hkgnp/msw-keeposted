@@ -2,6 +2,8 @@ import React from 'react';
 import RenderPosts from './RenderPosts';
 import axios from 'axios';
 import SearchBar from '../general/SearchBar';
+import MoreDetails from '../views/MoreDetails';
+import { Col } from 'reactstrap';
 
 export default class PostContent extends React.Component {
   state = {
@@ -10,7 +12,12 @@ export default class PostContent extends React.Component {
     posts: [],
     loaded: false,
     searchTerm: '',
+    moreDetails: false,
+    activeDetails: '',
   };
+
+  // Create div reference to scroll to
+  moredetails = React.createRef();
 
   // Load all data from database
   componentDidMount = async () => {
@@ -47,8 +54,32 @@ export default class PostContent extends React.Component {
     return searchResults;
   };
 
+  moreDetails = (e) => {
+    console.log(e.target.parentNode);
+    this.setState({
+      activeDetails: e.target.parentNode,
+      moreDetails: true,
+    });
+    // this.moredetails.current.scrollIntoView();
+  };
+
+  handleReset = () => {
+    this.setState({
+      activeDetails: '',
+      moreDetails: false,
+    });
+    window.scrollTo(0, 0);
+  };
+
   render() {
-    const { posts, currentPage, pageSize, searchTerm } = this.state;
+    const {
+      posts,
+      currentPage,
+      pageSize,
+      searchTerm,
+      moreDetails,
+      activeDetails,
+    } = this.state;
 
     if (posts.length === 0) {
       return (
@@ -62,7 +93,7 @@ export default class PostContent extends React.Component {
       );
     } else {
       return (
-        <React.Fragment>
+        <Col style={{ display: 'block' }}>
           <SearchBar
             searchTerm={searchTerm}
             handleSearchString={this.handleSearchString}
@@ -73,9 +104,18 @@ export default class PostContent extends React.Component {
               currentPage={currentPage}
               pageSize={pageSize}
               managePageChange={this.managePageChange}
+              moreDetails={this.moreDetails}
             />
+            {moreDetails && (
+              <div ref={this.moredetails} className="moredetails">
+                <MoreDetails
+                  activeDetails={activeDetails}
+                  handleReset={this.handleReset}
+                />
+              </div>
+            )}
           </div>
-        </React.Fragment>
+        </Col>
       );
     }
   }

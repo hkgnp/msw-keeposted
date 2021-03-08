@@ -21,8 +21,13 @@ const Post = (props) => {
             {props.category}
           </CardSubtitle>
           <CardText>{props.description}</CardText>
-          <CardText>{props.location}</CardText>
-          <Button color="danger">Delete</Button>
+          <CardText>
+            {props.address1} {props.address2}
+          </CardText>
+          <CardText>Singapore {props.postalcode}</CardText>
+          <Button color="info" onClick={props.moreDetails}>
+            More Details
+          </Button>
         </CardBody>
       </Card>
     </React.Fragment>

@@ -4,62 +4,98 @@
     "title": "Title 1",
     "category": "Category 123",
     "description": "Description 123",
-    "location": 310098
+    "location": {
+      "address1": "213 Long Kang Road",
+      "address2": "#01-01",
+      "postalcode": "310098"
+    }
   },
   {
     "_id": 1,
     "title": "Title 2",
     "category": "Category ABC",
     "description": "Description ABC",
-    "location": 119074
+    "location": {
+      "address1": "213 Long Kang Road",
+      "address2": "#01-01",
+      "postalcode": "310098"
+    }
   },
   {
     "_id": 2,
     "title": "Title 3",
     "category": "Category Smith",
     "description": "Description Smith",
-    "location": 650626
+    "location": {
+      "address1": "213 Long Kang Road",
+      "address2": "#01-01",
+      "postalcode": "310098"
+    }
   },
   {
     "_id": 3,
     "title": "Title 4",
     "category": "Category Smith",
     "description": "Description Smith",
-    "location": 650626
+    "location": {
+      "address1": "213 Long Kang Road",
+      "address2": "#01-01",
+      "postalcode": "310098"
+    }
   },
   {
     "_id": 4,
     "title": "Title 5",
     "category": "Category Smith",
     "description": "Description Smith",
-    "location": 650626
+    "location": {
+      "address1": "213 Long Kang Road",
+      "address2": "#01-01",
+      "postalcode": "310098"
+    }
   },
   {
     "_id": 5,
     "title": "Title 6",
     "category": "Category Tan Ah Kow",
     "description": "Description Tan Ah Kow",
-    "location": 650626
+    "location": {
+      "address1": "213 Long Kang Road",
+      "address2": "#01-01",
+      "postalcode": "310098"
+    }
   },
   {
     "_id": 6,
     "title": "Title 7",
     "category": "Category Smith",
     "description": "Description Smith",
-    "location": 650626
+    "location": {
+      "address1": "213 Long Kang Road",
+      "address2": "#01-01",
+      "postalcode": "310098"
+    }
   },
   {
     "_id": 7,
     "title": "Title 8",
     "category": "Category Smith",
     "description": "Description Smith",
-    "location": 650626
+    "location": {
+      "address1": "213 Long Kang Road",
+      "address2": "#01-01",
+      "postalcode": "310098"
+    }
   },
   {
     "_id": 8,
     "title": "Title 9",
     "category": "Category Smith",
     "description": "Description Smith",
-    "location": 650626
+    "location": {
+      "address1": "213 Long Kang Road",
+      "address2": "#01-01",
+      "postalcode": "310098"
+    }
   }
 ]

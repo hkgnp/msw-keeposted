@@ -22,9 +22,7 @@ function App() {
         <Switch>
           <Route path="/posts">
             <Row className="contentContainer">
-              <Col>
-                <PostContent />
-              </Col>
+              <PostContent />
             </Row>
           </Route>
           <Route path="/createpost">

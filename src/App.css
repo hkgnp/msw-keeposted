@@ -55,3 +55,16 @@ body h1 {
     display: none;
   }
 }
+
+.moredetails {
+  /* display: block; */
+  position: absolute;
+  width: 80%;
+  top: 50%;
+  left: 50%;
+  background-color: white;
+  transform: translate(-50%, -75%);
+  padding: 0 20px 30px 20px;
+  border-radius: 20px;
+  border: 1px solid black;
+}
