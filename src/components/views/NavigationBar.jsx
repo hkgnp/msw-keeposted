@@ -34,7 +34,11 @@ const NavigationBar = (props) => {
             </NavItem>
           </Nav>
           <NavbarText>
-            <Button color="primary" style={{ marginRight: '10px' }}>
+            <Button
+              href="/login"
+              color="primary"
+              style={{ marginRight: '10px' }}
+            >
               Log In
             </Button>
             <Button href="/signup" color="warning">

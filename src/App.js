@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import CreatePost from './components/views/CreatePost';
 import About from './components/views/About';
 import Signup from './components/views/Signup';
+import Login from './components/views/Login';
 
 function App() {
   return (
@@ -42,9 +43,12 @@ function App() {
           </Route>
           <Route path="/signup">
             <Row className="contentContainer">
-              <Col>
-                <Signup />
-              </Col>
+              <Signup />
+            </Row>
+          </Route>
+          <Route path="/login">
+            <Row className="contentContainer">
+              <Login />
             </Row>
           </Route>
         </Switch>

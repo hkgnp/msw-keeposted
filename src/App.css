@@ -11,6 +11,8 @@ body h1 {
 .contentContainer {
   height: 100vh;
   padding: 0 18px;
+  display: flex;
+  justify-content: center;
 }
 
 .postContainer {
@@ -20,6 +22,10 @@ body h1 {
   align-content: space-around;
   justify-content: flex-start;
   margin-top: 1rem;
+}
+
+.cardDesign:hover {
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .postNumber {

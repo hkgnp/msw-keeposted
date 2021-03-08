@@ -40,7 +40,7 @@ export default class Signup extends React.Component {
     const { name, email, password } = this.state.errors;
 
     return (
-      <Row style={{ display: 'flex' }}>
+      <React.Fragment>
         <Col className="signup_instructions">
           <h1>Some instructions text</h1>
           <p>Sign up for an account to</p>
@@ -110,7 +110,7 @@ export default class Signup extends React.Component {
             </Button>
           </Form>
         </Col>
-      </Row>
+      </React.Fragment>
     );
   }
 }
