@@ -4,8 +4,7 @@ import '../../App.css';
 import 'leaflet/dist/leaflet.css';
 import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.webpack.css';
 import 'leaflet-defaulticon-compatibility';
-import * as L from 'leaflet';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import RenderMap from '../general/RenderMap';
 import axios from 'axios';
 
 export default class MoreDetails extends React.Component {
@@ -34,12 +33,6 @@ export default class MoreDetails extends React.Component {
     });
   };
 
-  setZoom = () => {
-    console.log(
-      L.map('mapid').setView([this.state.latitude, this.state.longitude], 15)
-    );
-  };
-
   render() {
     const { activeDetails, handleReset } = this.props;
     const { latitude, longitude } = this.state;
@@ -48,38 +41,20 @@ export default class MoreDetails extends React.Component {
     const description = activeDetails.querySelectorAll('p')[0].innerHTML;
     const address = activeDetails.querySelectorAll('p')[1].innerHTML;
     const postalCode = activeDetails.querySelectorAll('p')[2].innerHTML;
-
     return (
-      <div>
+      <React.Fragment>
         <div>
           <h1>{title}</h1>
           <p>{category}</p>
           <p>{description}</p>
           <p>{address}</p>
           <p>{postalCode}</p>
-          <Button color="danger" onClick={handleReset} className="mb-3">
-            Reset
+          <Button color="primary" onClick={handleReset} className="mb-3">
+            Back
           </Button>
         </div>
-        <MapContainer
-          center={[1.35, 103.82]}
-          zoom={11}
-          scrollWheelZoom={false}
-          style={{ height: '300px' }}
-          id="mapid"
-          onChange={this.setZoom}
-        >
-          <TileLayer
-            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-            url="https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiaGtnbnAiLCJhIjoiY2trb3YxbTl6MDAyMjJxanExYTNwZjZ6YiJ9.gPU5MhHFseHNRjeex2poNg"
-          />
-          <Marker position={[latitude, longitude]}>
-            <Popup>
-              A pretty CSS3 popup. <br /> Easily customizable.
-            </Popup>
-          </Marker>
-        </MapContainer>
-      </div>
+        <RenderMap latitude={latitude} longitude={longitude} />
+      </React.Fragment>
     );
   }
 }
