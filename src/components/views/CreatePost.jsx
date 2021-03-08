@@ -15,6 +15,10 @@ export default class CreatePost extends React.Component {
     file: '',
   };
 
+  componentDidMount = () => {
+    document.title = 'msw keeposted: Contribute Resource';
+  };
+
   handleForm = (e) => {
     this.setState({
       [e.target.name]: e.target.value,

@@ -12,6 +12,10 @@ export default class Signup extends React.Component {
     errors: '',
   };
 
+  componentDidMount = () => {
+    document.title = 'msw keeposted: Register';
+  };
+
   handleForm = (e) => {
     this.setState({
       [e.target.name]: e.target.value,

@@ -10,6 +10,10 @@ export default class Login extends React.Component {
     errors: {},
   };
 
+  componentDidMount = () => {
+    document.title = 'msw keeposted: Login';
+  };
+
   handleForm = (e) => {
     this.setState({
       [e.target.name]: e.target.value,

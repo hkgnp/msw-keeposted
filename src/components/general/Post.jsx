@@ -26,7 +26,7 @@ const Post = (props) => {
           </CardText>
           <CardText>Singapore {props.postalcode}</CardText>
           <Button color="info" onClick={props.moreDetails}>
-            More Details
+            Details
           </Button>
         </CardBody>
       </Card>

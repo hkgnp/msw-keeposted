@@ -1,6 +1,10 @@
 import React from 'react';
 
 export default class About extends React.Component {
+  componentDidMount = () => {
+    document.title = 'msw keeposted: About This App';
+  };
+
   render() {
     return (
       <React.Fragment>
