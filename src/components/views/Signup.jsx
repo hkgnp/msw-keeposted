@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Form, FormGroup, Label, Input, Col } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../App.css';
-import RegisterUser from '../general/RegisterUser';
+import ValidateUser from '../general/ValidateUser';
 
 export default class Signup extends React.Component {
   state = {
@@ -25,7 +25,7 @@ export default class Signup extends React.Component {
   handleSubmit = async (e) => {
     e.preventDefault();
     const { name, email, password } = this.state;
-    const errors = await RegisterUser({ name, email, password });
+    const errors = await ValidateUser({ name, email, password });
     this.setState({
       errors: errors,
     });

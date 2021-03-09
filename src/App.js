@@ -50,11 +50,6 @@ function App() {
             </Row>
           </Route>
         </Switch>
-        <Row>
-          <Col>
-            <Footer />
-          </Col>
-        </Row>
       </Container>
     </Router>
   );

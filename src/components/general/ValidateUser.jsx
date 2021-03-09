@@ -1,7 +1,7 @@
 import axios from 'axios';
 import Joi from 'joi-browser';
 
-const RegisterUser = async (props) => {
+const ValidateUser = async (props) => {
   // Destructure
   const { name, email, password } = props;
 
@@ -37,4 +37,4 @@ const RegisterUser = async (props) => {
   }
 };
 
-export default RegisterUser;
+export default ValidateUser;

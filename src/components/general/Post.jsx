@@ -2,7 +2,7 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {
   Card,
-  // CardImg,
+  CardImg,
   CardText,
   CardBody,
   CardTitle,
@@ -16,6 +16,12 @@ const Post = (props) => {
       <Card className="cardDesign">
         {/* <CardImg top width="100%" src="" alt="Card image cap" /> */}
         <CardBody>
+          <CardImg
+            top
+            width="100%"
+            src={`https://msw-keeposted-images.s3-ap-southeast-1.amazonaws.com/ObjectId("${props.imageRef}")`}
+            alt="Resource image"
+          />
           <CardTitle tag="h5">{props.title}</CardTitle>
           <CardSubtitle tag="h6" className="mb-2 text-muted">
             {props.category}
