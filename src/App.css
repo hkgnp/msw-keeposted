@@ -24,6 +24,12 @@ body h1 {
   margin-top: 1rem;
 }
 
+.cardDesign {
+  width: 20rem;
+  margin-bottom: 2rem;
+  margin-right: 2rem;
+}
+
 .cardDesign:hover {
   background-color: rgba(0, 0, 0, 0.1);
 }
@@ -31,12 +37,6 @@ body h1 {
 .postNumber {
   display: block;
   margin: 1rem 0;
-}
-
-.cardDesign {
-  width: 18rem;
-  margin-bottom: 2rem;
-  margin-right: 2rem;
 }
 
 .login_signup {
@@ -64,13 +64,13 @@ body h1 {
 
 .moredetails {
   position: absolute;
-  width: 100%;
+  width: 95%;
   top: 50%;
   left: 50%;
   background-color: white;
   transform: translate(-50%, -75%);
-  padding: 0 20px 30px 20px;
-  border-radius: 20px;
-  border: 1px solid black;
+  padding: 0 2rem 3rem 2rem;
+  border-radius: 3rem;
   z-index: 10;
+  box-shadow: 0 0 2rem 0 rgba(0, 0, 0, 0.2), 0 2rem 5rem 0 rgba(0, 0, 0, 0.19);
 }
