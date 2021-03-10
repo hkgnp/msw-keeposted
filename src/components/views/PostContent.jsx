@@ -23,13 +23,17 @@ export default class PostContent extends React.Component {
   componentDidMount = async () => {
     document.title = 'msw keeposted: All Resources';
     // let response = await axios.get('posts.json');
-    let response = await axios.get(
-      'https://7000-sapphire-vole-ebkuduij.ws-us03.gitpod.io/posts'
-    );
-    this.setState({
-      posts: response.data,
-      loaded: true,
-    });
+    try {
+      let response = await axios.get(
+        'https://7000-sapphire-vole-ebkuduij.ws-us03.gitpod.io/posts'
+      );
+      this.setState({
+        posts: response.data,
+        loaded: true,
+      });
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   // Setting current page to active for page navigation

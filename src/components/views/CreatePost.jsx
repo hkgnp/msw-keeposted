@@ -1,7 +1,8 @@
 import React from 'react';
 import { Button, FormGroup, Label, Input, FormText } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import axios from 'axios';
+import '../../App.css';
+import ValidatePost from '../general/ValidatePost';
 
 export default class CreatePost extends React.Component {
   state = {
@@ -14,6 +15,7 @@ export default class CreatePost extends React.Component {
       postalcode: '',
     },
     file: '',
+    errors: '',
   };
 
   componentDidMount = () => {
@@ -35,61 +37,50 @@ export default class CreatePost extends React.Component {
     });
   };
 
-  handleSubmit = async (req, res) => {
-    const { title, category, description, location } = this.state;
-    const baseUrl = 'https://7000-sapphire-vole-ebkuduij.ws-us03.gitpod.io';
-    // Send to collection
-    let postDetails = await axios({
-      method: 'post',
-      url: baseUrl + '/posts',
-      data: {
-        title: title,
-        category: category,
-        description: description,
-        location: {
-          address1: location.address1,
-          address2: location.address2,
-          postalcode: location.postalcode,
-        },
+  handleReset = () => {
+    this.setState({
+      title: '',
+      category: '',
+      description: '',
+      location: {
+        address1: '',
+        address2: '',
+        postalcode: '',
       },
+      file: '',
     });
+  };
 
-    // Send to S3
-    let postObjectId = await postDetails.data;
-    const file = document.getElementById('file').files[0];
-    // Make sure a file is selected
-    if (!file) return;
-    // Fetch the signed url
-    const key = postObjectId;
-    const response = await axios.get(
-      `${baseUrl}/uploader/sign?key=${key}&type=${file.type}`
-    );
-    const url = response.data.url;
-    try {
-      // Attempt the upload
-      const options = { headers: { 'Content-Type': file.type } };
-      await axios.put(url, file, options);
-    } catch (e) {
-      alert(`Upload failed: ${e}`);
-    }
+  handleSubmit = async (e) => {
+    e.preventDefault();
+    const { title, category, description, file } = this.state;
+    const { address1, address2, postalcode } = this.state.location;
 
-    // Send S3 URL to collection 'MEDIA
-    // - Include ObjectID of post-details
-    // data: {media: "https://msw-keeposted-images.s3-ap-southeast-1.amazonaws.com/" + objectId + '_' + file.name}
-    await axios({
-      method: 'post',
-      url: baseUrl + '/media',
-      data: {
-        postId: postObjectId,
-        mediaUrl:
-          'https://msw-keeposted-images.s3-ap-southeast-1.amazonaws.com/' +
-          postObjectId,
-      },
+    const errors = await ValidatePost({
+      title,
+      category,
+      description,
+      address1,
+      address2,
+      postalcode,
+      file,
+    });
+    this.setState({
+      errors: errors,
     });
   };
 
   render() {
-    const { title, category, description, location } = this.state;
+    const {
+      title,
+      category,
+      description,
+      address1,
+      address2,
+      postalcode,
+      file,
+    } = this.state.errors;
+
     return (
       <React.Fragment>
         <h1>Contribute Resource</h1>
@@ -100,8 +91,11 @@ export default class CreatePost extends React.Component {
             type="text"
             name="title"
             placeholder="What is this resource about?"
-            value={title}
+            value={this.state.title}
           />
+          {title ? (
+            <div className="alert-sm alert-danger p-2">{title}</div>
+          ) : null}
         </FormGroup>
         <FormGroup>
           <Label for="category">Category</Label>
@@ -109,7 +103,7 @@ export default class CreatePost extends React.Component {
             onChange={this.handleForm}
             type="select"
             name="category"
-            value={category}
+            value={this.state.category}
           >
             <option>Select a category</option>
             <option value="donations">Donations</option>
@@ -117,6 +111,9 @@ export default class CreatePost extends React.Component {
             <option value="long-term care">Long-term Care</option>
             <option value="misc">Miscellaneous</option>
           </Input>
+          {category ? (
+            <div className="alert-sm alert-danger p-2">{category}</div>
+          ) : null}
         </FormGroup>
         <FormGroup>
           <Label for="description">Description</Label>
@@ -126,8 +123,11 @@ export default class CreatePost extends React.Component {
             name="description"
             rows="6"
             placeholder="Make it as descriptive as possible!"
-            value={description}
+            value={this.state.description}
           />
+          {description ? (
+            <div className="alert-sm alert-danger p-2">{description}</div>
+          ) : null}
         </FormGroup>
         <FormGroup>
           <Label for="location">Location</Label>
@@ -136,26 +136,44 @@ export default class CreatePost extends React.Component {
             type="text"
             name="address1"
             placeholder="Address Line 1"
-            value={location.address1}
+            value={this.state.location.address1}
           />
+          {address1 ? (
+            <div className="alert-sm alert-danger p-2">{address1}</div>
+          ) : null}
           <Input
             onChange={this.handleLocation}
             type="text"
             name="address2"
             placeholder="Address Line 2"
-            value={location.address2}
+            value={this.state.location.address2}
           />
+          {address2 ? (
+            <div className="alert-sm alert-danger p-2">{address2}</div>
+          ) : null}
           <Input
             onChange={this.handleLocation}
             type="text"
             name="postalcode"
             placeholder="Postal Code"
-            value={location.postalcode}
+            value={this.state.location.postalcode}
           />
+          {postalcode ? (
+            <div className="alert-sm alert-danger p-2">{postalcode}</div>
+          ) : null}
         </FormGroup>
         <FormGroup>
           <Label for="file">Upload a picture (optional)</Label>
-          <Input type="file" name="file" id="file" onChange={this.handleForm} />
+          <Input
+            type="file"
+            name="file"
+            id="mediafile"
+            onChange={this.handleForm}
+            value={this.state.file}
+          />
+          {file ? (
+            <div className="alert-sm alert-danger p-2">{file}</div>
+          ) : null}
           <FormText color="muted">
             This is some placeholder block-level help text for the above input.
             It's a bit lighter and easily wraps to a new line.
@@ -163,6 +181,9 @@ export default class CreatePost extends React.Component {
         </FormGroup>
         <Button color="primary" onClick={this.handleSubmit}>
           Submit
+        </Button>
+        <Button color="danger" className="mx-2" onClick={this.handleReset}>
+          Reset
         </Button>
       </React.Fragment>
     );

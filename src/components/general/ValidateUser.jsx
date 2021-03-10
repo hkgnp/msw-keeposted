@@ -17,8 +17,8 @@ const ValidateUser = async (props) => {
     abortEarly: false,
   });
 
-  if (!validationResult) {
-    const baseUrl = 'https://7000-amethyst-elk-z1e2nqxe.ws-us03.gitpod.io';
+  if (validationResult.error === null) {
+    const baseUrl = 'https://7000-sapphire-vole-ebkuduij.ws-us03.gitpod.io';
 
     /// Send to collection 'POST DETAILS'
     await axios({

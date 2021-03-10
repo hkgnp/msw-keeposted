@@ -2,7 +2,6 @@ import React from 'react';
 import './App.css';
 import NavigationBar from './components/views/NavigationBar';
 import PostContent from './components/views/PostContent';
-import Footer from './components/views/Footer';
 import { Container, Row, Col } from 'reactstrap';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import CreatePost from './components/views/CreatePost';

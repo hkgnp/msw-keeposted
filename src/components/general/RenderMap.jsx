@@ -19,7 +19,7 @@ const RenderMap = (props) => {
         center={[props.latitude, props.longitude]}
         zoom={17}
         scrollWheelZoom={false}
-        style={{ height: '300px' }}
+        style={{ height: '300px', zIndex: '10' }}
       >
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'

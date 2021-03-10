@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from 'reactstrap';
+import { Button, Row, Col } from 'reactstrap';
 import '../../App.css';
 import 'leaflet/dist/leaflet.css';
 import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.webpack.css';
@@ -11,6 +11,9 @@ export default class MoreDetails extends React.Component {
   state = {
     latitude: '',
     longitude: '',
+    postTitle: '',
+    imageResize: false,
+    imageLink: '',
   };
 
   componentDidMount = async () => {
@@ -33,29 +36,70 @@ export default class MoreDetails extends React.Component {
     });
   };
 
+  imageResize = () => {
+    const image = this.props.activeDetails.querySelector('img').src;
+    this.setState({
+      imageResize: true,
+      imageLink: image,
+    });
+  };
+
+  imageResizeClose = () => {
+    this.setState({
+      imageResize: false,
+    });
+  };
+
   render() {
     // Destructuring and declaring of variables
     const { activeDetails, handleReset } = this.props;
-    const { latitude, longitude } = this.state;
+    const { latitude, longitude, imageResize, imageLink } = this.state;
     const title = activeDetails.querySelector('h5').innerHTML;
     const category = activeDetails.querySelector('h6').innerHTML;
     const description = activeDetails.querySelectorAll('p')[0].innerHTML;
     const address = activeDetails.querySelectorAll('p')[1].innerHTML;
     const postalCode = activeDetails.querySelectorAll('p')[2].innerHTML;
+    const image = activeDetails.querySelector('img').src;
 
     return (
       <React.Fragment>
-        <div>
-          <h1>{title}</h1>
-          <p>{category}</p>
-          <p>{description}</p>
-          <p>{address}</p>
-          <p>{postalCode}</p>
-          <Button color="primary" onClick={handleReset} className="mb-3">
-            Back
-          </Button>
-        </div>
-        <RenderMap latitude={latitude} longitude={longitude} />
+        {imageResize && (
+          <div className="resize-moredetailsimage">
+            <img alt="Original Size" src={imageLink} />
+            <span className="close" onClick={this.imageResizeClose}>
+              <h1 className="text-light">&times;</h1>
+            </span>
+          </div>
+        )}
+        <h1>{title}</h1>
+        <Row>
+          <Col>
+            <p>Category: {category}</p>
+            <p>Description: {description}</p>
+            <p>Address: {address}</p>
+            <p>Postal Code: {postalCode}</p>
+            <Button color="primary" onClick={handleReset} className="mb-3">
+              Back
+            </Button>
+          </Col>
+          <Col>
+            <img
+              className="moredetailsimage"
+              src={image}
+              onClick={this.imageResize}
+              alt=""
+            />
+          </Col>
+        </Row>
+        <Row className="mt-4">
+          <Col>
+            <RenderMap
+              className="rendermap"
+              latitude={latitude}
+              longitude={longitude}
+            />
+          </Col>
+        </Row>
       </React.Fragment>
     );
   }
