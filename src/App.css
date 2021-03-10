@@ -24,6 +24,11 @@ body h1 {
   margin-top: 1rem;
 }
 
+.postContainer::after {
+  content: '';
+  flex: auto;
+}
+
 .cardDesign {
   width: 20rem;
   margin-bottom: 2rem;
