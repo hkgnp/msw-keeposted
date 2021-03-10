@@ -34,7 +34,6 @@ const ValidatePost = async (props) => {
   );
 
   if (validationResult.error === null) {
-    console.log(validationResult);
     const baseUrl = 'https://7000-sapphire-vole-ebkuduij.ws-us03.gitpod.io';
 
     // Send to collection 'POST-DETAILS'
@@ -85,7 +84,9 @@ const ValidatePost = async (props) => {
           postObjectId,
       },
     });
-  } else {
+  }
+
+  if (validationResult.error !== null) {
     const errors = {};
     validationResult.error.details.map((e) => (errors[e.path[0]] = e.message));
     return errors;

@@ -65,9 +65,16 @@ export default class CreatePost extends React.Component {
       postalcode,
       file,
     });
-    this.setState({
-      errors: errors,
-    });
+
+    if (errors) {
+      this.setState({
+        errors: errors,
+      });
+    } else {
+      this.setState({
+        errors: '',
+      });
+    }
   };
 
   render() {

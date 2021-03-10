@@ -76,6 +76,7 @@ export default class PostContent extends React.Component {
     this.setState({
       activeDetails: '',
       moreDetails: false,
+      backdrop: false,
     });
     window.scrollTo(0, 0);
   };
