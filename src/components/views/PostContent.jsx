@@ -14,6 +14,7 @@ export default class PostContent extends React.Component {
     searchTerm: '',
     moreDetails: false,
     activeDetails: '',
+    backdrop: false,
   };
 
   // Create div reference to scroll to
@@ -66,6 +67,7 @@ export default class PostContent extends React.Component {
     this.setState({
       activeDetails: e.target.parentNode,
       moreDetails: true,
+      backdrop: true,
     });
     // this.moredetails.current.scrollIntoView();
   };
@@ -85,6 +87,7 @@ export default class PostContent extends React.Component {
       pageSize,
       searchTerm,
       moreDetails,
+      backdrop,
       activeDetails,
     } = this.state;
 
@@ -100,29 +103,32 @@ export default class PostContent extends React.Component {
       );
     } else {
       return (
-        <Col style={{ display: 'block' }}>
-          <SearchBar
-            searchTerm={searchTerm}
-            handleSearchString={this.handleSearchString}
-          />
-          <div>
-            {moreDetails && (
-              <div ref={this.moredetails} className="moredetails">
-                <MoreDetails
-                  activeDetails={activeDetails}
-                  handleReset={this.handleReset}
-                />
-              </div>
-            )}
-            <RenderPosts
-              posts={this.searchFunction()}
-              currentPage={currentPage}
-              pageSize={pageSize}
-              managePageChange={this.managePageChange}
-              moreDetails={this.moreDetails}
+        <React.Fragment>
+          {backdrop && <div className="backdrop"></div>}
+          <Col style={{ display: 'block' }}>
+            <SearchBar
+              searchTerm={searchTerm}
+              handleSearchString={this.handleSearchString}
             />
-          </div>
-        </Col>
+            <div>
+              {moreDetails && (
+                <div ref={this.moredetails} className="moredetails">
+                  <MoreDetails
+                    activeDetails={activeDetails}
+                    handleReset={this.handleReset}
+                  />
+                </div>
+              )}
+              <RenderPosts
+                posts={this.searchFunction()}
+                currentPage={currentPage}
+                pageSize={pageSize}
+                managePageChange={this.managePageChange}
+                moreDetails={this.moreDetails}
+              />
+            </div>
+          </Col>
+        </React.Fragment>
       );
     }
   }
