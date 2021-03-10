@@ -52,7 +52,7 @@ const ValidatePost = async (props) => {
       },
     });
 
-    // Send to S3
+    // Start the process of sending to S3
     let postObjectId = await postDetails.data;
     const file = document.getElementById('mediafile').files[0];
 
@@ -72,16 +72,13 @@ const ValidatePost = async (props) => {
     }
 
     // Send S3 URL to collection 'MEDIA
-    // - Include ObjectID of post-details
-    // data: {media: "https://msw-keeposted-images.s3-ap-southeast-1.amazonaws.com/" + objectId + '_' + file.name}
+    // - Include ObjectID of post-details and amazon URL
     await axios({
       method: 'post',
       url: baseUrl + '/media',
       data: {
         postId: postObjectId,
-        mediaUrl:
-          'https://msw-keeposted-images.s3-ap-southeast-1.amazonaws.com/' +
-          postObjectId,
+        mediaUrl: `https://msw-keeposted-images.s3-ap-southeast-1.amazonaws.com/${postObjectId}`,
       },
     });
   }
