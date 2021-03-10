@@ -33,6 +33,7 @@ export default class PostContent extends React.Component {
         loaded: true,
       });
     } catch (e) {
+      window.location.href = '/error';
       console.log(e);
     }
   };
@@ -98,6 +99,7 @@ export default class PostContent extends React.Component {
           <SearchBar
             searchTerm={searchTerm}
             handleSearchString={this.handleSearchString}
+            className="mt-2"
           />
           <p className="postNumber">There are no resources in the database.</p>
         </React.Fragment>

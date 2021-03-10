@@ -1,5 +1,11 @@
-body h1 {
-  margin: 2rem 0;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif !important;
+}
+
+.navbar {
+  /* border-bottom: 2px solid rgb(173, 173, 173, 0.5); */
 }
 
 .parentContainer {
@@ -10,17 +16,32 @@ body h1 {
 
 .contentContainer {
   height: 100vh;
-  padding: 0 18px;
+  padding: 0 1rem;
   display: flex;
   justify-content: center;
 }
 
+.staticContainer {
+  display: block;
+  padding: 3rem;
+}
+
+.home {
+  height: 95vh;
+  width: 100%;
+  background-color: rgba(232, 102, 50);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
 .postContainer {
   display: flex;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
   align-items: space-between;
   align-content: space-around;
-  justify-content: space-between;
+  justify-content: flex-start;
   margin-top: 1rem;
 }
 
@@ -39,6 +60,16 @@ body h1 {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
+.card-subtitle {
+  font-style: italic;
+  font-weight: bold;
+  font-size: 0.9rem;
+  background-color: red;
+  border-radius: 10px;
+  padding: 2px 8px;
+  color: white !important;
+}
+
 .postNumber {
   display: block;
   margin: 1rem 0;
@@ -53,12 +84,6 @@ body h1 {
 .signup_instructions {
   width: 50%;
   text-align: center;
-}
-
-@media screen and (max-width: 992px) {
-  .signup_instructions {
-    display: none;
-  }
 }
 
 .card-img-top {
@@ -84,14 +109,14 @@ body h1 {
   left: 50%;
   background-color: white;
   transform: translate(-50%, -75%);
-  padding: 0 2rem 3rem 2rem;
+  padding: 2rem 2rem 3rem 2rem;
   border-radius: 3rem;
   z-index: 20;
   box-shadow: 0 0 2rem 0 rgba(0, 0, 0, 0.2), 0 2rem 5rem 0 rgba(0, 0, 0, 0.19);
 }
 
 .moredetailsimage {
-  width: 20rem;
+  width: 19rem;
   z-index: 20;
   border-radius: 20px;
 }
@@ -128,4 +153,21 @@ body h1 {
 
 .close:hover {
   cursor: pointer;
+}
+
+@media screen and (max-width: 820px) {
+  .moredetails {
+    width: 98%;
+  }
+}
+
+@media screen and (max-width: 410px) {
+  .signup_instructions {
+    display: none;
+  }
+  .moredetails {
+    position: absolute;
+    top: 46rem;
+    width: 98%;
+  }
 }

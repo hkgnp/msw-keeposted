@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import NavigationBar from './components/views/NavigationBar';
+import Home from './components/views/Home';
 import PostContent from './components/views/PostContent';
 import { Container, Row, Col } from 'reactstrap';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
@@ -8,6 +9,7 @@ import CreatePost from './components/views/CreatePost';
 import About from './components/views/About';
 import Signup from './components/views/Signup';
 import Login from './components/views/Login';
+import Error from './components/views/Error';
 
 function App() {
   return (
@@ -46,6 +48,18 @@ function App() {
           <Route path="/login">
             <Row className="contentContainer">
               <Login />
+            </Row>
+          </Route>
+          <Route path="/error">
+            <Row className="staticContainer">
+              <Error />
+            </Row>
+          </Route>
+          <Route path="/">
+            <Row>
+              <Col className="home">
+                <Home />
+              </Col>
             </Row>
           </Route>
         </Switch>

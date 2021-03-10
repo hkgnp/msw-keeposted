@@ -55,7 +55,7 @@ export default class MoreDetails extends React.Component {
     const { activeDetails, handleReset } = this.props;
     const { latitude, longitude, imageResize, imageLink } = this.state;
     const title = activeDetails.querySelector('h5').innerHTML;
-    const category = activeDetails.querySelector('h6').innerHTML;
+    const category = activeDetails.querySelector('span').innerHTML;
     const description = activeDetails.querySelectorAll('p')[0].innerHTML;
     const address = activeDetails.querySelectorAll('p')[1].innerHTML;
     const postalCode = activeDetails.querySelectorAll('p')[2].innerHTML;
@@ -71,7 +71,11 @@ export default class MoreDetails extends React.Component {
             </span>
           </div>
         )}
-        <h1>{title}</h1>
+        <Row className="mb-3">
+          <Col>
+            <h1 className="text-center">{title}</h1>
+          </Col>
+        </Row>
         <Row>
           <Col>
             <p>Category: {category}</p>
