@@ -9,11 +9,6 @@ import {
   CardSubtitle,
   Button,
 } from 'reactstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faMapMarkerAlt,
-  faStickyNote,
-} from '@fortawesome/free-solid-svg-icons';
 
 const Post = (props) => {
   return (
@@ -29,14 +24,8 @@ const Post = (props) => {
           />
           <CardTitle tag="h5">{props.title}</CardTitle>
           <CardSubtitle tag="span">{props.category}</CardSubtitle>
-          <CardText className="mt-3">
-            <FontAwesomeIcon icon={faStickyNote} style={{ color: 'green' }} />
-            &nbsp;
-            {props.description}
-          </CardText>
+          <CardText className="mt-3">{props.description}</CardText>
           <CardText className="font-italic">
-            <FontAwesomeIcon icon={faMapMarkerAlt} style={{ color: 'blue' }} />
-            &nbsp;
             {props.address1} {props.address2}
           </CardText>
           <CardText className="span">Singapore {props.postalcode}</CardText>

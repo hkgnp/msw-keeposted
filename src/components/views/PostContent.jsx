@@ -65,6 +65,7 @@ export default class PostContent extends React.Component {
   };
 
   moreDetails = (e) => {
+    console.log(e);
     this.setState({
       activeDetails: e.target.parentNode,
       moreDetails: true,

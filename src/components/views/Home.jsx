@@ -1,4 +1,6 @@
 import React from 'react';
+import { Col } from 'reactstrap';
+import '../../App.css';
 
 export default class About extends React.Component {
   componentDidMount = () => {
@@ -7,7 +9,7 @@ export default class About extends React.Component {
 
   render() {
     return (
-      <React.Fragment>
+      <Col className="home">
         <p className="px-5 font-weight-bold display-4">
           Keep fellow MSWs posted of resources that you have come across.
         </p>
@@ -27,7 +29,7 @@ export default class About extends React.Component {
           here. Instead, we rely on the entire community to ensure that the
           information here can help our own patients.
         </p>
-      </React.Fragment>
+      </Col>
     );
   }
 }

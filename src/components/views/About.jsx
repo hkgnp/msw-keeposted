@@ -1,4 +1,5 @@
 import React from 'react';
+import { Col } from 'reactstrap';
 
 export default class About extends React.Component {
   componentDidMount = () => {
@@ -7,7 +8,7 @@ export default class About extends React.Component {
 
   render() {
     return (
-      <React.Fragment>
+      <Col>
         <h1>About This App</h1>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate
@@ -39,7 +40,7 @@ export default class About extends React.Component {
           provident illum sequi, laboriosam cumque temporibus facere qui ex
           voluptates aliquid fuga obcaecati?
         </p>
-      </React.Fragment>
+      </Col>
     );
   }
 }

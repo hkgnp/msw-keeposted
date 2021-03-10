@@ -5,7 +5,12 @@ import NavigationBar from './components/views/NavigationBar';
 import Home from './components/views/Home';
 import PostContent from './components/views/PostContent';
 import { Container, Row, Col } from 'reactstrap';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from 'react-router-dom';
 import CreatePost from './components/views/CreatePost';
 import About from './components/views/About';
 import Signup from './components/views/Signup';
@@ -35,7 +40,18 @@ export default class App extends React.Component {
               <NavigationBar user={this.state.user} />
             </Col>
           </Row>
-          <Switch>
+          <Row className="contentContainer">
+            <Switch>
+              <Route path="/posts" component={PostContent} />
+              <Route path="/createpost" component={CreatePost} />
+              <Route path="/about" component={About} />
+              <Route path="/signup" component={Signup} />
+              <Route path="/login" component={Login} />
+              <Route path="/error" component={ErrorPage} />
+              <Route path="/" component={Home} />
+            </Switch>
+          </Row>
+          {/* <Switch>
             <Route path="/posts">
               <Row className="contentContainer">
                 <PostContent />
@@ -77,7 +93,7 @@ export default class App extends React.Component {
                 </Col>
               </Row>
             </Route>
-          </Switch>
+          </Switch> */}
         </Container>
       </Router>
     );

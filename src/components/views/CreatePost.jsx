@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Button, FormGroup, Label, Input, FormText, Col } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../App.css';
 import ValidatePost from '../general/ValidatePost';
@@ -90,7 +90,7 @@ export default class CreatePost extends React.Component {
     } = this.state.errors;
 
     return (
-      <React.Fragment>
+      <Col>
         <h1>Contribute Resource</h1>
         <FormGroup>
           <Label for="title">Title</Label>
@@ -193,7 +193,7 @@ export default class CreatePost extends React.Component {
         <Button color="danger" className="mx-2" onClick={this.handleReset}>
           Reset
         </Button>
-      </React.Fragment>
+      </Col>
     );
   }
 }
