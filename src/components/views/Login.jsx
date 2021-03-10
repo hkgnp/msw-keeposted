@@ -2,6 +2,7 @@ import React from 'react';
 import { Button, Form, FormGroup, Label, Input, Col } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../App.css';
+import axios from 'axios';
 
 export default class Login extends React.Component {
   state = {
@@ -30,6 +31,20 @@ export default class Login extends React.Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
+    const { email, password } = this.state;
+    let payLoad = {
+      email: email,
+      password: password,
+    };
+
+    const response = await axios.post(
+      'https://7000-sapphire-primate-zs7xes07.ws-us03.gitpod.io/user/login',
+      payLoad
+    );
+    const jwt = response.data.date.token;
+    console.log(jwt);
+    localStorage.setItem('token', jwt);
+    window.location.href = '/';
   };
 
   handleReset = () => {

@@ -1,4 +1,5 @@
 import React from 'react';
+import jwtDecode from 'jwt-decode';
 import './App.css';
 import NavigationBar from './components/views/NavigationBar';
 import Home from './components/views/Home';
@@ -9,63 +10,76 @@ import CreatePost from './components/views/CreatePost';
 import About from './components/views/About';
 import Signup from './components/views/Signup';
 import Login from './components/views/Login';
-import Error from './components/views/Error';
+import ErrorPage from './components/views/ErrorPage';
 
-function App() {
-  return (
-    <Router>
-      <Container className="parentContainer" fluid={true}>
-        <Row>
-          <Col>
-            <NavigationBar />
-          </Col>
-        </Row>
-        <Switch>
-          <Route path="/posts">
-            <Row className="contentContainer">
-              <PostContent />
-            </Row>
-          </Route>
-          <Route path="/createpost">
-            <Row className="contentContainer">
-              <Col>
-                <CreatePost />
-              </Col>
-            </Row>
-          </Route>
-          <Route path="/about">
-            <Row className="contentContainer">
-              <Col>
-                <About />
-              </Col>
-            </Row>
-          </Route>
-          <Route path="/signup">
-            <Row className="contentContainer">
-              <Signup />
-            </Row>
-          </Route>
-          <Route path="/login">
-            <Row className="contentContainer">
-              <Login />
-            </Row>
-          </Route>
-          <Route path="/error">
-            <Row className="staticContainer">
-              <Error />
-            </Row>
-          </Route>
-          <Route path="/">
-            <Row>
-              <Col className="home">
-                <Home />
-              </Col>
-            </Row>
-          </Route>
-        </Switch>
-      </Container>
-    </Router>
-  );
+export default class App extends React.Component {
+  state = {};
+
+  componentDidMount = () => {
+    // Get user details from localstorage and decode it to get the details
+    try {
+      const jwt = localStorage.getItem('token');
+      const user = jwtDecode(jwt);
+      this.setState({
+        user: user,
+      });
+    } catch (e) {}
+  };
+
+  render() {
+    return (
+      <Router>
+        <Container className="parentContainer" fluid={true}>
+          <Row>
+            <Col>
+              <NavigationBar user={this.state.user} />
+            </Col>
+          </Row>
+          <Switch>
+            <Route path="/posts">
+              <Row className="contentContainer">
+                <PostContent />
+              </Row>
+            </Route>
+            <Route path="/createpost">
+              <Row className="contentContainer">
+                <Col>
+                  <CreatePost />
+                </Col>
+              </Row>
+            </Route>
+            <Route path="/about">
+              <Row className="contentContainer">
+                <Col>
+                  <About />
+                </Col>
+              </Row>
+            </Route>
+            <Route path="/signup">
+              <Row className="contentContainer">
+                <Signup />
+              </Row>
+            </Route>
+            <Route path="/login">
+              <Row className="contentContainer">
+                <Login />
+              </Row>
+            </Route>
+            <Route path="/error">
+              <Row className="staticContainer">
+                <ErrorPage />
+              </Row>
+            </Route>
+            <Route path="/">
+              <Row>
+                <Col className="home">
+                  <Home />
+                </Col>
+              </Row>
+            </Route>
+          </Switch>
+        </Container>
+      </Router>
+    );
+  }
 }
-
-export default App;

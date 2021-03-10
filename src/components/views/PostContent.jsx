@@ -26,7 +26,7 @@ export default class PostContent extends React.Component {
     // let response = await axios.get('posts.json');
     try {
       let response = await axios.get(
-        'https://7000-sapphire-vole-ebkuduij.ws-us03.gitpod.io/posts'
+        'https://7000-sapphire-primate-zs7xes07.ws-us03.gitpod.io/posts'
       );
       this.setState({
         posts: response.data,

@@ -29,6 +29,7 @@ export default class Signup extends React.Component {
     this.setState({
       errors: errors,
     });
+    window.location = '/';
   };
 
   handleReset = () => {

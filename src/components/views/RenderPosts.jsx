@@ -1,6 +1,6 @@
 import React from 'react';
 import Post from '../general/Post';
-import { Paginate, ManagePagination } from '../general/HandlePagination';
+import { Paginate, ManagePagination } from '../general/ManagePagination';
 import '../../App.css';
 
 export default class RenderPosts extends React.Component {

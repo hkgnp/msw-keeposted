@@ -21,7 +21,7 @@ export default class About extends React.Component {
               padding: '4px',
             }}
           >
-            msw keeposted
+            msw.keeposted
           </span>{' '}
           bears no responsibility for the accuracy of the information found
           here. Instead, we rely on the entire community to ensure that the
