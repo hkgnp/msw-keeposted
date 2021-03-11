@@ -34,7 +34,7 @@ const ValidatePost = async (props) => {
   );
 
   if (validationResult.error === null) {
-    const baseUrl = 'https://7000-sapphire-vole-ebkuduij.ws-us03.gitpod.io';
+    const baseUrl = 'https://quiet-gorge-29042.herokuapp.com';
 
     // Send to collection 'POST-DETAILS'
     let postDetails = await axios({

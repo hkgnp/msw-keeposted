@@ -1,4 +1,5 @@
 import React from 'react';
+import { Col } from 'reactstrap';
 
 export default class ErrorPage extends React.Component {
   componentDidMount = () => {
@@ -7,13 +8,13 @@ export default class ErrorPage extends React.Component {
 
   render() {
     return (
-      <React.Fragment>
+      <Col>
         <h1>Please Bear With Us</h1>
         <p>
           There is an error retrieving the data from the database. Our engineers
           are already fixing the issue. Please wait.
         </p>
-      </React.Fragment>
+      </Col>
     );
   }
 }
