@@ -190,7 +190,7 @@ export default class CreatePost extends React.Component {
           ) : null}
         </FormGroup>
         <FormGroup>
-          <Label for="file">Upload a picture (optional)</Label>
+          <Label for="file">Upload a picture</Label>
           <Input
             type="file"
             name="file"
