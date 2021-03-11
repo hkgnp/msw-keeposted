@@ -72,7 +72,7 @@ export default class PostContent extends React.Component {
       moreDetails: true,
       backdrop: true,
     });
-    // this.moredetails.current.scrollIntoView();
+    document.body.classList.add('disablescroll');
   };
 
   handleReset = () => {
@@ -81,6 +81,7 @@ export default class PostContent extends React.Component {
       moreDetails: false,
       backdrop: false,
     });
+    document.body.classList.remove('disablescroll');
     window.scrollTo(0, 0);
   };
 
