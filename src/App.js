@@ -29,7 +29,7 @@ export default class App extends React.Component {
   render() {
     return (
       <Router>
-        <Container className="parentContainer" fluid={true}>
+        <Container fluid={true}>
           <Row>
             <Col>
               <NavigationBar user={this.state.user} />

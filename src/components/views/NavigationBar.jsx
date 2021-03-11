@@ -21,7 +21,7 @@ const NavigationBar = (props) => {
   };
 
   return (
-    <div>
+    <React.Fragment>
       <Navbar light expand="md">
         <NavbarBrand href="/">msw keeposted</NavbarBrand>
         <NavbarToggler onClick={toggle} />
@@ -64,7 +64,7 @@ const NavigationBar = (props) => {
           )}
         </Collapse>
       </Navbar>
-    </div>
+    </React.Fragment>
   );
 };
 

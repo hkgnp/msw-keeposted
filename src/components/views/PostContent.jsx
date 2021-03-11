@@ -20,9 +20,6 @@ export default class PostContent extends React.Component {
     reviewId: '',
   };
 
-  // Create div reference to scroll to
-  moredetails = React.createRef();
-
   // Load all data from database
   componentDidMount = async () => {
     document.title = 'msw keeposted: All Resources';
@@ -74,7 +71,7 @@ export default class PostContent extends React.Component {
       moreDetails: true,
       backdrop: true,
     });
-    document.body.classList.add('disablescroll');
+    window.scrollTo(0, 0);
   };
 
   handleReset = () => {
@@ -83,12 +80,10 @@ export default class PostContent extends React.Component {
       moreDetails: false,
       backdrop: false,
     });
-    document.body.classList.remove('disablescroll');
     window.scrollTo(0, 0);
   };
 
   viewReviews = (e) => {
-    console.log(e.target.name);
     this.setState({
       viewReviews: true,
       reviewId: e.target.name,
@@ -138,7 +133,7 @@ export default class PostContent extends React.Component {
                 </div>
               )}
               {viewReviews && (
-                <div className="viewReviews">
+                <div className="viewreviews">
                   <ViewReviews reviewId={reviewId} />
                 </div>
               )}

@@ -206,10 +206,15 @@ export default class CreatePost extends React.Component {
             It's a bit lighter and easily wraps to a new line.
           </FormText>
         </FormGroup>
-        <Button type="submit" color="primary" onClick={this.handleSubmit}>
+        <Button
+          type="submit"
+          className="mb-3"
+          color="primary"
+          onClick={this.handleSubmit}
+        >
           Submit
         </Button>
-        <Button color="danger" className="mx-2" onClick={this.handleReset}>
+        <Button color="danger" className="mx-2 mb-3" onClick={this.handleReset}>
           Reset
         </Button>
       </Col>

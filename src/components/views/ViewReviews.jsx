@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React from 'react';
+import Review from '../general/Review';
 
 export default class ViewReviews extends React.Component {
   state = {
@@ -8,27 +9,25 @@ export default class ViewReviews extends React.Component {
 
   componentDidMount = async () => {
     let searchById = { _id: this.props.reviewId };
-    let response = await axios.get(
+    let response = await axios.post(
       'https://quiet-gorge-29042.herokuapp.com/reviews/get',
       searchById
     );
-    let comments = response.data;
-
     this.setState({
-      comments: comments,
+      comments: response.data,
     });
   };
 
   render() {
     const { comments } = this.state;
+
     return (
       <React.Fragment>
-        {comments.map((c) => (
-          <p>
-            {c.date} <br />
-            {c.comments}
-          </p>
-        ))}
+        <div>
+          {comments.map((c) => (
+            <Review key={c._id} date={c.date} comments={c.comments} />
+          ))}
+        </div>
       </React.Fragment>
     );
   }
