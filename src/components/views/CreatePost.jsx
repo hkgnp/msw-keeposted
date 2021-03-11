@@ -90,6 +90,7 @@ export default class CreatePost extends React.Component {
 
   render() {
     const {
+      username,
       title,
       category,
       description,
@@ -103,6 +104,13 @@ export default class CreatePost extends React.Component {
       <Col>
         <h1>Contribute Resource</h1>
         <FormGroup>
+          {username && (
+            <FormText color="muted">
+              You must <a href="login">log in</a> to contribute a resource. If
+              you do not have an account, please{' '}
+              <a href="/signup">click here</a> to sign up!
+            </FormText>
+          )}
           <Label for="contributor">Contributor</Label>
           <Input
             type="text"
@@ -110,6 +118,9 @@ export default class CreatePost extends React.Component {
             value={this.state.username}
             disabled
           />
+          {username && (
+            <div className="alert-sm alert-danger p-2">{username}</div>
+          )}
         </FormGroup>
         <FormGroup>
           <Label for="title">Title</Label>
@@ -120,9 +131,7 @@ export default class CreatePost extends React.Component {
             placeholder="What is this resource about?"
             value={this.state.title}
           />
-          {title ? (
-            <div className="alert-sm alert-danger p-2">{title}</div>
-          ) : null}
+          {title && <div className="alert-sm alert-danger p-2">{title}</div>}
         </FormGroup>
         <FormGroup>
           <Label for="category">Category</Label>
@@ -138,9 +147,9 @@ export default class CreatePost extends React.Component {
             <option value="long-term care">Long-term Care</option>
             <option value="misc">Miscellaneous</option>
           </Input>
-          {category ? (
+          {category && (
             <div className="alert-sm alert-danger p-2">{category}</div>
-          ) : null}
+          )}
         </FormGroup>
         <FormGroup>
           <Label for="description">Description</Label>
@@ -152,9 +161,9 @@ export default class CreatePost extends React.Component {
             placeholder="Make it as descriptive as possible!"
             value={this.state.description}
           />
-          {description ? (
+          {description && (
             <div className="alert-sm alert-danger p-2">{description}</div>
-          ) : null}
+          )}
         </FormGroup>
         <FormGroup>
           <Label for="location">Location</Label>
@@ -165,9 +174,9 @@ export default class CreatePost extends React.Component {
             placeholder="Address Line 1"
             value={this.state.location.address1}
           />
-          {address1 ? (
+          {address1 && (
             <div className="alert-sm alert-danger p-2">{address1}</div>
-          ) : null}
+          )}
           <Input
             onChange={this.handleLocation}
             type="text"
@@ -175,9 +184,9 @@ export default class CreatePost extends React.Component {
             placeholder="Address Line 2"
             value={this.state.location.address2}
           />
-          {address2 ? (
+          {address2 && (
             <div className="alert-sm alert-danger p-2">{address2}</div>
-          ) : null}
+          )}
           <Input
             onChange={this.handleLocation}
             type="text"
@@ -185,9 +194,9 @@ export default class CreatePost extends React.Component {
             placeholder="Postal Code"
             value={this.state.location.postalcode}
           />
-          {postalcode ? (
+          {postalcode && (
             <div className="alert-sm alert-danger p-2">{postalcode}</div>
-          ) : null}
+          )}
         </FormGroup>
         <FormGroup>
           <Label for="file">Upload a picture</Label>
@@ -198,13 +207,7 @@ export default class CreatePost extends React.Component {
             onChange={this.handleForm}
             value={this.state.file}
           />
-          {file ? (
-            <div className="alert-sm alert-danger p-2">{file}</div>
-          ) : null}
-          <FormText color="muted">
-            This is some placeholder block-level help text for the above input.
-            It's a bit lighter and easily wraps to a new line.
-          </FormText>
+          {file && <div className="alert-sm alert-danger p-2">{file}</div>}
         </FormGroup>
         <Button
           type="submit"

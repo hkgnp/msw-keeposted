@@ -16,6 +16,7 @@ const ValidatePost = async (props) => {
 
   // Set up schema for Joi
   const schema = {
+    username: Joi.string().required().label('Username'),
     title: Joi.string().required().label('Title'),
     category: Joi.string().required().label('Category'),
     description: Joi.string().required().label('Description'),
@@ -27,7 +28,16 @@ const ValidatePost = async (props) => {
 
   // Implement Joi validation
   const validationResult = Joi.validate(
-    { title, category, description, address1, address2, postalcode, file },
+    {
+      username,
+      title,
+      category,
+      description,
+      address1,
+      address2,
+      postalcode,
+      file,
+    },
     schema,
     {
       abortEarly: false,
