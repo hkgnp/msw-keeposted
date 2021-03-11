@@ -4,6 +4,7 @@ import axios from 'axios';
 import SearchBar from '../general/SearchBar';
 import MoreDetails from '../views/MoreDetails';
 import { Col } from 'reactstrap';
+import ViewReviews from '../views/ViewReviews';
 
 export default class PostContent extends React.Component {
   state = {
@@ -15,6 +16,8 @@ export default class PostContent extends React.Component {
     moreDetails: false,
     activeDetails: '',
     backdrop: false,
+    viewReviews: false,
+    reviewId: '',
   };
 
   // Create div reference to scroll to
@@ -66,7 +69,6 @@ export default class PostContent extends React.Component {
   };
 
   moreDetails = (e) => {
-    console.log(e);
     this.setState({
       activeDetails: e.target.parentNode,
       moreDetails: true,
@@ -85,6 +87,14 @@ export default class PostContent extends React.Component {
     window.scrollTo(0, 0);
   };
 
+  viewReviews = (e) => {
+    console.log(e.target.name);
+    this.setState({
+      viewReviews: true,
+      reviewId: e.target.name,
+    });
+  };
+
   render() {
     const {
       posts,
@@ -94,6 +104,8 @@ export default class PostContent extends React.Component {
       moreDetails,
       backdrop,
       activeDetails,
+      viewReviews,
+      reviewId,
     } = this.state;
 
     if (posts.length === 0) {
@@ -118,11 +130,16 @@ export default class PostContent extends React.Component {
             />
             <div>
               {moreDetails && (
-                <div ref={this.moredetails} className="moredetails">
+                <div className="moredetails">
                   <MoreDetails
                     activeDetails={activeDetails}
                     handleReset={this.handleReset}
                   />
+                </div>
+              )}
+              {viewReviews && (
+                <div className="viewReviews">
+                  <ViewReviews reviewId={reviewId} />
                 </div>
               )}
               <RenderPosts
@@ -131,6 +148,7 @@ export default class PostContent extends React.Component {
                 pageSize={pageSize}
                 managePageChange={this.managePageChange}
                 moreDetails={this.moreDetails}
+                viewReviews={this.viewReviews}
               />
             </div>
           </Col>

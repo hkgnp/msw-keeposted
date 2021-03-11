@@ -12,6 +12,7 @@ export default class RenderPosts extends React.Component {
       pageSize,
       managePageChange,
       moreDetails,
+      viewReviews,
     } = this.props;
 
     // Paginate number of posts based on active page and page size
@@ -35,6 +36,7 @@ export default class RenderPosts extends React.Component {
               address2={p.location.address2}
               postalcode={p.location.postalcode}
               moreDetails={moreDetails}
+              viewReviews={viewReviews}
             />
           ))}
         </div>
