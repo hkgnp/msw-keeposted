@@ -22,7 +22,7 @@ const NavigationBar = (props) => {
 
   return (
     <React.Fragment>
-      <Navbar light expand="md">
+      <Navbar light expand="lg">
         <NavbarBrand href="/">msw keeposted</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
@@ -56,7 +56,11 @@ const NavigationBar = (props) => {
           )}
           {props.user && (
             <NavbarText>
-              <span style={{ marginRight: '10px' }}>{props.user.username}</span>
+              <Button
+                style={{ marginRight: '5px', borderTopLeftRadius: '20px' }}
+              >
+                {props.user.username}
+              </Button>
               <Button onClick={logout} color="warning">
                 Log Out
               </Button>

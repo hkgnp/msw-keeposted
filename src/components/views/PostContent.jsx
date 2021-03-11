@@ -3,7 +3,7 @@ import RenderPosts from './RenderPosts';
 import axios from 'axios';
 import SearchBar from '../general/SearchBar';
 import MoreDetails from '../views/MoreDetails';
-import { Col } from 'reactstrap';
+import { Col, Fade } from 'reactstrap';
 import ViewReviews from '../views/ViewReviews';
 
 export default class PostContent extends React.Component {
@@ -43,6 +43,7 @@ export default class PostContent extends React.Component {
     this.setState({
       currentPage: page,
     });
+    window.scrollTo(0, 0);
   };
 
   // Handling search bar data
@@ -125,17 +126,17 @@ export default class PostContent extends React.Component {
             />
             <div>
               {moreDetails && (
-                <div className="moredetails">
+                <Fade className="moredetails">
                   <MoreDetails
                     activeDetails={activeDetails}
                     handleReset={this.handleReset}
                   />
-                </div>
+                </Fade>
               )}
               {viewReviews && (
-                <div className="viewreviews">
+                <Fade className="viewreviews">
                   <ViewReviews reviewId={reviewId} />
-                </div>
+                </Fade>
               )}
               <RenderPosts
                 posts={this.searchFunction()}

@@ -31,10 +31,7 @@ body {
 
 .postContainer {
   display: flex;
-  flex-flow: row wrap;
-  align-items: space-between;
-  align-content: space-around;
-  justify-content: flex-start;
+  flex-flow: wrap;
   margin-top: 1rem;
 }
 
@@ -44,12 +41,12 @@ body {
 }
 
 .cardDesign {
-  width: 22rem;
-  margin-bottom: 1rem;
+  width: 21rem;
+  margin: 0 0.5rem 1rem 0.5rem;
 }
 
 .card-body {
-  width: 22rem;
+  width: 21rem;
 }
 
 .cardDesign:hover {
@@ -145,9 +142,7 @@ body {
   z-index: 30;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
+  overflow: auto;
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 3rem;
   display: flex;
@@ -156,9 +151,11 @@ body {
 }
 
 .close {
+  display: block;
   position: fixed;
-  top: 0rem;
+  top: 1rem;
   right: 2rem;
+  z-index: 40;
 }
 
 .close:hover {

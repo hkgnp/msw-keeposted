@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Row, Col } from 'reactstrap';
+import { Button, Row, Col, Fade } from 'reactstrap';
 import '../../App.css';
 import 'leaflet/dist/leaflet.css';
 import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.webpack.css';
@@ -64,12 +64,16 @@ export default class MoreDetails extends React.Component {
     return (
       <React.Fragment>
         {imageResize && (
-          <div className="resize-moredetailsimage">
-            <img alt="Original Size" src={imageLink} />
-            <span className="close" onClick={this.imageResizeClose}>
-              <h1 className="text-light">&times;</h1>
-            </span>
-          </div>
+          <Fade>
+            <div className="close" onClick={this.imageResizeClose}>
+              <h1 className="display-1 text-light">&times;</h1>
+            </div>
+            <img
+              className="resize-moredetailsimage"
+              alt="Original Size"
+              src={imageLink}
+            />
+          </Fade>
         )}
         <Row className="mb-3">
           <Col>
