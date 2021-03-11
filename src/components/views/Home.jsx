@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col } from 'reactstrap';
+import { Col, Button } from 'reactstrap';
 import '../../App.css';
 
 export default class About extends React.Component {
@@ -29,6 +29,14 @@ export default class About extends React.Component {
           here. Instead, we rely on the entire community to ensure that the
           information here can help our own patients.
         </p>
+        <h3>
+          <Button color="secondary" className="mx-3 p-2 ">
+            <i class="far fa-hand-point-right"></i> Get Started
+          </Button>
+          <Button color="secondary" className="mx-3 p-2 ">
+            <i class="fas fa-file-signature"></i> Register
+          </Button>
+        </h3>
       </Col>
     );
   }
