@@ -21,9 +21,14 @@ export default class CreatePost extends React.Component {
 
   componentDidMount = () => {
     document.title = 'msw keeposted: Contribute Resource';
-    this.setState({
-      username: this.props.user,
-    });
+  };
+
+  componentDidUpdate = (prevProps) => {
+    if (this.props.user !== prevProps.user) {
+      this.setState({
+        username: this.props.user.username,
+      });
+    }
   };
 
   handleForm = (e) => {
@@ -93,15 +98,18 @@ export default class CreatePost extends React.Component {
       file,
     } = this.state.errors;
 
-    // const { username } = this.props.user;
-
     return (
       <Col>
         <h1>Contribute Resource</h1>
-        {/* <FormGroup>
+        <FormGroup>
           <Label for="contributor">Contributor</Label>
-          <Input type="text" name="contributor" value={username} disabled />
-        </FormGroup> */}
+          <Input
+            type="text"
+            name="contributor"
+            value={this.state.username}
+            disabled
+          />
+        </FormGroup>
         <FormGroup>
           <Label for="title">Title</Label>
           <Input

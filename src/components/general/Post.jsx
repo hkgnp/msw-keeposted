@@ -23,6 +23,7 @@ const Post = (props) => {
             alt="Resource image"
           />
           <CardTitle tag="h5">{props.title}</CardTitle>
+          <CardTitle tag="h6">Gibson Chua</CardTitle>
           <CardSubtitle tag="span">{props.category}</CardSubtitle>
           <CardText className="mt-3">{props.description}</CardText>
           <CardText className="font-italic">
