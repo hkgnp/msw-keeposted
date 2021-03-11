@@ -5,6 +5,22 @@ body {
   position: relative;
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  .loading-image {
+    animation: loading-image-spin infinite 3s linear;
+    height: 5rem;
+  }
+}
+
+@keyframes loading-image-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .contentContainer {
   padding: 0 1rem;
   display: flex;

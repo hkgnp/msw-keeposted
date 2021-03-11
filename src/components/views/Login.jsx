@@ -3,12 +3,14 @@ import { Button, Form, FormGroup, Label, Input, Col } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../App.css';
 import axios from 'axios';
+import loadingImage from '../../spinner-solid.svg';
 
 export default class Login extends React.Component {
   state = {
     email: '',
     password: '',
     errors: {},
+    loaded: '',
   };
 
   componentDidMount = () => {
@@ -30,6 +32,12 @@ export default class Login extends React.Component {
   };
 
   handleSubmit = async (e) => {
+    // Activate loading image
+    this.setState({
+      loaded: false,
+    });
+
+    // Continue with submit process
     e.preventDefault();
     const { email, password } = this.state;
     let payLoad = {
@@ -41,9 +49,14 @@ export default class Login extends React.Component {
       'https://quiet-gorge-29042.herokuapp.com/user/login',
       payLoad
     );
+
+    // Get token
     const jwt = response.data.date.token;
-    console.log(jwt);
+
+    // Store token in local storage
     localStorage.setItem('token', jwt);
+
+    // Redirect to main page
     window.location.href = '/';
   };
 
@@ -101,6 +114,17 @@ export default class Login extends React.Component {
             Reset
           </Button>
         </Form>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
+          {this.state.loaded === false && (
+            <img className="loading-image" src={loadingImage} />
+          )}
+        </div>
       </Col>
     );
   }
