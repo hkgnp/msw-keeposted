@@ -50,6 +50,7 @@ export default class PostContent extends React.Component {
     // Sets state of searchbar value
     this.setState({
       searchTerm: e.target.value,
+      currentPage: 1,
     });
   };
 
