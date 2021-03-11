@@ -62,10 +62,11 @@ export default class CreatePost extends React.Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
-    const { title, category, description, file } = this.state;
+    const { title, category, description, file, username } = this.state;
     const { address1, address2, postalcode } = this.state.location;
 
     const errors = await ValidatePost({
+      username,
       title,
       category,
       description,
@@ -105,7 +106,7 @@ export default class CreatePost extends React.Component {
           <Label for="contributor">Contributor</Label>
           <Input
             type="text"
-            name="contributor"
+            name="username"
             value={this.state.username}
             disabled
           />

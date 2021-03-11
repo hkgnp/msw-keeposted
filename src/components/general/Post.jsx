@@ -9,6 +9,7 @@ import {
   CardSubtitle,
   Button,
 } from 'reactstrap';
+import ShowComments from '../views/ShowComments';
 
 const Post = (props) => {
   return (
@@ -33,6 +34,7 @@ const Post = (props) => {
           <Button color="info" onClick={props.moreDetails}>
             Details
           </Button>
+          {/* <ShowComments /> */}
         </CardBody>
       </Card>
     </React.Fragment>

@@ -51,6 +51,7 @@ export default class App extends React.Component {
               <Route path="/" component={Home} />
             </Switch>
           </Row>
+
           {/* <Switch>
             <Route path="/posts">
               <Row className="contentContainer">

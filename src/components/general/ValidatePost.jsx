@@ -4,6 +4,7 @@ import Joi from 'joi-browser';
 const ValidatePost = async (props) => {
   // Destructure
   const {
+    username,
     title,
     category,
     description,
@@ -41,6 +42,7 @@ const ValidatePost = async (props) => {
       method: 'post',
       url: baseUrl + '/posts',
       data: {
+        username: username,
         title: title,
         category: category,
         description: description,

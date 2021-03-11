@@ -27,6 +27,7 @@ export default class RenderPosts extends React.Component {
             <Post
               key={p._id}
               imageRef={p._id}
+              username={p.username}
               title={p.title}
               category={p.category}
               description={p.description}
