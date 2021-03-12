@@ -43,7 +43,7 @@ const ValidatePost = async (props) => {
   );
 
   if (validationResult.error === null) {
-    const baseUrl = 'https://quiet-gorge-29042.herokuapp.com';
+    const baseUrl = 'https://7000-ivory-rattlesnake-glx98tol.ws-us03.gitpod.io';
 
     // Send to collection 'POST-DETAILS'
     let postDetails = await axios({
@@ -64,6 +64,7 @@ const ValidatePost = async (props) => {
 
     // Start the process of sending to S3
     let postObjectId = await postDetails.data;
+    console.log(postObjectId);
     const file = document.getElementById('mediafile').files[0];
 
     // Fetch the signed url

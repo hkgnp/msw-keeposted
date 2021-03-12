@@ -3,6 +3,7 @@ import { Button, FormGroup, Label, Input, FormText, Col } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../App.css';
 import ValidatePost from '../general/ValidatePost';
+import loadingImage from '../../rolling.svg';
 
 export default class CreatePost extends React.Component {
   state = {
@@ -16,7 +17,8 @@ export default class CreatePost extends React.Component {
     },
     file: '',
     errors: '',
-    username: '',
+    name: '',
+    creatingPost: false,
   };
 
   componentDidMount = () => {
@@ -26,7 +28,7 @@ export default class CreatePost extends React.Component {
   componentDidUpdate = (prevProps) => {
     if (this.props.user !== prevProps.user) {
       this.setState({
-        username: this.props.user.username,
+        name: this.props.user.name,
       });
     }
   };
@@ -83,6 +85,7 @@ export default class CreatePost extends React.Component {
     } else {
       this.setState({
         errors: '',
+        creatingPost: true,
       });
       window.location.href = '/posts';
     }
@@ -112,12 +115,7 @@ export default class CreatePost extends React.Component {
             </FormText>
           )}
           <Label for="contributor">Contributor</Label>
-          <Input
-            type="text"
-            name="username"
-            value={this.state.username}
-            disabled
-          />
+          <Input type="text" name="username" value={this.state.name} disabled />
           {username && (
             <div className="alert-sm alert-danger p-2">{username}</div>
           )}
@@ -220,6 +218,10 @@ export default class CreatePost extends React.Component {
         <Button color="danger" className="mx-2 mb-3" onClick={this.handleReset}>
           Reset
         </Button>
+        &nbsp;&nbsp;
+        {this.state.creatingPost && (
+          <img src={loadingImage} alt="loading..." style={{ height: '2rem' }} />
+        )}
       </Col>
     );
   }
