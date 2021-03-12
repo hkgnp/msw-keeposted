@@ -145,10 +145,10 @@ export default class CreatePost extends React.Component {
             value={this.state.category}
           >
             <option>Select a category</option>
-            <option value="donations">Donations</option>
-            <option value="jobs">Jobs</option>
-            <option value="long-term care">Long-term Care</option>
-            <option value="misc">Miscellaneous</option>
+            <option value="Donations">Donations</option>
+            <option value="Jobs">Jobs</option>
+            <option value="Long-term care">Long-term Care</option>
+            <option value="Misc">Miscellaneous</option>
           </Input>
           {category && (
             <div className="alert-sm alert-danger p-2">{category}</div>

@@ -19,7 +19,7 @@ export default class ViewReviews extends React.Component {
   getReviews = async () => {
     let searchById = { _id: this.props.reviewId };
     let response = await axios.post(
-      'https://quiet-gorge-29042.herokuapp.com/reviews/get',
+      'https://7000-ivory-rattlesnake-glx98tol.ws-us03.gitpod.io/reviews/get',
       searchById
     );
     this.setState({
@@ -46,7 +46,8 @@ export default class ViewReviews extends React.Component {
     const { name, review, postId } = this.state;
     await axios({
       method: 'post',
-      url: 'https://quiet-gorge-29042.herokuapp.com/reviews/post',
+      url:
+        'https://7000-ivory-rattlesnake-glx98tol.ws-us03.gitpod.io/reviews/post',
       data: {
         postId: postId,
         name: name,
