@@ -4,17 +4,19 @@ import Review from '../general/Review';
 import { Row, Col, Button, FormGroup, Label, Input } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../App.css';
+import rolling from '../../rolling.svg';
 
 export default class ViewReviews extends React.Component {
   state = {
     reviews: [],
     reviewsLoaded: false,
+    postingComments: false,
     postId: '',
     name: '',
     review: '',
   };
 
-  componentDidMount = async () => {
+  getReviews = async () => {
     let searchById = { _id: this.props.reviewId };
     let response = await axios.post(
       'https://quiet-gorge-29042.herokuapp.com/reviews/get',
@@ -24,7 +26,12 @@ export default class ViewReviews extends React.Component {
       reviews: response.data,
       reviewsLoaded: true,
       postId: this.props.reviewId,
+      postingReviews: false,
     });
+  };
+
+  componentDidMount = async () => {
+    this.getReviews();
   };
 
   handleForm = (e) => {
@@ -35,6 +42,7 @@ export default class ViewReviews extends React.Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
+    this.setState({ postingReviews: true });
     const { name, review, postId } = this.state;
     await axios({
       method: 'post',
@@ -45,14 +53,20 @@ export default class ViewReviews extends React.Component {
         review: review,
       },
     });
+    this.getReviews();
   };
 
   render() {
-    const { reviews, reviewsLoaded } = this.state;
+    const { reviews, reviewsLoaded, postingReviews } = this.state;
+    const reverseReviews = reviews.reverse();
     const { handleReset } = this.props;
 
     if (reviewsLoaded === false) {
-      return <h1>Loading</h1>;
+      return (
+        <h1 className="m-0">
+          Loading <img src={rolling} alt="rolling" style={{ height: '4rem' }} />
+        </h1>
+      );
     } else {
       return (
         <React.Fragment>
@@ -62,11 +76,12 @@ export default class ViewReviews extends React.Component {
                 backgroundColor: '#F5F5F5',
                 borderRadius: '20px',
                 height: '15rem',
+                width: '100%',
                 overflow: 'scroll',
               }}
               className="p-3 mb-2"
             >
-              {reviews.map((c) => (
+              {reverseReviews.map((c) => (
                 <Review
                   key={c._id}
                   name={c.name}
@@ -102,6 +117,10 @@ export default class ViewReviews extends React.Component {
               <Button color="danger" className="ml-2" onClick={handleReset}>
                 Back
               </Button>
+              &nbsp;&nbsp;
+              {postingReviews && (
+                <img src={rolling} alt="rolling" style={{ height: '2rem' }} />
+              )}
             </Col>
           </Row>
         </React.Fragment>

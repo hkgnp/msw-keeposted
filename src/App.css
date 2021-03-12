@@ -121,7 +121,7 @@ body {
   left: 50%;
   background-color: white;
   transform: translate(-50%, -75%);
-  padding: 2rem 2rem 3rem 2rem;
+  padding: 2rem 2rem 2rem 2rem;
   border-radius: 3rem;
   z-index: 20;
   box-shadow: 0 0 2rem 0 rgba(0, 0, 0, 0.2), 0 2rem 5rem 0 rgba(0, 0, 0, 0.19);
