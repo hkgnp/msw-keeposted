@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Row, Col, Fade } from 'reactstrap';
+import { Badge, Button, Row, Col, Fade } from 'reactstrap';
 import '../../App.css';
 import 'leaflet/dist/leaflet.css';
 import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.webpack.css';
@@ -11,18 +11,32 @@ export default class MoreDetails extends React.Component {
   state = {
     latitude: '',
     longitude: '',
-    postTitle: '',
+    post: '',
+    postId: '',
+    postLoaded: false,
     imageResize: false,
     imageLink: '',
   };
 
+  getPost = async () => {
+    let searchById = { _id: this.props.postId };
+    let response = await axios.post(
+      'https://7000-ivory-rattlesnake-glx98tol.ws-us03.gitpod.io/resource',
+      searchById
+    );
+    this.setState({
+      post: response.data,
+      postLoaded: true,
+    });
+  };
+
   componentDidMount = async () => {
+    await this.getPost();
     let response = await axios.get(
       'https://developers.onemap.sg/commonapi/search',
       {
         params: {
-          searchVal: this.props.activeDetails.querySelectorAll('p')[2]
-            .innerHTML,
+          searchVal: 'a',
           returnGeom: 'Y',
           getAddrDetails: 'Y',
           pageNum: '1',
@@ -37,7 +51,8 @@ export default class MoreDetails extends React.Component {
   };
 
   imageResize = () => {
-    const image = this.props.activeDetails.querySelector('img').src;
+    const { postId } = this.props;
+    const image = `https://msw-keeposted-images.s3-ap-southeast-1.amazonaws.com/ObjectId(%22${postId}%22)`;
     this.setState({
       imageResize: true,
       imageLink: image,
@@ -50,65 +65,103 @@ export default class MoreDetails extends React.Component {
     });
   };
 
+  handleDelete = async () => {
+    const baseUrl = 'https://7000-ivory-rattlesnake-glx98tol.ws-us03.gitpod.io';
+    await axios({
+      method: 'delete',
+      url: `${baseUrl}/delete-resource`,
+      data: {
+        _id: this.props.postId,
+      },
+    });
+    window.location = '/posts';
+  };
+
   render() {
     // Destructuring and declaring of variables
-    const { activeDetails, handleReset } = this.props;
-    const { latitude, longitude, imageResize, imageLink } = this.state;
-    const title = activeDetails.querySelector('h5').innerHTML;
-    const category = activeDetails.querySelector('span').innerHTML;
-    const description = activeDetails.querySelectorAll('p')[0].innerHTML;
-    const address = activeDetails.querySelectorAll('p')[1].innerHTML;
-    const postalCode = activeDetails.querySelectorAll('p')[2].innerHTML;
-    const image = activeDetails.querySelector('img').src;
+    const { handleReset, postId } = this.props;
+    const {
+      latitude,
+      longitude,
+      imageResize,
+      imageLink,
+      postLoaded,
+    } = this.state;
+    const { title, category, description, location, date } = this.state.post;
+    const formatDate = new Date(date);
 
-    return (
-      <React.Fragment>
-        {imageResize && (
-          <Fade>
-            <div className="close" onClick={this.imageResizeClose}>
-              <h1 className="display-1 text-light">&times;</h1>
-            </div>
-            <img
-              className="resize-moredetailsimage"
-              alt="Original Size"
-              src={imageLink}
-            />
-          </Fade>
-        )}
-        <Row className="mb-3">
-          <Col>
-            <h1 className="text-center">{title}</h1>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <p>Category: {category}</p>
-            <p>Description: {description}</p>
-            <p>Address: {address}</p>
-            <p>Postal Code: {postalCode}</p>
-            <Button color="primary" onClick={handleReset} className="mb-3">
-              Back
-            </Button>
-          </Col>
-          <Col>
-            <img
-              className="moredetailsimage"
-              src={image}
-              onClick={this.imageResize}
-              alt=""
-            />
-          </Col>
-        </Row>
-        <Row className="mt-4">
-          <Col>
-            <RenderMap
-              className="rendermap"
-              latitude={latitude}
-              longitude={longitude}
-            />
-          </Col>
-        </Row>
-      </React.Fragment>
-    );
+    if (postLoaded === false) {
+      return <h1>Loading ...</h1>;
+    } else {
+      return (
+        <React.Fragment>
+          {imageResize && (
+            <Fade>
+              <div className="close" onClick={this.imageResizeClose}>
+                <h1 className="display-1 text-light">&times;</h1>
+              </div>
+              <img
+                className="resize-moredetailsimage"
+                alt="Original Size"
+                src={imageLink}
+              />
+            </Fade>
+          )}
+          <Row className="mb-3">
+            <Col style={{ display: 'flex', justifyContent: 'space-between' }}>
+              <h2 className="text-center">{title}</h2>
+              <h1 className="closemoredetails" onClick={handleReset}>
+                &times;
+              </h1>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <p>
+                <Badge className="bg-info">Category</Badge> {category}
+              </p>
+              <p>
+                <Badge className="bg-info">Description</Badge> {description}
+              </p>
+              <p>
+                <Badge className="bg-info">Address</Badge> {location.address1}{' '}
+                {location.address2}
+              </p>
+              <p>
+                <Badge className="bg-info">Date posted</Badge>{' '}
+                {formatDate.toString().slice(0, 15)}
+              </p>
+              {/* <Button color="warning" onClick={handleEdit} className="mb-3 mr-2">
+                Edit
+              </Button> */}
+              <Button
+                color="danger"
+                onClick={this.handleDelete}
+                className="mb-3 btn-sm"
+              >
+                Delete
+              </Button>
+            </Col>
+            <Col>
+              <img
+                className="moredetailsimage"
+                src={`https://msw-keeposted-images.s3-ap-southeast-1.amazonaws.com/ObjectId(%22${postId}%22)`}
+                onClick={this.imageResize}
+                alt="Resource"
+              />
+            </Col>
+          </Row>
+          <Row className="mt-4">
+            <Col>
+              <RenderMap
+                className="rendermap"
+                latitude={latitude}
+                longitude={longitude}
+              />
+            </Col>
+          </Row>
+        </React.Fragment>
+      );
+    }
   }
 }

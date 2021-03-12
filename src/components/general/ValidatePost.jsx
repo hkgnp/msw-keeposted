@@ -50,7 +50,7 @@ const ValidatePost = async (props) => {
     // Send to collection 'POST-DETAILS'
     let postDetails = await axios({
       method: 'post',
-      url: baseUrl + '/posts',
+      url: baseUrl + '/post-resource',
       data: {
         username: username,
         title: title,

@@ -15,19 +15,20 @@ export default class PostContent extends React.Component {
     loaded: false,
     searchTerm: '',
     moreDetails: false,
-    activeDetails: '',
+    // activeDetails: '',
     backdrop: false,
     viewReviews: false,
     reviewId: '',
+    postId: '',
   };
 
   // Load all data from database
   componentDidMount = async () => {
     document.title = 'msw keeposted: All Resources';
-    // let response = await axios.get('posts.json');
+
     try {
       let response = await axios.get(
-        'https://quiet-gorge-29042.herokuapp.com/posts'
+        'https://7000-ivory-rattlesnake-glx98tol.ws-us03.gitpod.io/all-resources'
       );
       this.setState({
         posts: response.data,
@@ -67,18 +68,8 @@ export default class PostContent extends React.Component {
     return searchResults;
   };
 
-  moreDetails = (e) => {
-    this.setState({
-      activeDetails: e.target.parentNode,
-      moreDetails: true,
-      backdrop: true,
-    });
-    window.scrollTo(0, 0);
-  };
-
   handleReset = () => {
     this.setState({
-      activeDetails: '',
       moreDetails: false,
       viewReviews: false,
       backdrop: false,
@@ -86,12 +77,22 @@ export default class PostContent extends React.Component {
     window.scrollTo(0, 0);
   };
 
-  viewReviews = (e) => {
+  moreDetails = (e) => {
     this.setState({
-      viewReviews: true,
-      reviewId: e.target.name,
+      postId: e.target.name,
+      moreDetails: true,
       backdrop: true,
     });
+    window.scrollTo(0, 0);
+  };
+
+  viewReviews = (e) => {
+    this.setState({
+      reviewId: e.target.name,
+      viewReviews: true,
+      backdrop: true,
+    });
+    window.scrollTo(0, 0);
   };
 
   render() {
@@ -102,9 +103,9 @@ export default class PostContent extends React.Component {
       searchTerm,
       moreDetails,
       backdrop,
-      activeDetails,
       viewReviews,
       reviewId,
+      postId,
     } = this.state;
 
     if (posts.length === 0) {
@@ -146,10 +147,7 @@ export default class PostContent extends React.Component {
             <div>
               {moreDetails && (
                 <Fade className="moredetails">
-                  <MoreDetails
-                    activeDetails={activeDetails}
-                    handleReset={this.handleReset}
-                  />
+                  <MoreDetails postId={postId} handleReset={this.handleReset} />
                 </Fade>
               )}
               {viewReviews && (

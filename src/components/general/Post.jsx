@@ -30,10 +30,16 @@ const Post = (props) => {
             {props.address1} {props.address2}
           </CardText>
           <CardText className="span">Singapore {props.postalcode}</CardText>
-          <Button color="info" onClick={props.moreDetails}>
+          <Button
+            color="info"
+            size="sm"
+            name={props.imageRef}
+            onClick={props.moreDetails}
+          >
             Details
           </Button>
           <Button
+            size="sm"
             className="ml-2"
             name={props.imageRef}
             onClick={props.viewReviews}
