@@ -3,7 +3,7 @@ import { Button, Form, FormGroup, Label, Input, Col } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../App.css';
 import axios from 'axios';
-import loadingImage from '../../spinner-solid.svg';
+import loadingImage from '../../rolling.svg';
 
 export default class Login extends React.Component {
   state = {
@@ -40,15 +40,15 @@ export default class Login extends React.Component {
     // Continue with submit process
     e.preventDefault();
     const { email, password } = this.state;
-    let payLoad = {
-      email: email,
-      password: password,
-    };
-
-    const response = await axios.post(
-      'https://quiet-gorge-29042.herokuapp.com/user/login',
-      payLoad
-    );
+    const baseUrl = 'https://7000-ivory-rattlesnake-glx98tol.ws-us03.gitpod.io';
+    const response = await axios({
+      method: 'post',
+      url: `${baseUrl}/user/login`,
+      data: {
+        email: email,
+        password: password,
+      },
+    });
 
     // Get token
     const jwt = response.data.date.token;
@@ -122,11 +122,7 @@ export default class Login extends React.Component {
           }}
         >
           {this.state.loaded === false && (
-            <img
-              className="loading-image"
-              src={loadingImage}
-              alt="Loading spinner"
-            />
+            <img src={loadingImage} alt="loading..." />
           )}
         </div>
       </Col>

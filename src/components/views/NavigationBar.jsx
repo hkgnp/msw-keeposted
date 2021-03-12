@@ -57,9 +57,14 @@ const NavigationBar = (props) => {
           {props.user && (
             <NavbarText>
               <Button
-                style={{ marginRight: '5px', borderTopLeftRadius: '20px' }}
+                href="/dashboard"
+                style={{
+                  marginRight: '5px',
+                  borderTopLeftRadius: '20px',
+                  color: 'white',
+                }}
               >
-                {props.user.username}
+                {props.user.name}
               </Button>
               <Button onClick={logout} color="warning">
                 Log Out

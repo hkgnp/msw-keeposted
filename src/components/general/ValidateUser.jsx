@@ -19,17 +19,21 @@ const ValidateUser = async (props) => {
 
   if (validationResult.error === null) {
     const baseUrl = 'https://quiet-gorge-29042.herokuapp.com';
-
     /// Send to collection 'POST DETAILS'
-    await axios({
-      method: 'post',
-      url: `${baseUrl}/user/register`,
-      data: {
-        name: name,
-        email: email,
-        password: password,
-      },
-    });
+    try {
+      await axios({
+        method: 'post',
+        url: `${baseUrl}/user/register`,
+        data: {
+          name: name,
+          email: email,
+          password: password,
+        },
+      });
+    } catch (e) {
+      const errors = 'Username is already taken';
+      return errors;
+    }
   } else {
     const errors = {};
     validationResult.error.details.map((e) => (errors[e.path[0]] = e.message));

@@ -5,36 +5,12 @@ body {
   position: relative;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .loading-image {
-    animation: loading-image-spin infinite 3s linear;
-    height: 5rem;
-    margin-top: -10rem;
-  }
-}
-
-@keyframes loading-image-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 .contentContainer {
   margin-top: 0.5rem;
   padding: 0 1rem;
   display: flex;
   justify-content: center;
 }
-
-/* .staticContainer {
-  display: flex;
-  flex-flow: column wrap;
-  align-items: center;
-  padding: 3rem;
-} */
 
 .home {
   height: 95vh;

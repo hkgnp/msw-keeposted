@@ -5,7 +5,7 @@ import SearchBar from '../general/SearchBar';
 import MoreDetails from '../views/MoreDetails';
 import { Col, Fade } from 'reactstrap';
 import ViewReviews from '../views/ViewReviews';
-import loadingImage from '../../spinner-solid.svg';
+import loadingImage from '../../rolling.svg';
 
 export default class PostContent extends React.Component {
   state = {

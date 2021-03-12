@@ -4,7 +4,7 @@ import Review from '../general/Review';
 import { Row, Col, Button, FormGroup, Label, Input } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../App.css';
-import rolling from '../../rolling.svg';
+import loadingImage from '../../rolling.svg';
 
 export default class ViewReviews extends React.Component {
   state = {
@@ -64,7 +64,8 @@ export default class ViewReviews extends React.Component {
     if (reviewsLoaded === false) {
       return (
         <h1 className="m-0">
-          Loading <img src={rolling} alt="rolling" style={{ height: '4rem' }} />
+          Loading{' '}
+          <img src={loadingImage} alt="loading..." style={{ height: '4rem' }} />
         </h1>
       );
     } else {
@@ -119,7 +120,11 @@ export default class ViewReviews extends React.Component {
               </Button>
               &nbsp;&nbsp;
               {postingReviews && (
-                <img src={rolling} alt="rolling" style={{ height: '2rem' }} />
+                <img
+                  src={loadingImage}
+                  alt="loading..."
+                  style={{ height: '2rem' }}
+                />
               )}
             </Col>
           </Row>

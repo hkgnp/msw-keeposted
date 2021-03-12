@@ -11,6 +11,7 @@ import About from './components/views/About';
 import Signup from './components/views/Signup';
 import Login from './components/views/Login';
 import ErrorPage from './components/views/ErrorPage';
+import Dashboard from './components/views/Dashboard';
 
 export default class App extends React.Component {
   state = {};
@@ -48,6 +49,12 @@ export default class App extends React.Component {
               <Route path="/signup" component={Signup} />
               <Route path="/login" component={Login} />
               <Route path="/error" component={ErrorPage} />
+              <Route
+                path="/dashboard"
+                render={(props) => (
+                  <Dashboard {...props} user={this.state.user} />
+                )}
+              />
               <Route path="/" component={Home} />
             </Switch>
           </Row>
