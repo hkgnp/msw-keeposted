@@ -11,6 +11,7 @@ export default class Login extends React.Component {
     password: '',
     errors: {},
     loaded: '',
+    loginerror: '',
   };
 
   componentDidMount = () => {
@@ -35,29 +36,38 @@ export default class Login extends React.Component {
     // Activate loading image
     this.setState({
       loaded: false,
+      loginerror: '',
     });
 
     // Continue with submit process
     e.preventDefault();
     const { email, password } = this.state;
     const baseUrl = 'https://7000-ivory-rattlesnake-glx98tol.ws-us03.gitpod.io';
-    const response = await axios({
-      method: 'post',
-      url: `${baseUrl}/user/login`,
-      data: {
-        email: email,
-        password: password,
-      },
-    });
+    let response = '';
 
-    // Get token
-    const jwt = response.data.date.token;
+    try {
+      response = await axios({
+        method: 'post',
+        url: `${baseUrl}/user/login`,
+        data: {
+          email: email,
+          password: password,
+        },
+      });
+      // Get token
+      const jwt = response.data.date.token;
 
-    // Store token in local storage
-    localStorage.setItem('token', jwt);
+      // Store token in local storage
+      localStorage.setItem('token', jwt);
 
-    // Redirect to main page
-    window.location.href = '/';
+      // Redirect to main page
+      window.location.href = '/';
+    } catch (e) {
+      this.setState({
+        loginerror: e.response.data,
+        loaded: true,
+      });
+    }
   };
 
   handleReset = () => {
@@ -123,6 +133,11 @@ export default class Login extends React.Component {
         >
           {this.state.loaded === false && (
             <img src={loadingImage} alt="loading..." />
+          )}
+          {this.state.loginerror && (
+            <div className="alert-sm alert-danger p-2">
+              {this.state.loginerror}
+            </div>
           )}
         </div>
       </Col>

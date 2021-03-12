@@ -21,7 +21,6 @@ const ValidatePost = async (props) => {
     category: Joi.string().required().label('Category'),
     description: Joi.string().required().label('Description'),
     address1: Joi.string().required().label('Address'),
-    address2: Joi.string().label('Address'),
     postalcode: Joi.number().required().label('Postal Code'),
     file: Joi.string().required().label('File'),
   };
@@ -34,7 +33,6 @@ const ValidatePost = async (props) => {
       category,
       description,
       address1,
-      address2,
       postalcode,
       file,
     },
