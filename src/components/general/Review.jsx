@@ -6,8 +6,9 @@ const Review = (props) => {
   return (
     <React.Fragment>
       <p>
-        {date.toString().slice(0, 15)} <br />
-        {props.comments}
+        <b>{props.name}</b> <i>{date.toString().slice(0, 15)}</i>
+        <br />
+        {props.review}
       </p>
     </React.Fragment>
   );

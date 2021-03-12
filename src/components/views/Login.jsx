@@ -122,7 +122,11 @@ export default class Login extends React.Component {
           }}
         >
           {this.state.loaded === false && (
-            <img className="loading-image" src={loadingImage} />
+            <img
+              className="loading-image"
+              src={loadingImage}
+              alt="Loading spinner"
+            />
           )}
         </div>
       </Col>

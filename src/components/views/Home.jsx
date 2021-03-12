@@ -30,10 +30,10 @@ export default class About extends React.Component {
           information here can help our own patients.
         </p>
         <h3>
-          <Button color="secondary" className="mx-3 p-2 ">
+          <Button color="secondary" className="mx-3 p-2" href="/posts">
             <i class="far fa-hand-point-right"></i> Get Started
           </Button>
-          <Button color="secondary" className="mx-3 p-2 ">
+          <Button color="secondary" className="mx-3 p-2" href="/signup">
             <i class="fas fa-file-signature"></i> Register
           </Button>
         </h3>

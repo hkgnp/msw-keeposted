@@ -9,6 +9,7 @@ body {
   .loading-image {
     animation: loading-image-spin infinite 3s linear;
     height: 5rem;
+    margin-top: -10rem;
   }
 }
 
@@ -114,9 +115,9 @@ body {
 }
 
 .viewreviews {
-  position: absolute;
+  position: fixed;
   width: 45rem;
-  top: 10rem;
+  top: 30rem;
   left: 50%;
   background-color: white;
   transform: translate(-50%, -75%);
@@ -140,7 +141,7 @@ body {
 }
 
 .moredetailsimage {
-  width: 19rem;
+  height: 19rem;
   z-index: 20;
   border-radius: 20px;
 }

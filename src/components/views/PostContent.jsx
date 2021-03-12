@@ -5,6 +5,7 @@ import SearchBar from '../general/SearchBar';
 import MoreDetails from '../views/MoreDetails';
 import { Col, Fade } from 'reactstrap';
 import ViewReviews from '../views/ViewReviews';
+import loadingImage from '../../spinner-solid.svg';
 
 export default class PostContent extends React.Component {
   state = {
@@ -79,6 +80,7 @@ export default class PostContent extends React.Component {
     this.setState({
       activeDetails: '',
       moreDetails: false,
+      viewReviews: false,
       backdrop: false,
     });
     window.scrollTo(0, 0);
@@ -88,6 +90,7 @@ export default class PostContent extends React.Component {
     this.setState({
       viewReviews: true,
       reviewId: e.target.name,
+      backdrop: true,
     });
   };
 
@@ -112,7 +115,23 @@ export default class PostContent extends React.Component {
             handleSearchString={this.handleSearchString}
             className="mt-2"
           />
-          <p className="postNumber">There are no resources in the database.</p>
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              height: '100vh',
+            }}
+          >
+            {this.state.loaded === false && (
+              <img
+                className="loading-image"
+                src={loadingImage}
+                alt="Loading spinner"
+              />
+            )}
+          </div>
+          {/* <p className="postNumber">There are no resources in the database.</p> */}
         </React.Fragment>
       );
     } else {
@@ -135,7 +154,10 @@ export default class PostContent extends React.Component {
               )}
               {viewReviews && (
                 <Fade className="viewreviews">
-                  <ViewReviews reviewId={reviewId} />
+                  <ViewReviews
+                    reviewId={reviewId}
+                    handleReset={this.handleReset}
+                  />
                 </Fade>
               )}
               <RenderPosts
