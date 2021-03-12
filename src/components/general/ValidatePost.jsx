@@ -64,7 +64,6 @@ const ValidatePost = async (props) => {
 
     // Start the process of sending to S3
     let postObjectId = await postDetails.data;
-    console.log(postObjectId);
     const file = document.getElementById('mediafile').files[0];
 
     // Fetch the signed url

@@ -52,7 +52,7 @@ export default class MoreDetails extends React.Component {
 
   imageResize = () => {
     const { postId } = this.props;
-    const image = `https://msw-keeposted-images.s3-ap-southeast-1.amazonaws.com/ObjectId(%22${postId}%22)`;
+    const image = `https://msw-keeposted-images.s3-ap-southeast-1.amazonaws.com/${postId}`;
     this.setState({
       imageResize: true,
       imageLink: image,
@@ -145,7 +145,7 @@ export default class MoreDetails extends React.Component {
             <Col>
               <img
                 className="moredetailsimage"
-                src={`https://msw-keeposted-images.s3-ap-southeast-1.amazonaws.com/ObjectId(%22${postId}%22)`}
+                src={`https://msw-keeposted-images.s3-ap-southeast-1.amazonaws.com/${postId}`}
                 onClick={this.imageResize}
                 alt="Resource"
               />

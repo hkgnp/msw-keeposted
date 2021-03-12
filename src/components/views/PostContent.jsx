@@ -31,7 +31,7 @@ export default class PostContent extends React.Component {
         'https://7000-ivory-rattlesnake-glx98tol.ws-us03.gitpod.io/all-resources'
       );
       this.setState({
-        posts: response.data,
+        posts: response.data.reverse(),
         loaded: true,
       });
     } catch (e) {

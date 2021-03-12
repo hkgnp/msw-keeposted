@@ -17,7 +17,7 @@ export default class CreatePost extends React.Component {
     },
     file: '',
     errors: '',
-    name: '',
+    username: '',
     creatingPost: false,
   };
 
@@ -28,7 +28,7 @@ export default class CreatePost extends React.Component {
   componentDidUpdate = (prevProps) => {
     if (this.props.user !== prevProps.user) {
       this.setState({
-        name: this.props.user.name,
+        username: this.props.user.username,
       });
     }
   };
@@ -115,7 +115,12 @@ export default class CreatePost extends React.Component {
             </FormText>
           )}
           <Label for="contributor">Contributor</Label>
-          <Input type="text" name="username" value={this.state.name} disabled />
+          <Input
+            type="text"
+            name="username"
+            value={this.state.username}
+            disabled
+          />
           {username && (
             <div className="alert-sm alert-danger p-2">{username}</div>
           )}

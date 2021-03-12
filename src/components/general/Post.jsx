@@ -19,7 +19,7 @@ const Post = (props) => {
           <CardImg
             top
             width="100%"
-            src={`https://msw-keeposted-images.s3-ap-southeast-1.amazonaws.com/ObjectId("${props.imageRef}")`}
+            src={`https://msw-keeposted-images.s3-ap-southeast-1.amazonaws.com/${props.imageRef}`}
             alt="Resource image"
           />
           <CardTitle tag="h5">{props.title}</CardTitle>
