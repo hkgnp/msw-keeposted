@@ -9,7 +9,7 @@ export default class About extends React.Component {
   render() {
     return (
       <Col>
-        <h1 style={{ color: '#e86632' }}>About This App</h1>
+        <h1>About This App</h1>
         <p>
           msw keeposted is a community-driven site that allows medical social
           workers to be updated of the latest resources that can be tapped on

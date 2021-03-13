@@ -23,7 +23,10 @@ const NavigationBar = (props) => {
   return (
     <React.Fragment>
       <Navbar light expand="lg">
-        <NavbarBrand href="/">msw keeposted</NavbarBrand>
+        <NavbarBrand href="/" style={{ color: '#e86632', fontWeight: 'bold' }}>
+          <i className="far fa-clipboard"></i>
+          &nbsp;msw keeposted
+        </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
@@ -49,7 +52,15 @@ const NavigationBar = (props) => {
               >
                 Log In
               </Button>
-              <Button color="warning" href="/signup">
+              <Button
+                style={{
+                  backgroundColor: '#e86632',
+                  color: '#ffffff',
+                  fontWeight: 'bold',
+                  border: 'none',
+                }}
+                href="/signup"
+              >
                 Sign Up
               </Button>
             </NavbarText>
@@ -62,9 +73,11 @@ const NavigationBar = (props) => {
                   marginRight: '5px',
                   borderTopLeftRadius: '20px',
                   color: 'white',
+                  border: 'none',
                 }}
               >
-                {props.user.name}
+                <i className="fas fa-user"></i>
+                &nbsp;{props.user.name}
               </Button>
               <Button onClick={logout} color="warning">
                 Log Out

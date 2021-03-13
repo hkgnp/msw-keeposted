@@ -26,10 +26,17 @@ export default class Signup extends React.Component {
     e.preventDefault();
     const { name, email, password } = this.state;
     const errors = await ValidateUser({ name, email, password });
-    this.setState({
-      errors: errors,
-    });
-    window.location = '/';
+    if (errors === 'Username is already taken') {
+      this.setState({
+        errors: {
+          usernameTaken: errors,
+        },
+      });
+    } else {
+      this.setState({
+        errors: errors,
+      });
+    }
   };
 
   handleReset = () => {
@@ -42,7 +49,7 @@ export default class Signup extends React.Component {
 
   render() {
     // Destructure for validation function
-    const { name, email, password } = this.state.errors;
+    const { name, email, password, usernameTaken } = this.state.errors;
 
     return (
       <React.Fragment>
@@ -84,6 +91,9 @@ export default class Signup extends React.Component {
             />
             {email ? (
               <div className="alert-sm alert-danger p-2">{email}</div>
+            ) : null}
+            {usernameTaken ? (
+              <div className="alert-sm alert-danger p-2">{usernameTaken}</div>
             ) : null}
           </FormGroup>
           <FormGroup>

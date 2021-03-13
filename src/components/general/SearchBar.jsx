@@ -6,6 +6,7 @@ const SearchBar = (props) => {
   return (
     <React.Fragment>
       <Input
+        style={{ borderColor: '#e86632' }}
         onChange={props.handleSearchString}
         type="text"
         name="searchTerm"

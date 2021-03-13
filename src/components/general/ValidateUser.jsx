@@ -8,8 +8,8 @@ const ValidateUser = async (props) => {
   // Set up schema for Joi
   const schema = {
     name: Joi.string().required().label('Name'),
-    email: Joi.string().required().label('Username'),
-    password: Joi.string().required().label('Password'),
+    email: Joi.string().required().email().label('Username'),
+    password: Joi.string().required().min(5).label('Password'),
   };
 
   // Implement Joi validation
@@ -17,7 +17,11 @@ const ValidateUser = async (props) => {
     abortEarly: false,
   });
 
-  if (validationResult.error === null) {
+  if (validationResult.error !== null) {
+    const errors = {};
+    validationResult.error.details.map((e) => (errors[e.path[0]] = e.message));
+    return errors;
+  } else {
     const baseUrl = 'https://quiet-gorge-29042.herokuapp.com';
     /// Send to collection 'POST DETAILS'
     try {
@@ -30,14 +34,10 @@ const ValidateUser = async (props) => {
           password: password,
         },
       });
+      window.location = '/';
     } catch (e) {
-      const errors = 'Username is already taken';
-      return errors;
+      return 'Username is already taken';
     }
-  } else {
-    const errors = {};
-    validationResult.error.details.map((e) => (errors[e.path[0]] = e.message));
-    return errors;
   }
 };
 
