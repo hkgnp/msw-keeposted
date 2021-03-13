@@ -22,7 +22,8 @@ const ValidateUser = async (props) => {
     validationResult.error.details.map((e) => (errors[e.path[0]] = e.message));
     return errors;
   } else {
-    const baseUrl = 'https://quiet-gorge-29042.herokuapp.com';
+    const baseUrl = 'https://7000-ivory-rattlesnake-glx98tol.ws-us03.gitpod.io';
+
     /// Send to collection 'POST DETAILS'
     try {
       await axios({
@@ -34,7 +35,33 @@ const ValidateUser = async (props) => {
           password: password,
         },
       });
-      window.location = '/';
+
+      //Login user
+      let response = '';
+
+      try {
+        response = await axios({
+          method: 'post',
+          url: `${baseUrl}/user/login`,
+          data: {
+            email: email,
+            password: password,
+          },
+        });
+        // Get token
+        const jwt = response.data.date.token;
+
+        // Store token in local storage
+        localStorage.setItem('token', jwt);
+
+        // Redirect to main page
+        window.location.href = '/';
+      } catch (e) {
+        this.setState({
+          loginerror: e.response.data,
+          loaded: true,
+        });
+      }
     } catch (e) {
       return 'Username is already taken';
     }

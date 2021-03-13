@@ -5,17 +5,6 @@ body {
   position: relative;
 }
 
-.nav-item {
-  margin-bottom: -3px;
-  padding: 0;
-}
-
-.nav-item:hover {
-  border-bottom: 5px solid #e86632;
-  margin-bottom: -10px;
-  padding: 0;
-}
-
 .contentContainer {
   margin-top: 0.5rem;
   padding: 0 1rem;

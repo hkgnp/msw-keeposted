@@ -33,10 +33,10 @@ export default class About extends React.Component {
         <p>
           <ListGroup>
             <ListGroupItem>
-              <i class="fab fa-github"></i> Github
+              <i className="fab fa-github"></i> Github
             </ListGroupItem>
             <ListGroupItem>
-              <i class="fas fa-at"></i> Email
+              <i className="fas fa-at"></i> Email
             </ListGroupItem>
           </ListGroup>
         </p>
