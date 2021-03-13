@@ -34,6 +34,10 @@ body {
   flex: auto;
 }
 
+.card {
+  border-radius: 15px !important;
+}
+
 .cardDesign {
   width: 21rem;
   margin: 0 0.5rem 1rem 0.5rem;
@@ -51,7 +55,7 @@ body {
   font-style: italic;
   font-weight: bold;
   font-size: 0.9rem;
-  background-color: red;
+  background-color: deeppink;
   border-radius: 10px;
   padding: 2px 8px;
   color: white !important;
@@ -114,6 +118,10 @@ body {
   border-radius: 3rem;
   z-index: 20;
   box-shadow: 0 0 2rem 0 rgba(0, 0, 0, 0.2), 0 2rem 5rem 0 rgba(0, 0, 0, 0.19);
+}
+
+.closemoredetails {
+  margin-top: -1rem;
 }
 
 .closemoredetails:hover {

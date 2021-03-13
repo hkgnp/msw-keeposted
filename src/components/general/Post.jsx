@@ -23,7 +23,9 @@ const Post = (props) => {
             alt="Resource image"
           />
           <CardTitle tag="h5">{props.title}</CardTitle>
-          <CardSubtitle tag="span">{props.category}</CardSubtitle>
+          {props.categories.map((c) => (
+            <CardSubtitle tag="span">{c}</CardSubtitle>
+          ))}
           <CardText className="mt-3">{props.description}</CardText>
           <CardText className="font-italic">
             {props.address1} {props.address2}

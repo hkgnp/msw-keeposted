@@ -8,7 +8,7 @@ import loadingImage from '../../rolling.svg';
 export default class CreatePost extends React.Component {
   state = {
     title: '',
-    category: '',
+    categories: [],
     description: '',
     location: {
       address1: '',
@@ -39,6 +39,18 @@ export default class CreatePost extends React.Component {
     });
   };
 
+  handleCategory = (e) => {
+    let selectedCategories = e.target.selectedOptions;
+    let categoriesArr = [];
+    for (let c of selectedCategories) {
+      categoriesArr.push(c.value);
+    }
+
+    this.setState({
+      categories: categoriesArr,
+    });
+  };
+
   handleLocation = (e) => {
     this.setState({
       location: {
@@ -64,13 +76,13 @@ export default class CreatePost extends React.Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
-    const { title, category, description, file, username } = this.state;
+    const { title, categories, description, file, username } = this.state;
     const { address1, address2, postalcode } = this.state.location;
 
     const errors = await ValidatePost({
       username,
       title,
-      category,
+      categories,
       description,
       address1,
       address2,
@@ -137,14 +149,14 @@ export default class CreatePost extends React.Component {
           {title && <div className="alert-sm alert-danger p-2">{title}</div>}
         </FormGroup>
         <FormGroup>
-          <Label for="category">Category</Label>
+          <Label for="category">Categories</Label>
           <Input
-            onChange={this.handleForm}
+            onChange={this.handleCategory}
             type="select"
-            name="category"
-            value={this.state.category}
+            name="categories"
+            value={this.state.categories}
+            multiple
           >
-            <option>Select a category</option>
             <option value="Donations">Donations</option>
             <option value="Jobs">Jobs</option>
             <option value="Long-term care">Long-term Care</option>
@@ -202,7 +214,7 @@ export default class CreatePost extends React.Component {
           )}
         </FormGroup>
         <FormGroup>
-          <Label for="file">Upload a picture</Label>
+          <Label for="mediafile">Upload a picture</Label>
           <Input
             type="file"
             name="file"

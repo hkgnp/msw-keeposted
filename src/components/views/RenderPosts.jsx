@@ -29,7 +29,7 @@ export default class RenderPosts extends React.Component {
               key={p._id}
               imageRef={p._id}
               title={p.title}
-              category={p.category}
+              categories={p.categories}
               description={p.description}
               address1={p.location.address1}
               address2={p.location.address2}

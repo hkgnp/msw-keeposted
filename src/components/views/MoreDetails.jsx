@@ -87,7 +87,7 @@ export default class MoreDetails extends React.Component {
       imageLink,
       postLoaded,
     } = this.state;
-    const { title, category, description, location, date } = this.state.post;
+    const { title, categories, description, location, date } = this.state.post;
     const formatDate = new Date(date);
 
     if (postLoaded === false) {
@@ -118,7 +118,8 @@ export default class MoreDetails extends React.Component {
           <Row>
             <Col>
               <p>
-                <Badge className="bg-info">Category</Badge> {category}
+                <Badge className="bg-info">Categories</Badge>{' '}
+                {categories.join(', ')}
               </p>
               <p>
                 <Badge className="bg-info">Description</Badge> {description}

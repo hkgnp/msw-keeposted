@@ -3,6 +3,7 @@ import { Button, FormGroup, Label, Input, Col } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../App.css';
 import ValidateUser from '../general/ValidateUser';
+import loadingImage from '../../rolling.svg';
 
 export default class Signup extends React.Component {
   state = {
@@ -10,6 +11,7 @@ export default class Signup extends React.Component {
     email: '',
     password: '',
     errors: '',
+    loaded: '',
   };
 
   componentDidMount = () => {
@@ -119,6 +121,13 @@ export default class Signup extends React.Component {
           >
             Reset
           </Button>
+          {this.state.loaded === false && (
+            <img
+              src={loadingImage}
+              style={{ height: '2rem' }}
+              alt="loading..."
+            />
+          )}
         </Col>
       </React.Fragment>
     );

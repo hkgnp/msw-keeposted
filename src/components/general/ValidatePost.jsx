@@ -6,7 +6,7 @@ const ValidatePost = async (props) => {
   const {
     username,
     title,
-    category,
+    categories,
     description,
     address1,
     address2,
@@ -18,7 +18,7 @@ const ValidatePost = async (props) => {
   const schema = {
     username: Joi.string().required().label('Username'),
     title: Joi.string().required().label('Title'),
-    category: Joi.string().required().label('Category'),
+    categories: Joi.array().required().label('Category'),
     description: Joi.string().required().label('Description'),
     address1: Joi.string().required().label('Address'),
     postalcode: Joi.number().required().label('Postal Code'),
@@ -30,7 +30,7 @@ const ValidatePost = async (props) => {
     {
       username,
       title,
-      category,
+      categories,
       description,
       address1,
       postalcode,
@@ -52,7 +52,7 @@ const ValidatePost = async (props) => {
       data: {
         username: username,
         title: title,
-        category: category,
+        categories: categories,
         description: description,
         location: {
           address1: address1,

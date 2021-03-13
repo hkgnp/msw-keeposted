@@ -24,20 +24,29 @@ const NavigationBar = (props) => {
     <React.Fragment>
       <Navbar light expand="lg">
         <NavbarBrand href="/" style={{ color: '#e86632', fontWeight: 'bold' }}>
-          <i className="far fa-clipboard"></i>
+          <i className="fas fa-clipboard"></i>
           &nbsp;msw keeposted
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <NavItem>
-              <NavLink href="/posts">All Resources</NavLink>
+              <NavLink href="/posts">
+                <i className="fas fa-list-alt" style={{ color: 'blue' }}></i>
+                &nbsp;All Resources
+              </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/createpost">Contribute Resource</NavLink>
+              <NavLink href="/createpost">
+                <i className="fas fa-gift" style={{ color: 'green' }}></i>
+                &nbsp;Contribute Resource
+              </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/about">About</NavLink>
+              <NavLink href="/about">
+                <i className="fas fa-info-circle" style={{ color: 'red' }}></i>
+                &nbsp;About
+              </NavLink>
             </NavItem>
           </Nav>
           {!props.user && (
