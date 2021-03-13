@@ -21,6 +21,7 @@ export default class PostContent extends React.Component {
     posts: [],
     loaded: false,
     searchTerm: '',
+    searchIn: 'address',
     moreDetails: false,
     // activeDetails: '',
     backdrop: false,
@@ -66,12 +67,31 @@ export default class PostContent extends React.Component {
 
   // Handle search function
   searchFunction = () => {
-    const { posts, searchTerm } = this.state;
+    const { posts, searchTerm, searchIn } = this.state;
     const searchString = searchTerm.toLowerCase();
 
-    const searchResults = posts.filter((p) =>
-      p.title.toLowerCase().includes(searchString)
-    );
+    let searchResults;
+    if (searchIn === 'title') {
+      searchResults = posts.filter((p) =>
+        p.title.toLowerCase().includes(searchString)
+      );
+    }
+    if (searchIn === 'description') {
+      searchResults = posts.filter((p) =>
+        p.description.toLowerCase().includes(searchString)
+      );
+    }
+    if (searchIn === 'address') {
+      searchResults = posts.filter((p) =>
+        p.location.address1.toLowerCase().includes(searchString)
+      );
+    }
+    if (searchIn === 'postalcode') {
+      searchResults = posts.filter((p) =>
+        p.location.postalcode.toLowerCase().includes(searchString)
+      );
+    }
+
     return searchResults;
   };
 
