@@ -3,7 +3,8 @@ import { Col, Button, FormGroup, Label, Input, FormText } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../App.css';
 import axios from 'axios';
-import Post from '../general/Post';
+import { Table } from 'reactstrap';
+import DashboardTable from '../general/DashboardTable';
 import loadingImage from '../../rolling.svg';
 
 export default class Dashboard extends React.Component {
@@ -14,7 +15,7 @@ export default class Dashboard extends React.Component {
     iat: '',
     editing: false,
     loadUserContributions: false,
-    userContributions: '',
+    userContributions: [],
   };
 
   getuserContributions = async () => {
@@ -171,20 +172,31 @@ export default class Dashboard extends React.Component {
               You will need to re-login after updating your details.
             </FormText>
           )}
-          <div className="postContainer">
-            {userContributions.map((p) => (
-              <Post
-                key={p._id}
-                imageRef={p._id}
-                title={p.title}
-                category={p.category}
-                description={p.description}
-                address1={p.location.address1}
-                address2={p.location.address2}
-                postalcode={p.location.postalcode}
-              />
-            ))}
-          </div>
+          <h4 className="mt-5">Contribution History:</h4>
+          <Table responsive striped>
+            <thead className="thead-dark">
+              <tr>
+                <th>Title</th>
+                <th>Categories</th>
+                <th>Description</th>
+                <th>Address</th>
+                <th>Postal Code</th>
+              </tr>
+            </thead>
+            <tbody>
+              {userContributions.map((p) => (
+                <DashboardTable
+                  key={p._id}
+                  title={p.title}
+                  categories={p.categories}
+                  description={p.description}
+                  address1={p.location.address1}
+                  address2={p.location.address2}
+                  postalcode={p.location.postalcode}
+                />
+              ))}
+            </tbody>
+          </Table>
         </Col>
       );
     }

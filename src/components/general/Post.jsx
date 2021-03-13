@@ -24,7 +24,9 @@ const Post = (props) => {
           />
           <CardTitle tag="h5">{props.title}</CardTitle>
           {props.categories.map((c) => (
-            <CardSubtitle tag="span">{c}</CardSubtitle>
+            <CardSubtitle tag="span" className="mr-1">
+              {c}
+            </CardSubtitle>
           ))}
           <CardText className="mt-3">{props.description}</CardText>
           <CardText className="font-italic">

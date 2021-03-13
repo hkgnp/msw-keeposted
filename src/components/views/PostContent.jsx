@@ -3,7 +3,14 @@ import RenderPosts from './RenderPosts';
 import axios from 'axios';
 import SearchBar from '../general/SearchBar';
 import MoreDetails from '../views/MoreDetails';
-import { Col, Fade } from 'reactstrap';
+import {
+  Col,
+  Fade,
+  Dropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
+} from 'reactstrap';
 import ViewReviews from '../views/ViewReviews';
 import loadingImage from '../../rolling.svg';
 
@@ -62,8 +69,8 @@ export default class PostContent extends React.Component {
     const { posts, searchTerm } = this.state;
     const searchString = searchTerm.toLowerCase();
 
-    let searchResults = posts.filter((p) =>
-      p.description.toLowerCase().includes(searchString)
+    const searchResults = posts.filter((p) =>
+      p.title.toLowerCase().includes(searchString)
     );
     return searchResults;
   };
@@ -132,7 +139,6 @@ export default class PostContent extends React.Component {
               />
             )}
           </div>
-          {/* <p className="postNumber">There are no resources in the database.</p> */}
         </React.Fragment>
       );
     } else {
@@ -140,10 +146,28 @@ export default class PostContent extends React.Component {
         <React.Fragment>
           {backdrop && <div className="backdrop"></div>}
           <Col style={{ display: 'block' }}>
-            <SearchBar
-              searchTerm={searchTerm}
-              handleSearchString={this.handleSearchString}
-            />
+            <div className="d-flex">
+              <SearchBar
+                searchTerm={searchTerm}
+                handleSearchString={this.handleSearchString}
+              />
+              <Dropdown className="ml-1">
+                <DropdownToggle caret style={{ backgroundColor: 'purple' }}>
+                  in Title
+                </DropdownToggle>
+                <DropdownMenu>
+                  <DropdownItem></DropdownItem>
+                </DropdownMenu>
+              </Dropdown>
+              <Dropdown className="ml-1">
+                <DropdownToggle caret style={{ backgroundColor: 'purple' }}>
+                  Filter
+                </DropdownToggle>
+                <DropdownMenu>
+                  <DropdownItem></DropdownItem>
+                </DropdownMenu>
+              </Dropdown>
+            </div>
             <div>
               {moreDetails && (
                 <Fade className="moredetails">
