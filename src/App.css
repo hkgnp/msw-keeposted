@@ -23,6 +23,14 @@ body {
   color: white;
 }
 
+.searchintitle {
+  background-color: white !important;
+  color: #e86632 !important;
+  border: 1px solid #e86632 !important;
+  border-left: 0 !important;
+  border-radius: 0 !important;
+}
+
 .postContainer {
   display: flex;
   flex-flow: wrap;

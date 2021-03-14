@@ -171,8 +171,8 @@ export default class PostContent extends React.Component {
                 searchTerm={searchTerm}
                 handleSearchString={this.handleSearchString}
               />
-              <Dropdown className="ml-1">
-                <DropdownToggle caret style={{ backgroundColor: 'purple' }}>
+              <Dropdown>
+                <DropdownToggle caret className="searchintitle">
                   in Title
                 </DropdownToggle>
                 <DropdownMenu>
