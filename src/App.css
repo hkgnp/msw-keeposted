@@ -32,7 +32,15 @@ body {
   border-bottom-left-radius: 0 !important;
   border-top-right-radius: 15px !important;
   border-bottom-right-radius: 15px !important;
-  width: 8rem;
+  width: 6rem !important;
+}
+
+.searchfilter {
+  background-color: #910bb3 !important;
+  color: #ffffff !important;
+  width: 6rem !important;
+  margin-left: 2px;
+  border-radius: 15px !important;
 }
 
 .postContainer {
@@ -211,5 +219,11 @@ body {
 
   .card-body {
     width: 100%;
+  }
+
+  .moredetailsimage {
+    height: 10rem;
+    z-index: 20;
+    border-radius: 20px;
   }
 }

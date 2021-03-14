@@ -158,6 +158,9 @@ export default class MoreDetails extends React.Component {
                 className="rendermap"
                 latitude={latitude}
                 longitude={longitude}
+                address1={location.address1}
+                address2={location.address2}
+                postalcode={location.postalcode}
               />
             </Col>
           </Row>

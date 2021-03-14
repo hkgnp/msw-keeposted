@@ -27,7 +27,8 @@ const RenderMap = (props) => {
         />
         <Marker position={[props.latitude, props.longitude]}>
           <Popup>
-            A pretty CSS3 popup. <br /> Easily customizable.
+            {props.address1} {props.address2} <br />
+            {props.postalcode}
           </Popup>
         </Marker>
         <SetView coords={[props.latitude, props.longitude]} />
