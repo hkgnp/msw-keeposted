@@ -88,10 +88,34 @@ export default class PostContent extends React.Component {
     return searchResults;
   };
 
-  setStateSearchIn = (e) => {
+  setStateSearchFilter = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
     });
+  };
+
+  setFilter = async (e) => {
+    if (e.target.value === 'All') {
+      window.location = '/posts';
+    } else {
+      const filter = {
+        categories: e.target.value,
+      };
+
+      try {
+        let response = await axios.post(
+          'https://7000-ivory-rattlesnake-glx98tol.ws-us03.gitpod.io/filter-resource',
+          filter
+        );
+        this.setState({
+          posts: response.data.reverse(),
+          loaded: true,
+        });
+      } catch (e) {
+        window.location.href = '/error';
+        console.log(e);
+      }
+    }
   };
 
   handleReset = () => {
@@ -137,11 +161,6 @@ export default class PostContent extends React.Component {
     if (posts.length === 0) {
       return (
         <React.Fragment>
-          {/* <SearchBar
-            searchTerm={searchTerm}
-            handleSearchString={this.handleSearchString}
-            className="mt-2"
-          /> */}
           <div
             style={{
               display: 'flex',
@@ -157,6 +176,11 @@ export default class PostContent extends React.Component {
                 alt="Loading spinner"
               />
             )}
+            {this.state.loaded === true && (
+              <p className="postNumber">
+                There are no posts that match the filtered criteria.
+              </p>
+            )}
           </div>
         </React.Fragment>
       );
@@ -170,7 +194,10 @@ export default class PostContent extends React.Component {
                 searchTerm={searchTerm}
                 handleSearchString={this.handleSearchString}
               />
-              <DropdownSearchFilter setStateSearchIn={this.setStateSearchIn} />
+              <DropdownSearchFilter
+                setStateSearchIn={this.setStateSearchIn}
+                setFilter={this.setFilter}
+              />
             </div>
             <div>
               {moreDetails && (

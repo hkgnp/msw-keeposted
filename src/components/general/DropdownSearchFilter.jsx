@@ -9,7 +9,7 @@ const DropdownSearchFilter = (props) => {
           type="select"
           name="searchIn"
           className="searchintitle"
-          onChange={props.setStateSearchIn}
+          onChange={props.setStateSearchFilter}
         >
           <option value="title">Title</option>
           <option value="description">Description</option>
@@ -20,15 +20,15 @@ const DropdownSearchFilter = (props) => {
       <FormGroup>
         <Input
           type="select"
-          name="searchIn"
+          name="setFilter"
           className="searchfilter"
-          onChange={props.setStateSearchIn}
+          onChange={props.setFilter}
         >
-          <option>Filter</option>
-          <option value="jobs">Jobs</option>
-          <option value="longtermcare">Long-term care</option>
-          <option value="donations">Donations</option>
-          <option value="misc">Misc</option>
+          <option value="All">All</option>
+          <option value="Jobs">Jobs</option>
+          <option value="Long-term care">Long-term care</option>
+          <option value="Donations">Donations</option>
+          <option value="Misc">Misc</option>
         </Input>
       </FormGroup>
     </React.Fragment>
