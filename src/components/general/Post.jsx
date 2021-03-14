@@ -13,8 +13,7 @@ import {
 const Post = (props) => {
   return (
     <React.Fragment>
-      <Card className="cardDesign">
-        {/* <CardImg top width="100%" src="" alt="Card image cap" /> */}
+      <Card className="cardDesign" key={props.imageRef}>
         <CardBody>
           <CardImg
             top

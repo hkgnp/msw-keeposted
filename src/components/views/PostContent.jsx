@@ -3,16 +3,10 @@ import RenderPosts from './RenderPosts';
 import axios from 'axios';
 import SearchBar from '../general/SearchBar';
 import MoreDetails from '../views/MoreDetails';
-import {
-  Col,
-  Fade,
-  Dropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-} from 'reactstrap';
+import { Col, Fade } from 'reactstrap';
 import ViewReviews from '../views/ViewReviews';
 import loadingImage from '../../rolling.svg';
+import DropdownSearchFilter from '../general/DropdownSearchFilter';
 
 export default class PostContent extends React.Component {
   state = {
@@ -21,9 +15,8 @@ export default class PostContent extends React.Component {
     posts: [],
     loaded: false,
     searchTerm: '',
-    searchIn: 'address',
+    searchIn: 'title',
     moreDetails: false,
-    // activeDetails: '',
     backdrop: false,
     viewReviews: false,
     reviewId: '',
@@ -95,6 +88,12 @@ export default class PostContent extends React.Component {
     return searchResults;
   };
 
+  setStateSearchIn = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
+  };
+
   handleReset = () => {
     this.setState({
       moreDetails: false,
@@ -138,11 +137,11 @@ export default class PostContent extends React.Component {
     if (posts.length === 0) {
       return (
         <React.Fragment>
-          <SearchBar
+          {/* <SearchBar
             searchTerm={searchTerm}
             handleSearchString={this.handleSearchString}
             className="mt-2"
-          />
+          /> */}
           <div
             style={{
               display: 'flex',
@@ -171,22 +170,7 @@ export default class PostContent extends React.Component {
                 searchTerm={searchTerm}
                 handleSearchString={this.handleSearchString}
               />
-              <Dropdown>
-                <DropdownToggle caret className="searchintitle">
-                  in Title
-                </DropdownToggle>
-                <DropdownMenu>
-                  <DropdownItem></DropdownItem>
-                </DropdownMenu>
-              </Dropdown>
-              <Dropdown className="ml-1">
-                <DropdownToggle caret style={{ backgroundColor: 'purple' }}>
-                  Filter
-                </DropdownToggle>
-                <DropdownMenu>
-                  <DropdownItem></DropdownItem>
-                </DropdownMenu>
-              </Dropdown>
+              <DropdownSearchFilter setStateSearchIn={this.setStateSearchIn} />
             </div>
             <div>
               {moreDetails && (
