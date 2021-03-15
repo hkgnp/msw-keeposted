@@ -23,7 +23,7 @@ const ValidatePost = async (props) => {
     categories: Joi.array().required().label('Category'),
     description: Joi.string().required().label('Description'),
     address1: Joi.string().required().label('Address'),
-    postalcode: Joi.number().required().min(6).max(6).label('Postal Code'),
+    postalcode: Joi.string().min(6).max(6).required().label('Postal Code'),
     file: Joi.string().required().label('File'),
   };
 
@@ -44,7 +44,12 @@ const ValidatePost = async (props) => {
     }
   );
 
-  if (validationResult.error === null) {
+  // Check for errors
+  if (validationResult.error !== null) {
+    const errors = {};
+    validationResult.error.details.map((e) => (errors[e.path[0]] = e.message));
+    return errors;
+  } else if (validationResult.error === null) {
     const baseUrl = 'https://7000-ivory-rattlesnake-glx98tol.ws-us03.gitpod.io';
 
     let postDetails;
@@ -132,13 +137,6 @@ const ValidatePost = async (props) => {
         },
       });
     }
-  }
-
-  // Check for errors
-  if (validationResult.error !== null) {
-    const errors = {};
-    validationResult.error.details.map((e) => (errors[e.path[0]] = e.message));
-    return errors;
   }
 };
 

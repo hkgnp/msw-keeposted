@@ -228,7 +228,7 @@ export default class EditPost extends React.Component {
           )}
           <Input
             onChange={this.handleLocation}
-            type="text"
+            type="number"
             name="postalcode"
             placeholder="Postal Code"
             value={this.state.location.postalcode}
@@ -261,9 +261,6 @@ export default class EditPost extends React.Component {
         </Button>
         &nbsp;&nbsp;
         {this.state.creatingPost && (
-          <img src={loadingImage} alt="loading..." style={{ height: '2rem' }} />
-        )}
-        {!this.state.editingPost && (
           <img src={loadingImage} alt="loading..." style={{ height: '2rem' }} />
         )}
       </Col>
