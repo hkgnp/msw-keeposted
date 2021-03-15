@@ -23,7 +23,7 @@ const ValidatePost = async (props) => {
     categories: Joi.array().required().label('Category'),
     description: Joi.string().required().label('Description'),
     address1: Joi.string().required().label('Address'),
-    postalcode: Joi.number().required().label('Postal Code'),
+    postalcode: Joi.number().required().min(6).max(6).label('Postal Code'),
     file: Joi.string().required().label('File'),
   };
 
