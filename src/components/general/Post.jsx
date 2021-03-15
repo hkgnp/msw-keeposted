@@ -12,7 +12,7 @@ import {
 
 const Post = (props) => {
   return (
-    <Card key={props.id} className="cardDesign">
+    <Card className="cardDesign">
       <CardBody>
         <CardImg
           top
@@ -22,7 +22,7 @@ const Post = (props) => {
         />
         <CardTitle tag="h5">{props.title}</CardTitle>
         {props.categories.map((c) => (
-          <CardSubtitle tag="span" className="mr-1">
+          <CardSubtitle key={props.imageRef} tag="span" className="mr-1">
             {c}
           </CardSubtitle>
         ))}

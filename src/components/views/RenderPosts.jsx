@@ -26,7 +26,7 @@ export default class RenderPosts extends React.Component {
         <div className="postContainer">
           {allPosts.map((p) => (
             <Post
-              id={p._id}
+              key={p._id}
               imageRef={p._id}
               title={p.title}
               categories={p.categories}
