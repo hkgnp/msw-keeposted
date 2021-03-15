@@ -66,6 +66,24 @@ const ValidatePost = async (props) => {
           },
         },
       });
+
+      // Start the process of sending to S3
+      const file = document.getElementById('mediafile').files[0];
+
+      // Fetch the signed url
+      const key = postId;
+      const response = await axios.get(
+        `${baseUrl}/uploader/sign?key=${key}&type=${file.type}`
+      );
+      const url = response.data.url;
+
+      // Attempt the upload of media
+      try {
+        const options = { headers: { 'Content-Type': file.type } };
+        await axios.put(url, file, options);
+      } catch (e) {
+        console.log(e);
+      }
     } else {
       // New resource
       postDetails = await axios({
@@ -83,39 +101,40 @@ const ValidatePost = async (props) => {
           },
         },
       });
+
+      // Start the process of sending to S3
+      let postObjectId = await postDetails.data;
+      const file = document.getElementById('mediafile').files[0];
+
+      // Fetch the signed url
+      const key = postObjectId;
+      const response = await axios.get(
+        `${baseUrl}/uploader/sign?key=${key}&type=${file.type}`
+      );
+      const url = response.data.url;
+
+      // Attempt the upload of media
+      try {
+        const options = { headers: { 'Content-Type': file.type } };
+        await axios.put(url, file, options);
+      } catch (e) {
+        console.log(e);
+      }
+
+      // Send S3 URL to collection 'MEDIA
+      // - Include ObjectID of post-details and amazon URL
+      await axios({
+        method: 'post',
+        url: baseUrl + '/media',
+        data: {
+          postId: postObjectId,
+          mediaUrl: `https://msw-keeposted-images.s3-ap-southeast-1.amazonaws.com/${postObjectId}`,
+        },
+      });
     }
-
-    // Start the process of sending to S3
-    let postObjectId = await postDetails.data;
-    const file = document.getElementById('mediafile').files[0];
-
-    // Fetch the signed url
-    const key = postObjectId;
-    const response = await axios.get(
-      `${baseUrl}/uploader/sign?key=${key}&type=${file.type}`
-    );
-    const url = response.data.url;
-
-    // Attempt the upload of media
-    try {
-      const options = { headers: { 'Content-Type': file.type } };
-      await axios.put(url, file, options);
-    } catch (e) {
-      console.log(e);
-    }
-
-    // Send S3 URL to collection 'MEDIA
-    // - Include ObjectID of post-details and amazon URL
-    await axios({
-      method: 'post',
-      url: baseUrl + '/media',
-      data: {
-        postId: postObjectId,
-        mediaUrl: `https://msw-keeposted-images.s3-ap-southeast-1.amazonaws.com/${postObjectId}`,
-      },
-    });
   }
 
+  // Check for errors
   if (validationResult.error !== null) {
     const errors = {};
     validationResult.error.details.map((e) => (errors[e.path[0]] = e.message));

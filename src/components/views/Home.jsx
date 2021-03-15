@@ -31,10 +31,10 @@ export default class About extends React.Component {
         </p>
         <h3>
           <Button color="secondary" className="mx-3 p-2" href="/posts">
-            <i class="far fa-hand-point-right"></i> Get Started
+            <i className="far fa-hand-point-right"></i> Get Started
           </Button>
           <Button color="secondary" className="mx-3 p-2" href="/signup">
-            <i class="fas fa-file-signature"></i> Register
+            <i className="fas fa-file-signature"></i> Register
           </Button>
         </h3>
       </Col>
