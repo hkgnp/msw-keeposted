@@ -21,6 +21,7 @@ export default class PostContent extends React.Component {
     viewReviews: false,
     reviewId: '',
     postId: '',
+    editPostId: '',
   };
 
   // Load all data from database
@@ -145,6 +146,13 @@ export default class PostContent extends React.Component {
     window.scrollTo(0, 0);
   };
 
+  handleEdit = (e) => {
+    this.setState({
+      moreDetails: false,
+    });
+    window.location = `/editpost?id=${e.target.name}`;
+  };
+
   render() {
     const {
       posts,
@@ -202,7 +210,11 @@ export default class PostContent extends React.Component {
             <div>
               {moreDetails && (
                 <Fade className="moredetails">
-                  <MoreDetails postId={postId} handleReset={this.handleReset} />
+                  <MoreDetails
+                    postId={postId}
+                    handleReset={this.handleReset}
+                    handleEdit={this.handleEdit}
+                  />
                 </Fade>
               )}
               {viewReviews && (

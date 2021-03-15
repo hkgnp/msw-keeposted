@@ -19,8 +19,8 @@ export default class MoreDetails extends React.Component {
   };
 
   getPost = async () => {
-    let searchById = { _id: this.props.postId };
-    let response = await axios.post(
+    const searchById = { _id: this.props.postId };
+    const response = await axios.post(
       'https://7000-ivory-rattlesnake-glx98tol.ws-us03.gitpod.io/resource',
       searchById
     );
@@ -71,7 +71,7 @@ export default class MoreDetails extends React.Component {
       method: 'delete',
       url: `${baseUrl}/delete-resource`,
       data: {
-        _id: this.props.postId,
+        id: this.props.postId,
       },
     });
     window.location = '/posts';
@@ -79,7 +79,7 @@ export default class MoreDetails extends React.Component {
 
   render() {
     // Destructuring and declaring of variables
-    const { handleReset, postId } = this.props;
+    const { handleReset, postId, handleEdit } = this.props;
     const {
       latitude,
       longitude,
@@ -132,13 +132,20 @@ export default class MoreDetails extends React.Component {
                 <Badge className="bg-info">Date posted</Badge>{' '}
                 {formatDate.toString().slice(0, 15)}
               </p>
-              {/* <Button color="warning" onClick={handleEdit} className="mb-3 mr-2">
-                Edit
-              </Button> */}
               <Button
+                name={postId}
+                size="sm"
+                color="warning"
+                onClick={handleEdit}
+                className="mb-3 mr-2"
+              >
+                Edit
+              </Button>
+              <Button
+                size="sm"
                 color="danger"
                 onClick={this.handleDelete}
-                className="mb-3 btn-sm"
+                className="mb-3"
               >
                 Delete
               </Button>

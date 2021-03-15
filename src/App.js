@@ -12,6 +12,7 @@ import Signup from './components/views/Signup';
 import Login from './components/views/Login';
 import ErrorPage from './components/views/ErrorPage';
 import Dashboard from './components/views/Dashboard';
+import EditPost from './components/views/EditPost';
 
 export default class App extends React.Component {
   state = {};
@@ -45,6 +46,12 @@ export default class App extends React.Component {
                   <CreatePost {...props} user={this.state.user} />
                 )}
               />
+              <Route
+                path="/editpost"
+                render={(props) => (
+                  <EditPost {...props} user={this.state.user} />
+                )}
+              />
               <Route path="/about" component={About} />
               <Route path="/signup" component={Signup} />
               <Route path="/login" component={Login} />
@@ -58,50 +65,6 @@ export default class App extends React.Component {
               <Route path="/" component={Home} />
             </Switch>
           </Row>
-
-          {/* <Switch>
-            <Route path="/posts">
-              <Row className="contentContainer">
-                <PostContent />
-              </Row>
-            </Route>
-            <Route path="/createpost">
-              <Row className="contentContainer">
-                <Col>
-                  <CreatePost />
-                </Col>
-              </Row>
-            </Route>
-            <Route path="/about">
-              <Row className="contentContainer">
-                <Col>
-                  <About />
-                </Col>
-              </Row>
-            </Route>
-            <Route path="/signup">
-              <Row className="contentContainer">
-                <Signup />
-              </Row>
-            </Route>
-            <Route path="/login">
-              <Row className="contentContainer">
-                <Login />
-              </Row>
-            </Route>
-            <Route path="/error">
-              <Row className="staticContainer">
-                <ErrorPage />
-              </Row>
-            </Route>
-            <Route path="/">
-              <Row>
-                <Col className="home">
-                  <Home />
-                </Col>
-              </Row>
-            </Route>
-          </Switch> */}
         </Container>
       </Router>
     );

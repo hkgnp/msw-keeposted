@@ -4,6 +4,7 @@ import Joi from 'joi-browser';
 const ValidatePost = async (props) => {
   // Destructure
   const {
+    postId,
     username,
     title,
     categories,
@@ -12,6 +13,7 @@ const ValidatePost = async (props) => {
     address2,
     postalcode,
     file,
+    editingPost,
   } = props;
 
   // Set up schema for Joi
@@ -45,22 +47,43 @@ const ValidatePost = async (props) => {
   if (validationResult.error === null) {
     const baseUrl = 'https://7000-ivory-rattlesnake-glx98tol.ws-us03.gitpod.io';
 
-    // Send to collection 'POST-DETAILS'
-    let postDetails = await axios({
-      method: 'post',
-      url: baseUrl + '/post-resource',
-      data: {
-        username: username,
-        title: title,
-        categories: categories,
-        description: description,
-        location: {
-          address1: address1,
-          address2: address2,
-          postalcode: postalcode,
+    let postDetails;
+    if (editingPost === true) {
+      // Editing existing resource
+      postDetails = await axios({
+        method: 'put',
+        url: baseUrl + '/edit-resource',
+        data: {
+          id: postId,
+          username: username,
+          title: title,
+          categories: categories,
+          description: description,
+          location: {
+            address1: address1,
+            address2: address2,
+            postalcode: postalcode,
+          },
         },
-      },
-    });
+      });
+    } else {
+      // New resource
+      postDetails = await axios({
+        method: 'post',
+        url: baseUrl + '/post-resource',
+        data: {
+          username: username,
+          title: title,
+          categories: categories,
+          description: description,
+          location: {
+            address1: address1,
+            address2: address2,
+            postalcode: postalcode,
+          },
+        },
+      });
+    }
 
     // Start the process of sending to S3
     let postObjectId = await postDetails.data;
