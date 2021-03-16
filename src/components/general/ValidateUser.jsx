@@ -22,7 +22,7 @@ const ValidateUser = async (props) => {
     validationResult.error.details.map((e) => (errors[e.path[0]] = e.message));
     return errors;
   } else {
-    const baseUrl = 'https://7000-ivory-rattlesnake-glx98tol.ws-us03.gitpod.io';
+    const baseUrl = 'https://quiet-gorge-29042.herokuapp.com';
 
     /// Send to collection 'POST DETAILS'
     try {

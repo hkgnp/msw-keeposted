@@ -21,7 +21,7 @@ export default class MoreDetails extends React.Component {
   getPost = async () => {
     const searchById = { _id: this.props.postId };
     const response = await axios.post(
-      'https://7000-ivory-rattlesnake-glx98tol.ws-us03.gitpod.io/resource',
+      'https://quiet-gorge-29042.herokuapp.com/resource',
       searchById
     );
     this.setState({
@@ -67,7 +67,7 @@ export default class MoreDetails extends React.Component {
   };
 
   handleDelete = async () => {
-    const baseUrl = 'https://7000-ivory-rattlesnake-glx98tol.ws-us03.gitpod.io';
+    const baseUrl = 'https://quiet-gorge-29042.herokuapp.com';
     await axios({
       method: 'delete',
       url: `${baseUrl}/delete-resource`,

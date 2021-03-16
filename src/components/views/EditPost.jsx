@@ -32,7 +32,7 @@ export default class EditPost extends React.Component {
     const searchById = { _id: postId };
 
     const response = await axios.post(
-      'https://7000-ivory-rattlesnake-glx98tol.ws-us03.gitpod.io/resource',
+      'https://quiet-gorge-29042.herokuapp.com/resource',
       searchById
     );
 

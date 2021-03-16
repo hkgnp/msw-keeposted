@@ -21,7 +21,7 @@ export default class Dashboard extends React.Component {
   getuserContributions = async () => {
     let searchByUser = { username: this.state.email };
     let response = await axios.post(
-      'https://7000-ivory-rattlesnake-glx98tol.ws-us03.gitpod.io/resource-by-user',
+      'https://quiet-gorge-29042.herokuapp.com/resource-by-user',
       searchByUser
     );
     this.setState({
@@ -66,7 +66,7 @@ export default class Dashboard extends React.Component {
 
   handleSubmit = async () => {
     const { name, email, id } = this.state;
-    const baseUrl = 'https://7000-ivory-rattlesnake-glx98tol.ws-us03.gitpod.io';
+    const baseUrl = 'https://quiet-gorge-29042.herokuapp.com';
     /// Send to collection 'POST DETAILS'
     try {
       await axios({
