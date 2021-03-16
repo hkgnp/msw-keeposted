@@ -32,11 +32,12 @@ export default class MoreDetails extends React.Component {
 
   componentDidMount = async () => {
     await this.getPost();
+    const { postalcode } = this.state.post.location;
     let response = await axios.get(
       'https://developers.onemap.sg/commonapi/search',
       {
         params: {
-          searchVal: 'a',
+          searchVal: postalcode,
           returnGeom: 'Y',
           getAddrDetails: 'Y',
           pageNum: '1',
