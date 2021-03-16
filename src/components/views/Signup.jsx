@@ -56,14 +56,22 @@ export default class Signup extends React.Component {
     return (
       <React.Fragment>
         <Col className="signup_instructions">
-          <h1>Some instructions text</h1>
-          <p>Sign up for an account to</p>
-          <ul>
-            <li>Post resources</li>
-            <li>Keep track of bookmarked resources</li>
-          </ul>
           <h1>We take your privacy seriously</h1>
-          <p>We do not share your data with anyone.</p>
+          <p className="mt-4">
+            We do not share your data with anyone. Under any circumstances
+            whatsoever.
+          </p>
+          <p>
+            We also hope that in return, you would take care of this platform,
+            and contribute or edit resources constructively for the benefit of
+            your other colleagues.
+          </p>
+          <p>
+            If you have any question, please contact us at&nbsp;&nbsp;
+            <a style={{ color: 'white' }} href="https://www.github.com/hkgnp">
+              <i className="fab fa-github"> </i>
+            </a>
+          </p>
         </Col>
         {/* Sign Up Form */}
         <Col className="login_signup">

@@ -26,7 +26,9 @@ const Post = (props) => {
             {c}
           </CardSubtitle>
         ))}
-        <CardText className="mt-3">{props.description}</CardText>
+        <CardText className="mt-3" style={{ whiteSpace: 'pre-wrap' }}>
+          {props.description}
+        </CardText>
         <CardText className="font-italic">
           {props.address1} {props.address2}
         </CardText>

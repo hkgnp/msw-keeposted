@@ -93,8 +93,17 @@ body {
 }
 
 .signup_instructions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   width: 50%;
   text-align: center;
+  background-color: #e86632;
+  color: #ffffff;
+  border-radius: 25px;
+  padding: 2rem;
+  margin-bottom: 2rem;
 }
 
 .card-img-top {
@@ -133,11 +142,17 @@ body {
   top: 35rem;
   left: 50%;
   background-color: white;
-  transform: translate(-50%, -75%);
+  transform: translate(-50%, -68%);
   padding: 2rem 2rem 3rem 2rem;
   border-radius: 3rem;
   z-index: 20;
   box-shadow: 0 0 2rem 0 rgba(0, 0, 0, 0.2), 0 2rem 5rem 0 rgba(0, 0, 0, 0.19);
+}
+
+.moredetailsdescription {
+  height: 11rem;
+  overflow-y: scroll;
+  white-space: pre-wrap;
 }
 
 .closemoredetails {
@@ -201,10 +216,6 @@ body {
 }
 
 @media screen and (max-width: 425px) {
-  .signup_instructions {
-    display: none;
-  }
-
   .moredetails {
     position: absolute;
     top: 52rem;
