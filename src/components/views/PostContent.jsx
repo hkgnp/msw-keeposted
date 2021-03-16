@@ -10,7 +10,7 @@ import DropdownSearchFilter from '../general/DropdownSearchFilter';
 
 export default class PostContent extends React.Component {
   state = {
-    pageSize: 4,
+    pageSize: 3,
     currentPage: 1,
     posts: [],
     loaded: false,
