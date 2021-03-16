@@ -18,7 +18,7 @@ export default class CreatePost extends React.Component {
     file: '',
     errors: '',
     username: '',
-    creatingPost: false,
+    loadingIcon: false,
   };
 
   componentDidMount = () => {
@@ -79,6 +79,10 @@ export default class CreatePost extends React.Component {
     const { title, categories, description, file, username } = this.state;
     const { address1, address2, postalcode } = this.state.location;
 
+    this.setState({
+      loadingIcon: true,
+    });
+
     const errors = await ValidatePost({
       username,
       title,
@@ -97,7 +101,6 @@ export default class CreatePost extends React.Component {
     } else {
       this.setState({
         errors: '',
-        creatingPost: true,
       });
       window.location.href = '/posts';
     }
@@ -236,8 +239,12 @@ export default class CreatePost extends React.Component {
           Reset
         </Button>
         &nbsp;&nbsp;
-        {this.state.creatingPost && (
-          <img src={loadingImage} alt="loading..." style={{ height: '2rem' }} />
+        {this.state.loadingIcon && (
+          <img
+            src={loadingImage}
+            alt="loading..."
+            style={{ height: '2rem', marginTop: '-18px' }}
+          />
         )}
       </Col>
     );

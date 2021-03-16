@@ -21,7 +21,7 @@ export default class EditPost extends React.Component {
     errors: '',
     username: '',
     postId: '',
-    creatingPost: false,
+    loadingIcon: false,
     editingPost: false,
   };
 
@@ -88,6 +88,9 @@ export default class EditPost extends React.Component {
   };
 
   handleSubmit = async (e) => {
+    this.setState({
+      loadingIcon: true,
+    });
     e.preventDefault();
     const {
       postId,
@@ -259,9 +262,12 @@ export default class EditPost extends React.Component {
         <Button color="danger" className="mx-2 mb-3" href="/posts">
           Back
         </Button>
-        &nbsp;&nbsp;
-        {this.state.creatingPost && (
-          <img src={loadingImage} alt="loading..." style={{ height: '2rem' }} />
+        {this.state.loadingIcon && (
+          <img
+            src={loadingImage}
+            alt="loading..."
+            style={{ height: '2rem', marginTop: '-18px' }}
+          />
         )}
       </Col>
     );
