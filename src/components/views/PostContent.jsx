@@ -91,7 +91,7 @@ export default class PostContent extends React.Component {
 
   setStateSearchFilter = (e) => {
     this.setState({
-      [e.target.name]: e.target.value,
+      searchIn: e.target.value,
     });
   };
 
@@ -203,7 +203,7 @@ export default class PostContent extends React.Component {
                 handleSearchString={this.handleSearchString}
               />
               <DropdownSearchFilter
-                setStateSearchIn={this.setStateSearchIn}
+                setStateSearchFilter={this.setStateSearchFilter}
                 setFilter={this.setFilter}
               />
             </div>
