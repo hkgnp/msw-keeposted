@@ -20,6 +20,7 @@ export default class EditPost extends React.Component {
     file: '',
     errors: '',
     username: '',
+    userId: '',
     postId: '',
     loadingIcon: false,
     editingPost: false,
@@ -56,6 +57,7 @@ export default class EditPost extends React.Component {
     if (this.props.user !== prevProps.user) {
       this.setState({
         username: this.props.user.username,
+        userId: this.props.user.id,
       });
     }
   };
@@ -100,6 +102,7 @@ export default class EditPost extends React.Component {
       file,
       username,
       editingPost,
+      userId,
     } = this.state;
     const { address1, address2, postalcode } = this.state.location;
 
@@ -114,6 +117,7 @@ export default class EditPost extends React.Component {
       postalcode,
       file,
       editingPost,
+      userId,
     });
 
     if (errors) {

@@ -16,10 +16,11 @@ export default class Dashboard extends React.Component {
     editing: false,
     loadUserContributions: false,
     userContributions: [],
+    loadingIcon: false,
   };
 
   getuserContributions = async () => {
-    let searchByUser = { username: this.state.email };
+    let searchByUser = { userId: this.state.id };
     let response = await axios.post(
       'https://quiet-gorge-29042.herokuapp.com/resource-by-user',
       searchByUser
@@ -65,6 +66,9 @@ export default class Dashboard extends React.Component {
   };
 
   handleSubmit = async () => {
+    this.setState({
+      loadingIcon: true,
+    });
     const { name, email, id } = this.state;
     const baseUrl = 'https://quiet-gorge-29042.herokuapp.com';
     /// Send to collection 'POST DETAILS'
@@ -140,15 +144,6 @@ export default class Dashboard extends React.Component {
               Edit
             </Button>
           )}
-          {!editing && (
-            <Button
-              color="danger"
-              className="mt-1 mx-2"
-              onClick={this.handleEdit}
-            >
-              Delete
-            </Button>
-          )}
           {editing && (
             <Button
               color="primary"
@@ -166,6 +161,13 @@ export default class Dashboard extends React.Component {
             >
               Reset
             </Button>
+          )}
+          {this.state.loadingIcon && (
+            <img
+              src={loadingImage}
+              alt="loading..."
+              style={{ height: '2rem', marginLeft: '5px', marginTop: '2px' }}
+            />
           )}
           {editing && (
             <FormText color="muted" className="mt-2">

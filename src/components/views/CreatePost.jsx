@@ -29,6 +29,7 @@ export default class CreatePost extends React.Component {
     if (this.props.user !== prevProps.user) {
       this.setState({
         username: this.props.user.username,
+        userId: this.props.user.id,
       });
     }
   };
@@ -76,7 +77,14 @@ export default class CreatePost extends React.Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
-    const { title, categories, description, file, username } = this.state;
+    const {
+      title,
+      categories,
+      description,
+      file,
+      username,
+      userId,
+    } = this.state;
     const { address1, address2, postalcode } = this.state.location;
 
     this.setState({
@@ -84,6 +92,7 @@ export default class CreatePost extends React.Component {
     });
 
     const errors = await ValidatePost({
+      userId,
       username,
       title,
       categories,
