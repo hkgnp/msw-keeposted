@@ -98,9 +98,9 @@ export default class MoreDetails extends React.Component {
         <React.Fragment>
           {imageResize && (
             <Fade>
-              <div className="close" onClick={this.imageResizeClose}>
-                <h1 className="display-1 text-light">&times;</h1>
-              </div>
+              <span className="close" onClick={this.imageResizeClose}>
+                <h1 className="text-light xbutton">&times;</h1>
+              </span>
               <img
                 className="resize-moredetailsimage"
                 alt="Original Size"
