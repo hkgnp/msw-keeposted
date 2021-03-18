@@ -10,7 +10,7 @@ import DropdownSearchFilter from '../general/DropdownSearchFilter';
 
 export default class PostContent extends React.Component {
   state = {
-    pageSize: 3,
+    pageSize: 2,
     currentPage: 1,
     posts: [],
     loaded: false,
@@ -37,7 +37,7 @@ export default class PostContent extends React.Component {
         loaded: true,
       });
     } catch (e) {
-      window.location.href = '/error';
+      this.props.history.push('/error');
       console.log(e);
     }
   };
@@ -97,7 +97,6 @@ export default class PostContent extends React.Component {
 
   setFilter = async (e) => {
     if (e.target.value === 'All') {
-      // window.location = '/posts';
       this.props.history.push('/posts');
     } else {
       const filter = {
@@ -115,7 +114,7 @@ export default class PostContent extends React.Component {
           currentPage: 1,
         });
       } catch (e) {
-        window.location.href = '/error';
+        this.props.history.push('/error');
         console.log(e);
       }
     }

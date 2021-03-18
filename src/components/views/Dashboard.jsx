@@ -83,7 +83,7 @@ export default class Dashboard extends React.Component {
         },
       });
       localStorage.removeItem('token');
-      window.location = '/login';
+      this.props.history.push('/login');
     } catch (e) {
       const errors = 'Username is already taken';
       return errors;

@@ -61,7 +61,7 @@ export default class Login extends React.Component {
       localStorage.setItem('token', jwt);
 
       // Redirect to main page
-      window.location.href = '/posts';
+      this.props.history.push('/posts');
     } catch (e) {
       this.setState({
         loginerror: e.response.data,
