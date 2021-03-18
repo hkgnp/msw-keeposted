@@ -97,7 +97,8 @@ export default class PostContent extends React.Component {
 
   setFilter = async (e) => {
     if (e.target.value === 'All') {
-      window.location = '/posts';
+      // window.location = '/posts';
+      this.props.history.push('/posts');
     } else {
       const filter = {
         categories: e.target.value,
@@ -117,6 +118,16 @@ export default class PostContent extends React.Component {
         window.location.href = '/error';
         console.log(e);
       }
+    }
+  };
+
+  setResultsPerPage = (e) => {
+    if (e.target.value === '') {
+      return;
+    } else {
+      this.setState({
+        pageSize: e.target.value,
+      });
     }
   };
 
@@ -233,6 +244,7 @@ export default class PostContent extends React.Component {
                 managePageChange={this.managePageChange}
                 moreDetails={this.moreDetails}
                 viewReviews={this.viewReviews}
+                setResultsPerPage={this.setResultsPerPage}
               />
             </div>
           </Col>

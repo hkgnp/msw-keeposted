@@ -43,6 +43,15 @@ body {
   border-radius: 15px !important;
 }
 
+.resultsPerPage {
+  width: 8rem !important;
+}
+
+.postNumber {
+  display: block;
+  /* margin: 1rem 0; */
+}
+
 .postContainer {
   display: flex;
   flex-flow: wrap;
@@ -79,11 +88,6 @@ body {
   border-radius: 10px;
   padding: 2px 8px;
   color: white !important;
-}
-
-.postNumber {
-  display: block;
-  margin: 1rem 0;
 }
 
 .login_signup {
