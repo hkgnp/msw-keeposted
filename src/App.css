@@ -99,7 +99,8 @@ body {
   flex-direction: column;
   width: 50%;
   text-align: center;
-  background-color: #e86632;
+  /* background-color: #e86632; */
+
   color: #ffffff;
   border-radius: 25px;
   padding: 2rem;
@@ -164,7 +165,7 @@ body {
 }
 
 .moredetailsimage {
-  height: 19rem;
+  width: 20rem;
   z-index: 20;
   border-radius: 20px;
 }

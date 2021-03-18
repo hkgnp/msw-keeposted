@@ -122,7 +122,7 @@ export default class MoreDetails extends React.Component {
                 <Badge className="bg-info">Categories</Badge>{' '}
                 {categories.join(', ')}
               </p>
-              <div className="moredetailsdescription">
+              <div className="moredetailsdescription mb-3">
                 <p>
                   <Badge className="bg-info">Description</Badge> {description}
                 </p>

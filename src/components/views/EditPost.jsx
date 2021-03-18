@@ -130,7 +130,7 @@ export default class EditPost extends React.Component {
         creatingPost: true,
         editingPost: false,
       });
-      window.location.href = '/posts';
+      this.props.history.push('/posts');
     }
   };
 

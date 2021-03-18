@@ -111,7 +111,7 @@ export default class CreatePost extends React.Component {
       this.setState({
         errors: '',
       });
-      window.location.href = '/posts';
+      this.props.history.push('/posts');
     }
   };
 

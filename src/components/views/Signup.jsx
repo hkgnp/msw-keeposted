@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../App.css';
 import ValidateUser from '../general/ValidateUser';
 import loadingImage from '../../rolling.svg';
+import orangeBg from '../../orange-bg.jpg';
 
 export default class Signup extends React.Component {
   state = {
