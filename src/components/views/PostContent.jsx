@@ -111,6 +111,7 @@ export default class PostContent extends React.Component {
         this.setState({
           posts: response.data.reverse(),
           loaded: true,
+          currentPage: 1,
         });
       } catch (e) {
         window.location.href = '/error';
