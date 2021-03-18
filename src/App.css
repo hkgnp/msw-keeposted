@@ -100,7 +100,7 @@ body {
   width: 50%;
   text-align: center;
   /* background-color: #e86632; */
-
+  background-image: url('orange-bg.jpg');
   color: #ffffff;
   border-radius: 25px;
   padding: 2rem;
