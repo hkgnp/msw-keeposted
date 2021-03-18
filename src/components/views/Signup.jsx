@@ -3,6 +3,7 @@ import { Button, FormGroup, Label, Input, Col } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../App.css';
 import ValidateUser from '../general/ValidateUser';
+import axios from 'axios';
 import loadingImage from '../../rolling.svg';
 
 export default class Signup extends React.Component {
@@ -11,7 +12,7 @@ export default class Signup extends React.Component {
     email: '',
     password: '',
     errors: '',
-    loaded: '',
+    loadingIcon: false,
   };
 
   componentDidMount = () => {
@@ -25,16 +26,37 @@ export default class Signup extends React.Component {
   };
 
   handleSubmit = async (e) => {
+    this.setState({ loadingIcon: true });
     e.preventDefault();
     const { name, email, password } = this.state;
     const errors = await ValidateUser({ name, email, password });
-    if (errors === 'Username is already taken') {
+    console.log(errors);
+    if (errors === 'Username has already been taken') {
       this.setState({
         errors: {
-          usernameTaken: errors,
+          usernameTaken: 'Username has already been taken',
+        },
+        loadingIcon: false,
+      });
+    } else if (errors === 'User successfully registered') {
+      const baseUrl = 'https://quiet-gorge-29042.herokuapp.com';
+      const response = await axios({
+        method: 'post',
+        url: `${baseUrl}/user/login`,
+        data: {
+          email: email,
+          password: password,
         },
       });
-    } else {
+      // Get token
+      const jwt = response.data.date.token;
+
+      // Store token in local storage
+      localStorage.setItem('token', jwt);
+
+      // Redirect to main page
+      window.location = '/posts';
+    } else if (errors !== '') {
       this.setState({
         errors: errors,
       });
@@ -134,11 +156,11 @@ export default class Signup extends React.Component {
           >
             Reset
           </Button>
-          {this.state.loaded === false && (
+          {this.state.loadingIcon && (
             <img
               src={loadingImage}
-              style={{ height: '2rem' }}
               alt="loading..."
+              style={{ height: '2rem', marginTop: '8px' }}
             />
           )}
         </Col>

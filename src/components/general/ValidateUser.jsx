@@ -35,35 +35,9 @@ const ValidateUser = async (props) => {
           password: password,
         },
       });
-
-      //Login user
-      let response = '';
-
-      try {
-        response = await axios({
-          method: 'post',
-          url: `${baseUrl}/user/login`,
-          data: {
-            email: email,
-            password: password,
-          },
-        });
-        // Get token
-        const jwt = response.data.date.token;
-
-        // Store token in local storage
-        localStorage.setItem('token', jwt);
-
-        // Redirect to main page
-        window.location.href = '/';
-      } catch (e) {
-        this.setState({
-          loginerror: e.response.data,
-          loaded: true,
-        });
-      }
+      return 'User successfully registered';
     } catch (e) {
-      return 'Username is already taken';
+      return 'Username has already been taken';
     }
   }
 };
