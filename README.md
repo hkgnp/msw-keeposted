@@ -1,11 +1,51 @@
 # How to Use
 
-- msw keeposted can be accessed at [...]
+- msw keeposted can be accessed at [https://suspicious-northcutt-d2f899.netlify.app]
 - As this is a prototype, please do not use it for actual services, and do not key in any sensitive patient data.
 
-This app consists of 5 core functions:
+This app consists of 6 core functions:
 
-## Specific search / Filter resources
+1. Dynamic search of various attributes
+2. Filter resources by resource category
+3. Post reviews of resources
+4. Register / Login / Log out (to contribute resources)
+5. Contribute / Edit resources
+6. User dashboard (to edit your name and email)
+
+# Project Summary
+
+This web application is to be used by Medical Social Workers (MSWs) to contribute resources that may be helpful to their colleagues within or outside their organisation. It is a community driven platform where contributors only need to register to contribute new resources, but registration is not needed to review resources.
+
+# Strategy
+
+It is important for MSWs to be kept updated on the latest health and social care resources that can be used to help patients. Often time, MSWs will need to either maintain their own database of resources, or to frequently ask around whenever their patient needs something that they are not familiar with. Depending on who is asked, there may be different responses. And because the landscape changes quickly, information can get outdated by the time you need it.
+
+This application hopes to be able to create a consolidate pool of updated resources for everyone to reference, and for MSWs to be able to also contribute reviews to keep the data refreshed.
+
+## User Stories
+
+1. As a MSW, I want to be able to look for relevant social and healthcare resources using keywords.
+2. As a MSW, I want to be able to contribute new resources that I have come across and provide useful details about them.
+3. As a MSW, I want to be able to leave reviews of resources that I have used for my patients, to better advise other MSWs who are thinking of using them.
+4. As a user, I want to be able to edit the resources that I or my fellow healthcare professionals have contributed.
+
+# Scope
+
+The app must be able to perform the following functions:
+
+- Allow users to employ a variety of search and filter methods to locate the resource they need.
+- Allow a user to register, log in and log out.
+- Allow a user to edit their details on their own dashboard.
+- For accountability purposes, to only allow registered users to contribute new resources.
+- Allow registered users to edit not only their own contributions, but those of others as well.
+- To encourage resources to be vetted as much as possible, allow non-registered users to contribute reviews.
+- Each resource should contain critical information, including a map to allow easy location of resource.
+
+# Structure
+
+## Specific search
+
+## Filter resources
 
 ## Post reviews
 
@@ -13,64 +53,14 @@ This app consists of 5 core functions:
 
 ## Contribute resource / Edit resource
 
-## User dashboard (to edit your name and email)
-
-# Project Summary
-
-This toolbox is to be used by Medical Social Workers (MSWs) to contribute resources that may be helpful to their colleagues within or outside their organisation. It is a community driven platform where contributors only need to register to contribute new resources, but registration is not needed to edit resource.
-
-# Strategy
-
-Part of a MSW's role is to link their patients up with community services as part of their care. This applies to both patients in the hospitals and clinics, and those who are at home. Currently, when a MSW identifies that a patient needs to be linked up with a community service, she may not know the services that are in the particular patient's committee. Even if she knows, she will need to do so when she is back in the office, despite having the necessary tools with her.
-
-Useful information like health and social policies, and statistics are fragmented and found on different sites. Currently, MSWs need to navigate these different sites just to obtain the information, decreasing their productivity.
-
-This application hopes to be able to solve the above problems, and ideally, as part of a wider eco-system of applications.
-
-## User Stories
-
-1. As a MSW, I want to be able to locate relevant community services that are near my patient so that I can share them without needing more than one visit.
-2. As a MSW, I want to be able to refer my patient to these services from their homes, so that I do not need to return to my office to do so.
-3. As a MSW, I want to be able to retrieve relevant policy information and statistics in a single place, so that I do not need to navigate several websites to do so.
-4. As a MSW, I want the above functions to be available as a mobile app, because the work-issued devices have internet separation, and I will predominantly use my mobile or tablet to perform these functions.
-
-# Scope
-
-The app must be able to perform the following functions:
-
-- Request and store a postal code to be converted to lat, long for processing.
-- Request for user location in the form of lat, long.
-- Request (from an API or local file) positional data of relevant community services.
-- Compare the above coordinates to retrieve services nearby to the user's location or postal code.
-- Store useful information and statistics, using graphs where necessary.
-
-# Structure
-
-## Ecomap Discoverer
-
-1. User will be given an open map and be able to use the GPS on their mobile device to find out their exact position.
-2. User will then be presented with toggle buttons to discover services that are nearby their location or around the island.
-
-## Useful data and Statistics
-
-1. User will be able to access a menu through the hamburger to be able to obtain relevant policy information and statistics.
-2. Graphs will be used where necessary.
-
-## Search and Refer
-
-1. User will be presented with radio buttons to select the service that they would like to isolate.
-2. User will be prompted with options to either (1) key in a postal code; or (2) use their device's GPS to retrieve their current location.
-3. User will then be shown an interactive map that shows the above.
-4. User will be able to refer to their marker of choice, and then click on a button to bring them to the referral page.
-5. At the referral page, user will be presented with a form to key in the necessary referral information.
-6. Upon submission, user will be presented with a HTML friendly version of the data that they can send to the community service via email.
+## User dashboard
 
 # Skeleton
 
-![image](./readmescreenshots/landingpage.png)
-![image](./readmescreenshots/menu.png)
-![image](./readmescreenshots/location.png)
-![image](./readmescreenshots/map.png)
+![image](./readmescreenshots/dashboard.png)
+![image](./readmescreenshots/posts.png)
+![image](./readmescreenshots/contributeresource.png)
+![image](./readmescreenshots/resource.png)
 
 # Code style
 
@@ -79,43 +69,32 @@ Code is formatted using Prettier (installed as an extension in VS Code).
 
 # Deployment
 
-`msw-toolbox` is deployed to Github Pages. MongoDB is used to store the referral information for retrieval, and the API used to communicate with MongoDB is hosted on Heroku. This API was specially created for this project and it can be found on [mswapi](https://github.com/hkgnp/mswapi). Dependency details for the API can be found on the page directly.
+`msw-keeposted` is deployed to Netlify. The API for resources, reviews and user information is hostedon Heroku. MongoDB and Amazon S3 are used for storing text information and images respectively. API details can be found at []()
 
-The dependencies for `msw-toolbox` can be found in the section below under "Tech/frameworks Used". Other than the CSS Menu (by Erik Terwan), Flat icons for the map pins, and geojson files, the other dependencies do not have to be downloaded as they are called through CDNs. Hence, if you would like to deploy this app on your own server, please ensure that the below files and folders are forked as well.
-
-```
-/geojson
-/pins
-/css/menu.css
-```
-
-Note: The geojson files are updated as of Jan 2021. There may be more updated datasets by the time you read this. However, the infograph data are obtained through a real-time API.
+`msw-toolbox` is deployed to Github Pages. MongoDB is used to store the referral information for retrieval, and the API used to communicate with MongoDB is hosted on Heroku. This API was specially created for this project and it can be found on [msw-keeposted API](https://github.com/hkgnp/msw-keeposted-api). Dependency details for the API can be found on the page directly.
 
 # Tech/frameworks Used
 
 This app is made only possible thanks to the following technologies:
 
 - [Github](https://www.github.com/)
-- [HTML](https://en.wikipedia.org/wiki/HTML)
-- [CSS](https://en.wikipedia.org/wiki/CSS)
-- [Vanilla Javascript](https://en.wikipedia.org/wiki/JavaScript)
+- [Node](https://nodejs.org/en/)
+- [React](https://reactjs.org/)
+- [reactstrap](https://reactstrap.github.io/)
+- [React Router](https://reactrouter.com/)
+- [Express](https://expressjs.com/)
 - [Leaflet](https://leafletjs.com/)
-- [Leaflet Geometry Utility](https://github.com/makinacorpus/Leaflet.GeometryUtil)
-- [Leaflet Omnivore](https://github.com/mapbox/leaflet-omnivore)
+- [Leaflet Default Icon Compatibility](https://github.com/ghybs/leaflet-defaulticon-compatibility)
 - [Bootstrap](https://getbootstrap.com/)
 - [Google Fonts](https://fonts.google.com/)
 - [Font Awesome](https://fontawesome.com/)
 - [MongoDB](https://www.mongodb.com/cloud/atlas)
+- [Amazon S3](https://aws.amazon.com/s3/)
 - [Heroku](https://www.heroku.com)
 - [Axios](https://github.com/axios/axios)
-- [ApexCharts.JS](https://apexcharts.com/)
-- [CSS Menu](https://codepen.io/erikterwan/pen/EVzeRP)
-- [Scroll Reveal](https://scrollrevealjs.org/api/reveal.html)
-- [Flat Icons (for the pins)](https://www.flaticon.com)
-  - [Freepik](https://www.freepik.com)
-  - [Smashicons](https://smashicons.com)
-  - [Pixel Perfect](https://icon54.com)
-  - [srip](https://www.flaticon.com)
+- [Unsplash](https://unsplash.com)
+- [bcrypt](https://www.npmjs.com/package/bcrypt)
+- [JWT](https://jwt.io/)
 - Built with [VS Code](https://code.visualstudio.com/)
 
 # API References
@@ -123,7 +102,6 @@ This app is made only possible thanks to the following technologies:
 And it is also made only possible thanks to the painstaking work done by the following organisations:
 
 - [OneMap](https://app.swaggerhub.com/apis/onemap-sg/new-onemap-api/1.0.3)
-- [Data.gov.sg](https://data.gov.sg/)
 - [Open Street Map](https://www.openstreetmap.org/)
 - [Mapbox](https://www.mapbox.com/)
 
@@ -140,4 +118,6 @@ And it is also made only possible thanks to the painstaking work done by the fol
   - Julius
   - Ryan
   - Ying Ru
-- My fellow professionals who have given feedback to help me finetune the application.
+- The following guides that helped me understand React further:
+  - [To Handle Authentication with Node JS, Express, Mongo, JWT](https://codeburst.io/to-handle-authentication-with-node-js-express-mongo-jwt-7e55f5818181)
+  - [Stack Overflow: how to implement Pagination in reactJS](https://stackoverflow.com/questions/40232847/how-to-implement-pagination-in-reactjs)
