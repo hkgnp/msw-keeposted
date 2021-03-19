@@ -7,10 +7,11 @@ This app consists of 6 core functions:
 
 1. Dynamic search of various attributes
 2. Filter resources by resource category
-3. Post reviews of resources
-4. Register / Login / Log out (to contribute resources)
-5. Contribute / Edit resources
-6. User dashboard (to edit your name and email)
+3. Change number of results per page
+4. Post reviews of resources
+5. Register / Login / Log out (to contribute resources)
+6. Contribute / Edit resources and upload a relevant picture.
+7. User dashboard (to edit your name and email)
 
 # Project Summary
 
@@ -35,6 +36,7 @@ The app must be able to perform the following functions:
 
 - Allow users to employ a variety of search and filter methods to locate the resource they need.
 - Allow a user to register, log in and log out.
+- Users' passwords must be hashed before storing on the database.
 - Allow a user to edit their details on their own dashboard.
 - For accountability purposes, to only allow registered users to contribute new resources.
 - Allow registered users to edit not only their own contributions, but those of others as well.
@@ -43,17 +45,29 @@ The app must be able to perform the following functions:
 
 # Structure
 
-## Specific search
+### Dynamic search
 
-## Filter resources
+Dynamic search for resources using either the Title, Description, Address or Postal Code. Users can also adjust the number of results that they want to see in one page.
 
-## Post reviews
+### Filter resources
 
-## Login / Log out
+Filter resources by their category. Users can also adjust the number of results that they want to see in one page.
 
-## Contribute resource / Edit resource
+### Post reviews
 
-## User dashboard
+Post reviews of resources for other users to decide on the suitability for their patients.
+
+### Register / Login / Log out
+
+Register for an account to contribute or edit resources. User can login and a JWT will be stored on the browser until the user logs out, where it will be deleted.
+
+### User dashboard
+
+Users who have registered and logged in, can access their Dashboard where they can change their display name and username.
+
+### Contribute resource / Edit resource
+
+Registered users can log in to contribute a new resource or edit an existing resource (contributed by themselves or others). They will also be able to upload a picture from their device to provide more details about the resource.
 
 # Skeleton
 

@@ -130,6 +130,9 @@ export default class CreatePost extends React.Component {
     return (
       <Col>
         <h1>Contribute Resource</h1>
+        <FormText color="muted" style={{ textAlign: 'right' }}>
+          *Only registered users can contribute posts.
+        </FormText>
         <FormGroup>
           {username && (
             <FormText color="muted">
