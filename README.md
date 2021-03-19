@@ -3,7 +3,7 @@
 - msw keeposted can be accessed at [...]
 - As this is a prototype, please do not use it for actual services, and do not key in any sensitive patient data.
 
-This app consists of 4 core functions:
+This app consists of 5 core functions:
 
 ## Specific search / Filter resources
 
