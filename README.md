@@ -76,6 +76,7 @@ Registered users can log in to contribute a new resource or edit an existing res
 ![image](./readmescreenshots/posts.png)
 ![image](./readmescreenshots/contributeresource.png)
 ![image](./readmescreenshots/resource.png)
+![image](./readmescreenshots/hashpassword.png)
 
 # Code style
 
