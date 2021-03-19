@@ -1,6 +1,6 @@
 # How to Use
 
-- msw keeposted can be accessed at [https://suspicious-northcutt-d2f899.netlify.app]
+- msw keeposted can be accessed at [https://suspicious-northcutt-d2f899.netlify.app](https://suspicious-northcutt-d2f899.netlify.app)
 - As this is a prototype, please do not use it for actual services, and do not key in any sensitive patient data.
 
 This app consists of 6 core functions:
