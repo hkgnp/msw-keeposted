@@ -1,6 +1,7 @@
 # How to Use
 
 - msw keeposted can be accessed at [https://suspicious-northcutt-d2f899.netlify.app](https://suspicious-northcutt-d2f899.netlify.app)
+- Details of the API used for this prototype can be found at [https://github.com/hkgnp/msw-keeposted-api](https://github.com/hkgnp/msw-keeposted-api)
 - As this is a prototype, please do not use it for actual services, and do not key in any sensitive patient data.
 
 This app consists of 6 core functions:
