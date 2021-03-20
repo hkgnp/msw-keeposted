@@ -4,7 +4,7 @@
 - Details of the API used for this prototype can be found at [https://github.com/hkgnp/msw-keeposted-api](https://github.com/hkgnp/msw-keeposted-api)
 - As this is a prototype, please do not use it for actual services, and do not key in any sensitive patient data.
 
-This app consists of 6 core functions:
+This app consists of 7 core functions:
 
 1. Dynamic search of various attributes
 2. Filter resources by resource category
@@ -27,7 +27,7 @@ This application hopes to be able to create a consolidate pool of updated resour
 ## User Stories
 
 1. As a MSW, I want to be able to look for relevant social and healthcare resources using keywords.
-2. As a MSW, I want to be able to contribute new resources that I have come across and provide useful details about them.
+2. As a MSW, I want to be able to contribute new resources that I have come across and provide useful details about them, including upload an image related to the resource (e.g. a flyer).
 3. As a MSW, I want to be able to leave reviews of resources that I have used for my patients, to better advise other MSWs who are thinking of using them.
 4. As a user, I want to be able to edit the resources that I or my fellow healthcare professionals have contributed.
 
