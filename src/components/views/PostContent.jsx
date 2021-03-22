@@ -97,7 +97,7 @@ export default class PostContent extends React.Component {
 
   setFilter = async (e) => {
     if (e.target.value === 'All') {
-      this.props.history.push('/posts');
+      window.location = '/posts';
     } else {
       const filter = {
         categories: e.target.value,

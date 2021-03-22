@@ -131,12 +131,14 @@ export default class CreatePost extends React.Component {
       <Col>
         <h1>Contribute Resource</h1>
         <FormText color="muted" style={{ textAlign: 'right' }}>
-          *Only registered users can contribute posts.
+          *Only registered users can contribute posts.{' '}
+          <a href="/register">Register</a> or <a href="/login">click here</a> to
+          login.
         </FormText>
         <FormGroup>
           {username && (
             <FormText color="muted">
-              You must <a href="login">log in</a> to contribute a resource. If
+              You must <a href="/login">log in</a> to contribute a resource. If
               you do not have an account, please{' '}
               <a href="/signup">click here</a> to sign up!
             </FormText>
