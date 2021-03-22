@@ -4,15 +4,17 @@
 - Details of the API used for this prototype can be found at [https://github.com/hkgnp/msw-keeposted-api](https://github.com/hkgnp/msw-keeposted-api)
 - As this is a prototype, please do not use it for actual services, and do not key in any sensitive patient data.
 
-This app consists of 7 core functions:
+This app consists of 9 core functions:
 
 1. Dynamic search of various attributes
 2. Filter resources by resource category
 3. Change number of results per page
 4. Post reviews of resources
 5. Register / Login / Log out (to contribute resources)
-6. Contribute / Edit resources and upload a relevant picture.
-7. User dashboard (to edit your name and email)
+6. Validate forms using joi-browser
+7. Hashing of password when sending to MongoDB using bcrypt
+8. Contribute / Edit resources and upload a relevant picture
+9. User dashboard (to edit your name and email)
 
 # Project Summary
 
@@ -96,6 +98,8 @@ This app is made only possible thanks to the following technologies:
 - [Github](https://www.github.com/)
 - [Node](https://nodejs.org/en/)
 - [React](https://reactjs.org/)
+- [bcrypt](https://www.npmjs.com/package/bcrypt)
+- [joi-browser](https://www.npmjs.com/package/joi-browser)
 - [reactstrap](https://reactstrap.github.io/)
 - [React Router](https://reactrouter.com/)
 - [Express](https://expressjs.com/)
