@@ -87,9 +87,33 @@ Code is formatted using Prettier (installed as an extension in VS Code).
 
 # Deployment
 
-`msw-keeposted` is deployed to Netlify. The API for resources, reviews and user information is hostedon Heroku. MongoDB and Amazon S3 are used for storing text information and images respectively. API details can be found at []()
+`msw-keeposted` is deployed to Netlify. The API for resources, reviews and user information is hostedon Heroku. MongoDB and Amazon S3 are used for storing text information and images respectively. API details can be found at [https://github.com/hkgnp/msw-keeposted-api](https://github.com/hkgnp/msw-keeposted-api)
 
-`msw-toolbox` is deployed to Github Pages. MongoDB is used to store the referral information for retrieval, and the API used to communicate with MongoDB is hosted on Heroku. This API was specially created for this project and it can be found on [msw-keeposted API](https://github.com/hkgnp/msw-keeposted-api). Dependency details for the API can be found on the page directly.
+### Deploying `msw-keeposted`
+
+After cloning the repository, ensure that the folder and files are in the root directory (e.g. same directory as your .git directory). You may then proceed to log in to your [Netlify](https://www.netlify.com) and deploy a new site from Github. Select your Github directory and Netlify will proceed to deploy your site.
+
+### Deploying `msw-keeposted-api`
+
+After cloning the repository, ensure that the folder and files are in the root directory (e.g. same directory as your .git directory). Using [Heroku's CLI tool](https://devcenter.heroku.com/articles/heroku-cli), proceed to use your terminal to link your repository with Heroku. Before pushing to Heroku (using `git push heroku master` OR `git push heroku <branch>`), ensure that the following is done:
+
+- Your .gitignore file is properly configured to include `node_modules` and any `.env` files.
+- A **Procfile** has been created and contains the following: `web: node index.js`.
+- The version of Node is included in your `package.json` file:
+
+```
+"engines": {
+    "node": "14.x"
+  }
+```
+
+- After creaing the app on Heroku using `heroku create`, set up your **config variables** in the settings section of your application in Heroku. It should contain the variables for the following:
+  - S3_ACCESS_KEY (for uploading images to Amazon S3)
+  - S3_ACCESS_SECRET (for uploading images to Amazon S3)
+  - MONGO_URL (for CRUD in MongoDB)
+  - TOKEN_SECRET (for bcrypt to has users' passwords)
+
+For further details, please refer to the awesome [guide](https://devcenter.heroku.com/articles/deploying-nodejs) on Heroku's website.
 
 # Tech/frameworks Used
 
