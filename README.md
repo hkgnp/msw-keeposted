@@ -111,7 +111,7 @@ After cloning the repository, ensure that the folder and files are in the root d
   - S3_ACCESS_KEY (for uploading images to Amazon S3)
   - S3_ACCESS_SECRET (for uploading images to Amazon S3)
   - MONGO_URL (for CRUD in MongoDB)
-  - TOKEN_SECRET (for bcrypt to has users' passwords)
+  - TOKEN_SECRET (for bcrypt to hash users' passwords)
 
 For further details, please refer to the awesome [guide](https://devcenter.heroku.com/articles/deploying-nodejs) on Heroku's website.
 
