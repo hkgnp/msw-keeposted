@@ -137,7 +137,6 @@ This app is made only possible thanks to the following technologies:
 - [Heroku](https://www.heroku.com)
 - [Axios](https://github.com/axios/axios)
 - [Unsplash](https://unsplash.com)
-- [bcrypt](https://www.npmjs.com/package/bcrypt)
 - [JWT](https://jwt.io/)
 - Built with [VS Code](https://code.visualstudio.com/)
 
@@ -159,7 +158,7 @@ And it is also made only possible thanks to the painstaking work done by the fol
 - My wonderful classmates who have been part of this journey together:
   - Hidayah
   - Howard
-  - Julius
+  - Julius (thank you for the API idea)
   - Ryan
   - Ying Ru
 - The following guides that helped me understand React further:
