@@ -75,7 +75,7 @@ export default class MoreDetails extends React.Component {
         id: this.props.postId,
       },
     });
-    this.props.history.push('/posts');
+    window.location = '/posts';
   };
 
   render() {
