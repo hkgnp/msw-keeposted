@@ -10,7 +10,7 @@ export default class About extends React.Component {
   render() {
     return (
       <Col className="home">
-        <p className="px-5 font-weight-bold display-4">
+        <p className="px-5 font-weight-bold" style={{ fontSize: '2rem' }}>
           Keep fellow MSWs posted of resources that you have come across.
         </p>
         <p className="px-5 font-weight-bold" style={{ lineHeight: 2 }}>
