@@ -241,7 +241,7 @@ body {
 
   .viewreviews {
     position: absolute;
-    top: 15rem;
+    top: 25rem;
     width: 98%;
   }
 
@@ -250,7 +250,8 @@ body {
   }
 
   .moredetailsimage {
-    height: 10rem;
+    height: 15rem;
+    width: 15rem;
     z-index: 20;
     border-radius: 20px;
   }
