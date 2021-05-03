@@ -50,16 +50,18 @@ export default class EditPost extends React.Component {
         address2: location.address2,
         postalcode: location.postalcode,
       },
+      userId: this.props.user.id,
+      username: this.props.user.username,
     });
   };
 
   componentDidUpdate = (prevProps) => {
-    if (this.props.user !== prevProps.user) {
-      this.setState({
-        username: this.props.user.username,
-        userId: this.props.user.id,
-      });
-    }
+    // if (this.props.user !== prevProps.user) {
+    //   this.setState({
+    //     username: this.props.user.username,
+    //     userId: this.props.user.id,
+    //   });
+    // }
   };
 
   handleForm = (e) => {

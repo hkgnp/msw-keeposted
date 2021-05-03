@@ -91,11 +91,10 @@ export default class MoreDetails extends React.Component {
   };
 
   handleEdit = (e) => {
-    console.log(e.target.name);
     this.setState({
       moreDetails: false,
     });
-    this.props.history.push(`/editpost?id=${e.target.name}`);
+    window.location = `/editpost?id=${e.target.name}`;
   };
 
   render() {
