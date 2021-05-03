@@ -10,7 +10,7 @@ import DropdownSearchFilter from '../general/DropdownSearchFilter';
 
 export default class PostContent extends React.Component {
   state = {
-    pageSize: 2,
+    pageSize: 4,
     currentPage: 1,
     posts: [],
     loaded: false,
@@ -140,12 +140,13 @@ export default class PostContent extends React.Component {
   };
 
   moreDetails = (e) => {
-    this.setState({
-      postId: e.target.name,
-      moreDetails: true,
-      backdrop: true,
-    });
-    window.scrollTo(0, 0);
+    // this.setState({
+    //   postId: e.target.name,
+    //   moreDetails: true,
+    //   backdrop: true,
+    // });
+    // window.scrollTo(0, 0);
+    this.props.history.push(`/post?id=${e.target.name}`);
   };
 
   viewReviews = (e) => {
@@ -155,13 +156,6 @@ export default class PostContent extends React.Component {
       backdrop: true,
     });
     window.scrollTo(0, 0);
-  };
-
-  handleEdit = (e) => {
-    this.setState({
-      moreDetails: false,
-    });
-    window.location = `/editpost?id=${e.target.name}`;
   };
 
   render() {

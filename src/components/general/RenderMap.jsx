@@ -14,7 +14,7 @@ const RenderMap = (props) => {
 
   // Render actual map
   return (
-    <div>
+    <div className="mb-4">
       <MapContainer
         center={[props.latitude, props.longitude]}
         zoom={17}

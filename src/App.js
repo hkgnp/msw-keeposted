@@ -13,6 +13,7 @@ import Login from './components/views/Login';
 import ErrorPage from './components/views/ErrorPage';
 import Dashboard from './components/views/Dashboard';
 import EditPost from './components/views/EditPost';
+import MoreDetails from './components/views/MoreDetails';
 
 export default class App extends React.Component {
   state = {};
@@ -44,6 +45,12 @@ export default class App extends React.Component {
                 path="/createpost"
                 render={(props) => (
                   <CreatePost {...props} user={this.state.user} />
+                )}
+              />
+              <Route
+                path="/post"
+                render={(props) => (
+                  <MoreDetails {...props} user={this.state.user} />
                 )}
               />
               <Route

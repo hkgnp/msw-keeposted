@@ -19,11 +19,20 @@ export default class MoreDetails extends React.Component {
   };
 
   getPost = async () => {
-    const searchById = { _id: this.props.postId };
+    // const searchById = { _id: this.props.postId };
+    // const response = await axios.post(
+    //   'https://quiet-gorge-29042.herokuapp.com/resource',
+    //   searchById
+    // );
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const postId = urlParams.get('id');
+    const searchById = { _id: postId };
     const response = await axios.post(
       'https://quiet-gorge-29042.herokuapp.com/resource',
       searchById
     );
+
     this.setState({
       post: response.data,
       postLoaded: true,
@@ -52,8 +61,11 @@ export default class MoreDetails extends React.Component {
   };
 
   imageResize = () => {
-    const { postId } = this.props;
+    const urlParams = new URLSearchParams(window.location.search);
+    const postId = urlParams.get('id');
+
     const image = `https://msw-keeposted-images.s3-ap-southeast-1.amazonaws.com/${postId}`;
+
     this.setState({
       imageResize: true,
       imageLink: image,
@@ -78,15 +90,23 @@ export default class MoreDetails extends React.Component {
     window.location = '/posts';
   };
 
+  handleEdit = (e) => {
+    console.log(e.target.name);
+    this.setState({
+      moreDetails: false,
+    });
+    this.props.history.push(`/editpost?id=${e.target.name}`);
+  };
+
   render() {
     // Destructuring and declaring of variables
-    const { handleReset, postId, handleEdit } = this.props;
     const {
       latitude,
       longitude,
       imageResize,
       imageLink,
       postLoaded,
+      post,
     } = this.state;
     const { title, categories, description, location, date } = this.state.post;
     const formatDate = new Date(date);
@@ -95,7 +115,7 @@ export default class MoreDetails extends React.Component {
       return <h1>Loading ...</h1>;
     } else {
       return (
-        <React.Fragment>
+        <Col>
           {imageResize && (
             <Fade>
               <span className="close" onClick={this.imageResizeClose}>
@@ -110,23 +130,21 @@ export default class MoreDetails extends React.Component {
           )}
           <Row className="mb-3">
             <Col style={{ display: 'flex', justifyContent: 'space-between' }}>
-              <h2 className="text-center">{title}</h2>
-              <h1 className="closemoredetails" onClick={handleReset}>
+              {/* <h1 className="closemoredetails" onClick={handleReset}>
                 &times;
-              </h1>
+              </h1> */}
             </Col>
           </Row>
           <Row>
             <Col>
+              <h2 className="mb-4">{title}</h2>
               <p>
                 <Badge className="bg-info">Categories</Badge>{' '}
                 {categories.join(', ')}
               </p>
-              <div className="moredetailsdescription mb-3">
-                <p>
-                  <Badge className="bg-info">Description</Badge> {description}
-                </p>
-              </div>
+              <p>
+                <Badge className="bg-info">Description</Badge> {description}
+              </p>
               <p>
                 <Badge className="bg-info">Address</Badge> {location.address1}{' '}
                 {location.address2}
@@ -136,10 +154,10 @@ export default class MoreDetails extends React.Component {
                 {formatDate.toString().slice(0, 15)}
               </p>
               <Button
-                name={postId}
+                name={post._id}
                 size="sm"
                 color="warning"
-                onClick={handleEdit}
+                onClick={this.handleEdit}
                 className="mb-3 mr-2"
               >
                 Edit
@@ -153,10 +171,10 @@ export default class MoreDetails extends React.Component {
                 Delete
               </Button>
             </Col>
-            <Col>
+            <Col className="d-flex justify-content-end">
               <img
                 className="moredetailsimage"
-                src={`https://msw-keeposted-images.s3-ap-southeast-1.amazonaws.com/${postId}`}
+                src={`https://msw-keeposted-images.s3-ap-southeast-1.amazonaws.com/${post._id}`}
                 onClick={this.imageResize}
                 alt="Resource"
               />
@@ -174,7 +192,7 @@ export default class MoreDetails extends React.Component {
               />
             </Col>
           </Row>
-        </React.Fragment>
+        </Col>
       );
     }
   }
