@@ -30,7 +30,7 @@ export default class PostContent extends React.Component {
 
     try {
       let response = await axios.get(
-        'https://quiet-gorge-29042.herokuapp.com/all-resources'
+        'https://msw-keeposted-api.herokuapp.com/all-resources'
       );
       this.setState({
         posts: response.data.reverse(),
@@ -105,7 +105,7 @@ export default class PostContent extends React.Component {
 
       try {
         let response = await axios.post(
-          'https://quiet-gorge-29042.herokuapp.com/filter-resource',
+          'https://msw-keeposted-api.herokuapp.com/filter-resource',
           filter
         );
         this.setState({

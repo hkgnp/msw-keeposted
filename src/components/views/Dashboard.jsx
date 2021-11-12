@@ -22,7 +22,7 @@ export default class Dashboard extends React.Component {
   getuserContributions = async () => {
     let searchByUser = { userId: this.state.id };
     let response = await axios.post(
-      'https://quiet-gorge-29042.herokuapp.com/resource-by-user',
+      'https://msw-keeposted-api.herokuapp.com/resource-by-user',
       searchByUser
     );
     this.setState({
@@ -70,7 +70,7 @@ export default class Dashboard extends React.Component {
       loadingIcon: true,
     });
     const { name, email, id } = this.state;
-    const baseUrl = 'https://quiet-gorge-29042.herokuapp.com';
+    const baseUrl = 'https://msw-keeposted-api.herokuapp.com';
     /// Send to collection 'POST DETAILS'
     try {
       await axios({

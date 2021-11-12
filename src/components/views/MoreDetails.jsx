@@ -21,7 +21,7 @@ export default class MoreDetails extends React.Component {
   getPost = async () => {
     // const searchById = { _id: this.props.postId };
     // const response = await axios.post(
-    //   'https://quiet-gorge-29042.herokuapp.com/resource',
+    //   'https://msw-keeposted-api.herokuapp.com/resource',
     //   searchById
     // );
 
@@ -29,7 +29,7 @@ export default class MoreDetails extends React.Component {
     const postId = urlParams.get('id');
     const searchById = { _id: postId };
     const response = await axios.post(
-      'https://quiet-gorge-29042.herokuapp.com/resource',
+      'https://msw-keeposted-api.herokuapp.com/resource',
       searchById
     );
 
@@ -79,7 +79,7 @@ export default class MoreDetails extends React.Component {
   };
 
   handleDelete = async () => {
-    const baseUrl = 'https://quiet-gorge-29042.herokuapp.com';
+    const baseUrl = 'https://msw-keeposted-api.herokuapp.com';
     await axios({
       method: 'delete',
       url: `${baseUrl}/delete-resource`,
@@ -99,14 +99,8 @@ export default class MoreDetails extends React.Component {
 
   render() {
     // Destructuring and declaring of variables
-    const {
-      latitude,
-      longitude,
-      imageResize,
-      imageLink,
-      postLoaded,
-      post,
-    } = this.state;
+    const { latitude, longitude, imageResize, imageLink, postLoaded, post } =
+      this.state;
     const { title, categories, description, location, date } = this.state.post;
     const formatDate = new Date(date);
 

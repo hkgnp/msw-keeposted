@@ -22,7 +22,7 @@ const ValidateUser = async (props) => {
     validationResult.error.details.map((e) => (errors[e.path[0]] = e.message));
     return errors;
   } else {
-    const baseUrl = 'https://quiet-gorge-29042.herokuapp.com';
+    const baseUrl = 'https://msw-keeposted-api.herokuapp.com';
 
     /// Send to collection 'POST DETAILS'
     try {

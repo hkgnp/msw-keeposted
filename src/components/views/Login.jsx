@@ -42,7 +42,7 @@ export default class Login extends React.Component {
     // Continue with submit process
     e.preventDefault();
     const { email, password } = this.state;
-    const baseUrl = 'https://quiet-gorge-29042.herokuapp.com';
+    const baseUrl = 'https://msw-keeposted-api.herokuapp.com';
     let response = '';
 
     try {

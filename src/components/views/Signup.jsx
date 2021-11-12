@@ -39,7 +39,7 @@ export default class Signup extends React.Component {
         loadingIcon: false,
       });
     } else if (errors === 'User successfully registered') {
-      const baseUrl = 'https://quiet-gorge-29042.herokuapp.com';
+      const baseUrl = 'https://msw-keeposted-api.herokuapp.com';
       const response = await axios({
         method: 'post',
         url: `${baseUrl}/user/login`,
